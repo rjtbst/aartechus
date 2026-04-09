@@ -17,7 +17,7 @@ import {
 // Mode icons (display-only, lives here not in config)
 const modeIcons: Record<CourseMode, React.ReactNode> = {
   live: <Wifi size={12} />,
-  offline: <Users size={12} />,
+  // offline: <Users size={12} />,
   "self-paced": <Monitor size={12} />,
 };
 
