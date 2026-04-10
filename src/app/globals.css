@@ -133,7 +133,7 @@
   }
 
   .section-gap {
-    @apply py-16 md:py-24;
+    @apply py-16 md:py-20;
   }
 
   /* ---- Cards ---- */
