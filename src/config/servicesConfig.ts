@@ -55,6 +55,45 @@ export interface Category {
 // ─── SERVICES DATA ───────────────────────────────────────────────────────────
 
 export const servicesConfig: Service[] = [
+  // ── NEW: Staffing & Recruitment ──
+  {
+    slug: "staffing-recruitment",
+    title: "Staffing & Recruitment",
+    tagline: "Pre-vetted, job-ready talent on demand",
+    description:
+      "We connect enterprises and startups with pre-vetted, job-ready tech talent. From contract staffing to full-time placements — we source, screen, and deliver candidates aligned to your exact requirements.",
+    emoji: "🤝",
+    icon: Handshake,
+    badge: "New",
+    color: "linear-gradient(135deg,#7c3aed,#2563eb)",
+    textColor: "text-violet-400",
+    bgColor: "bg-violet-500/10",
+    gradient: "from-violet-500/20 to-blue-500/20",
+    features: ["Contract", "Full-Time", "Enterprise", "Fortune Clients"],
+    tech: [
+      "Talent sourcing & screening",
+      "Technical assessment",
+      "Background verification",
+      "Onboarding support",
+      "ATS integration",
+      "RPO / MSP models",
+    ],
+    deliverables: [
+      "Curated candidate shortlist",
+      "Technical interview coordination",
+      "Background & reference checks",
+      "Offer negotiation support",
+      "90-day replacement guarantee",
+      "Dedicated account manager",
+    ],
+    caseStudy: { client: "Fortune 500 Tech Firm", result: "42 engineers hired in 6 weeks, 94% retention at 1 year", time: "6 weeks" },
+    category: ["Core", "Advanced"],
+    keywords: [
+      "staffing", "recruitment", "hiring", "talent", "contract staffing",
+      "full-time", "tech hiring", "it recruitment", "enterprise hiring",
+      "job-ready", "pre-vetted", "placement", "rpo",
+    ],
+  },
   {
     slug: "web-development",
     title: "Web Development",
@@ -272,45 +311,7 @@ export const servicesConfig: Service[] = [
     keywords: ["custom software", "enterprise", "erp", "crm", "automation", "legacy modernization", "bespoke", "java", "python"],
   },
 
-  // ── NEW: Staffing & Recruitment ──
-  {
-    slug: "staffing-recruitment",
-    title: "Staffing & Recruitment",
-    tagline: "Pre-vetted, job-ready talent on demand",
-    description:
-      "We connect enterprises and startups with pre-vetted, job-ready tech talent. From contract staffing to full-time placements — we source, screen, and deliver candidates aligned to your exact requirements.",
-    emoji: "🤝",
-    icon: Handshake,
-    badge: "New",
-    color: "linear-gradient(135deg,#7c3aed,#2563eb)",
-    textColor: "text-violet-400",
-    bgColor: "bg-violet-500/10",
-    gradient: "from-violet-500/20 to-blue-500/20",
-    features: ["Contract", "Full-Time", "Enterprise", "Fortune Clients"],
-    tech: [
-      "Talent sourcing & screening",
-      "Technical assessment",
-      "Background verification",
-      "Onboarding support",
-      "ATS integration",
-      "RPO / MSP models",
-    ],
-    deliverables: [
-      "Curated candidate shortlist",
-      "Technical interview coordination",
-      "Background & reference checks",
-      "Offer negotiation support",
-      "90-day replacement guarantee",
-      "Dedicated account manager",
-    ],
-    caseStudy: { client: "Fortune 500 Tech Firm", result: "42 engineers hired in 6 weeks, 94% retention at 1 year", time: "6 weeks" },
-    category: ["Core", "Advanced"],
-    keywords: [
-      "staffing", "recruitment", "hiring", "talent", "contract staffing",
-      "full-time", "tech hiring", "it recruitment", "enterprise hiring",
-      "job-ready", "pre-vetted", "placement", "rpo",
-    ],
-  },
+  
 ];
 
 // ─── CATEGORIES ──────────────────────────────────────────────────────────────

@@ -5,6 +5,15 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const services = [
+  // ── NEW: Staffing & Recruitment ──
+  {
+    icon: "🤝",
+    title: "Staffing & Recruitment",
+    desc: "Pre-vetted, job-ready candidates for contract & full-time roles.",
+    features: ["Contract", "Full-Time", "Enterprise", "Fortune Clients"],
+    href: "/it-services#staffing",
+    badge: "New",
+  },
   {
     icon: "🌐",
     title: "Web Development",
@@ -49,15 +58,7 @@ const services = [
     features: ["SaaS", "ERP/CRM", "APIs", "Scaling"],
     href: "/it-services#saas-development",
   },
-  // ── NEW: Staffing & Recruitment ──
-  {
-    icon: "🤝",
-    title: "Staffing & Recruitment",
-    desc: "Pre-vetted, job-ready candidates for contract & full-time roles.",
-    features: ["Contract", "Full-Time", "Enterprise", "Fortune Clients"],
-    href: "/it-services#staffing",
-    badge: "New",
-  },
+  
 ];
 
 export default function ITServicesSection() {
