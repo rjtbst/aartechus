@@ -25,7 +25,7 @@ import CTASection from "@/components/sections/CTASection";
 
 const Hero = () => (
   <section className="pt-[68px]">
-    <div className="container-main py-12 md:py-20">
+    <div className="container-main py-12 md:py-10">
       <div className="grid lg:grid-cols-[1fr_420px] gap-8 items-start">
         {/* Left side */}
         <div className="pt-4">
@@ -43,24 +43,47 @@ const Hero = () => (
             <span className="text-sm font-medium text-foreground">35k+ Happy Students</span>
           </motion.div>
 
+          {/* ── UPDATED HEADLINE ── */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="text-[40px] md:text-[52px] lg:text-[60px] font-display font-bold leading-[1.1] text-foreground"
           >
-            The <span className="text-primary">Training</span> and Placement platform for your{" "}
-            <span className="text-primary">career</span>
+            Build Your <span className="text-primary">Career.</span> Get Skilled.{" "}
+            Get <span className="text-primary">Hired</span> — Without Paying Upfront
           </motion.h1>
 
+          {/* ── UPDATED SUBTEXT ── */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
             className="mt-6 text-lg text-muted-foreground max-w-lg"
           >
-            Get job-ready with expert-led courses or participate in our free hiring drives.
+            We provide end-to-end employment solutions — from technical training
+            and career development to staffing and recruitment — designed to
+            connect you with real opportunities at leading companies.
           </motion.p>
+
+          {/* ── NEW: Bullet points ── */}
+          <motion.ul
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.35 }}
+            className="mt-4 space-y-2"
+          >
+            {[
+              "Learn in-demand tech skills",
+              "Train for real job roles",
+              "Access opportunities with top-tier employers",
+            ].map((item) => (
+              <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
+                <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+                {item}
+              </li>
+            ))}
+          </motion.ul>
 
           {/* Trust badges */}
           <motion.div
@@ -80,10 +103,22 @@ const Hero = () => (
               </div>
             ))}
           </motion.div>
+
+          {/* ── NEW: Disclaimer line ── */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.6 }}
+            className="mt-6 text-xs text-muted-foreground/50 max-w-md leading-relaxed"
+          >
+            No upfront tuition for eligible candidates. Flexible financing options
+            including income-based payment plans available for qualified applicants.
+            Terms apply.
+          </motion.p>
         </div>
 
-        {/* Right side - Cards */}
-        <div className="space-y-4">
+        {/* Right side - Cards — unchanged */}
+        <div className="space-y-10 py-12">
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
@@ -103,12 +138,12 @@ const Hero = () => (
                   </span>
                 </div>
                 <Image
-  src="/images/hero-courses-person.jpg"
-  alt="Student learning coding"
-  width={200}
-  height={200}
-  className="absolute right-0 bottom-0 h-full w-auto object-cover object-top opacity-90 rounded-r-2xl"
-/>
+                  src="/images/hero-courses-person.jpg"
+                  alt="Student learning coding"
+                  width={200}
+                  height={200}
+                  className="absolute right-0 bottom-0 h-full w-auto object-cover object-top opacity-90 rounded-r-2xl"
+                />
               </div>
             </Link>
           </motion.div>
@@ -132,12 +167,12 @@ const Hero = () => (
                   </span>
                 </div>
                 <Image
-  src="/images/hero-jobs-person.jpg"
-  alt="Professional developer"
-  width={200}
-  height={200}
-  className="absolute right-0 bottom-0 h-full w-auto object-cover object-top opacity-90 rounded-r-2xl"
-/>
+                  src="/images/hero-jobs-person.jpg"
+                  alt="Professional developer"
+                  width={200}
+                  height={200}
+                  className="absolute right-0 bottom-0 h-full w-auto object-cover object-top opacity-90 rounded-r-2xl"
+                />
               </div>
             </Link>
           </motion.div>
@@ -197,13 +232,10 @@ const TestimonialSection = () => {
           {visible.map((t, i) => (
             <AnimatedSection key={t.name} delay={i * 0.1}>
               <div className="bg-card rounded-2xl border border-border p-6 card-shadow hover-card-lift h-full flex flex-col">
-                {/* Avatar + Name */}
                 <div className="flex items-center gap-3 mb-5">
                   <div className="w-12 h-12 rounded-full bg-primary/10 text-primary flex items-center justify-center font-bold text-sm font-display">{t.avatar}</div>
                   <h3 className="font-display font-bold text-foreground">{t.name}</h3>
                 </div>
-
-                {/* Before / After */}
                 <div className="flex items-center gap-3 mb-5">
                   <div className="flex-1 bg-secondary rounded-xl p-3 text-center">
                     <p className="text-[10px] font-semibold uppercase tracking-wider text-muted-foreground mb-1">Before</p>
@@ -215,15 +247,12 @@ const TestimonialSection = () => {
                     <p className="text-sm font-medium text-primary">{t.after}</p>
                   </div>
                 </div>
-
-                {/* Quote */}
                 <p className="text-sm text-muted-foreground leading-relaxed flex-1">"{t.quote}"</p>
               </div>
             </AnimatedSection>
           ))}
         </div>
 
-        {/* Navigation */}
         <div className="flex justify-center gap-2 mt-8">
           <button
             onClick={() => setIdx(Math.max(0, idx - 3))}
@@ -240,22 +269,10 @@ const TestimonialSection = () => {
             <ChevronRight className="w-4 h-4" />
           </button>
         </div>
-
-        {/* <div className="text-center mt-6">
-          <a href="#" className="inline-flex items-center gap-2 text-primary text-sm font-semibold hover:underline">
-            <Download className="w-4 h-4" /> Download Placement Report
-          </a>
-        </div> */}
       </div>
     </section>
   );
 };
-
-
-
-/* ═══════════════════════ HIRING COMPANIES ═══════════════════════ */
-const companies = ["Google", "Amazon", "Microsoft", "Flipkart", "Walmart", "Salesforce", "Swiggy", "Razorpay", "PhonePe", "Paytm", "Zomato", "Infosys"];
-
 
 /* ═══════════════════════ CTA ═══════════════════════ */
 const FinalCTA = () => (
@@ -285,11 +302,11 @@ const FinalCTA = () => (
     </div>
   </section>
 );
+
 /* PAGE */
 export default function Page() {
   return (
     <div>
-      
       <Hero />
       <ImpactStats />
       <TestimonialSection />
@@ -298,10 +315,8 @@ export default function Page() {
       <HiringDrivesSection/>
       {/* <CentersSection/> */}
       <FAQSection />
-      {/* <FAQSection /> */}
-       <CTASection />
+      <CTASection />
       <FinalCTA />
-    
     </div>
   );
 }
