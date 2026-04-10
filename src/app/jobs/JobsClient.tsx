@@ -43,7 +43,7 @@ export default function JobsClient() {
   return (
     <div className="min-h-screen bg-white pt-16">
       {/* Hero */}
-      <section className="relative py-20 mesh-bg overflow-hidden">
+      <section className="relative py-12 mesh-bg overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-50" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
@@ -132,9 +132,9 @@ export default function JobsClient() {
                     <div className="text-green-600 font-semibold text-sm">{job.package}</div>
                     <div className="text-gray-400 text-xs">{job.type}</div>
                   </div>
-                  <button className="glow-btn px-4 py-2 rounded-xl text-sm font-semibold text-white flex items-center gap-1.5">
+                  {/* <button className="glow-btn px-4 py-2 rounded-xl text-sm font-semibold text-white flex items-center gap-1.5">
                     Apply Now <ArrowRight size={13} />
-                  </button>
+                  </button> */}
                 </div>
               </motion.div>
             ))}
@@ -150,7 +150,7 @@ export default function JobsClient() {
       </section>
 
       {/* How hiring drives work */}
-      <section className="py-20 bg-gray-50">
+      <section className="py-8 bg-gray-50">
         <div className="max-w-5xl mx-auto px-4 sm:px-6">
           <div className="text-center mb-12">
             <h2 className="font-bold text-4xl text-gray-900 mb-3">How Hiring Drives Work</h2>
@@ -170,7 +170,7 @@ export default function JobsClient() {
                 <div className={`w-12 h-12 rounded-xl ${s.bg} flex items-center justify-center mx-auto mb-4`}>
                   <s.icon size={22} className={s.color} />
                 </div>
-                <div className="text-2xl font-bold text-blue-100 mb-2">0{i + 1}</div>
+                <div className="text-2xl font-bold text-blue-300 mb-2">0{i + 1}</div>
                 <h3 className="font-semibold text-gray-900 mb-2">{s.title}</h3>
                 <p className="text-gray-500 text-sm">{s.desc}</p>
               </motion.div>
