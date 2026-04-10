@@ -1,6 +1,6 @@
 "use client";
 
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import {
   ArrowRight,
   ArrowUpRight,
@@ -22,6 +22,7 @@ import ITServicesSection from "@/components/sections/ITServicesSection";
 import HiringDrivesSection from "@/components/sections/HiringDrivesSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
+import HowItWorks from "@/components/sections/HowItWorks";
 
 const Hero = () => (
   <section className="pt-[54px]">
@@ -205,6 +206,8 @@ const ImpactStats = () => (
   </section>
 );
 
+
+
 /* ═══════════════════════ TESTIMONIALS (Before/After) ═══════════════════════ */
 const testimonials = [
   { name: "Sandeep Singh", before: "Chemical Engineer", after: "Software Engineer", quote: "NexaLearn trained me and helped me improve my technical skills perfectly and land the job I had dreamed of!", avatar: "SS" },
@@ -286,7 +289,7 @@ const FinalCTA = () => (
               Ready to Transform Your Career?
             </h2>
             <p className="text-primary-foreground/70 text-lg mb-8 max-w-lg mx-auto">
-              Join 35,000+ learners who've already taken the leap. Your dream tech career starts here.
+             Start with no upfront tuition (if eligible). Choose flexible or income-based payment options. Build your career with real opportunities
             </p>
             <div className="flex flex-wrap gap-4 justify-center">
               <Link href="/courses" className="h-12 px-8 rounded-xl bg-background text-foreground text-sm font-semibold flex items-center gap-2 hover:bg-background/90 transition-colors shadow-lg">
@@ -309,6 +312,7 @@ export default function Page() {
     <div>
       <Hero />
       <ImpactStats />
+      <HowItWorks />
       <TestimonialSection />
       <CoursesSection />
       <ITServicesSection />

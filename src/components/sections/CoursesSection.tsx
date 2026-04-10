@@ -35,7 +35,7 @@ export default function CoursesSection() {
             COURSES
           </p>
           <h2 className="text-3xl md:text-[42px] font-display font-bold text-foreground">
-            Offline, Live & Self-Paced Courses
+            Job-Focused Technical Training
           </h2>
           <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
             Industry-ready training with placement support.

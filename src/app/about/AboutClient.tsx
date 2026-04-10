@@ -2,6 +2,7 @@
 import { motion } from "framer-motion";
 import Link from "next/link";
 import { ArrowRight, Target, Eye, Heart, Users, Award, Globe, Zap, TrendingUp, Lightbulb } from "lucide-react";
+import HowItWorks from "@/components/sections/HowItWorks";
 
 const team = [
   { name: "Aarav Sharma", role: "Co-Founder & CEO", bg: "IIT Delhi, Ex-Google", color: "linear-gradient(135deg,#7c3aed,#4f46e5)" },
@@ -61,6 +62,8 @@ export default function AboutClient() {
               </div>
             </motion.div>
 
+            
+
             {/* Stats visual */}
             <motion.div initial={{ opacity: 0, x: 30 }} animate={{ opacity: 1, x: 0 }} transition={{ delay: 0.2 }}
               className="grid grid-cols-2 gap-4">
@@ -84,6 +87,7 @@ export default function AboutClient() {
           </div>
         </div>
       </section>
+      <HowItWorks />
 
       {/* Mission & Vision */}
       <section className="py-20 bg-white">
