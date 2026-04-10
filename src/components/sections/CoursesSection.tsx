@@ -65,7 +65,7 @@ export default function CoursesSection() {
             key={activeCategory}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-6"
+            className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-8"
           >
             {filtered.map((course, i) => (
               <motion.div
@@ -75,12 +75,12 @@ export default function CoursesSection() {
                 transition={{ delay: i * 0.06 }}
                 // className="w-full max-w-md mx-auto"
               >
-                <Link href={course.href} className="block group h-full">
+                <Link href={course.href} className="block group h-full ">
                   <div
-                    className={`${course.cardBg} bg-card border border-border rounded-2xl p-4 hover-card-lift h-full flex flex-col`}
+                    className={`${course.cardBg} card-shadow-xl border border-border rounded-2xl p-4 hover-card-lift h-full flex flex-col`}
                   >
                     {/* Header */}
-                    <div className="flex items-start justify-between mb-4">
+                    <div className="flex  items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
                         <div className="w-14 h-14 rounded-xl flex items-center justify-center text-xl">
                           {course.icon}
@@ -95,7 +95,7 @@ export default function CoursesSection() {
                         </div>
                       </div>
                       {course.badge && (
-                        <span className="text-[10px] px-2 py-1 rounded-full bg-primary/10 text-primary font-semibold">
+                        <span className="text-[9px]  px-2 py-1 rounded-full bg-primary/10 text-primary font-semibold">
                           {course.badge}
                         </span>
                       )}
