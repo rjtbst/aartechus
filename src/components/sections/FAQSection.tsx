@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, MessageCircle, ArrowRight } from "lucide-react";
 import Link from "next/link";
 
-type FaqCategory = "Courses" | "Learning" | "Placements" | "IT Services";
+type FaqCategory = "Courses" | "Learning" | "Placements" | "IT Services" | "Payment";
 
 const faqs: Record<FaqCategory, { q: string; a: string }[]> = {
   Courses: [
@@ -25,13 +25,20 @@ const faqs: Record<FaqCategory, { q: string; a: string }[]> = {
     { q: "How do the hiring drives work?", a: "We host 60+ hiring drives monthly — both online and at our skill centres. You go through a skill analysis, mock interview, and then get shortlisted by companies. The entire process is free for students." },
   ],
   "IT Services": [
-    { q: "What IT services does AArtechus provide?", a: "We offer Web Development, Mobile App Development, Cloud & DevOps, AI/ML Solutions, Cybersecurity consulting, and Custom Software Development for startups and enterprises globally." },
+    { q: "What IT services does AArtechus provide?", a: "We offer Web Development, Mobile App Development, Cloud & DevOps, AI/ML Solutions, Cybersecurity consulting, Staffing & Recruitment, and Custom Software Development for startups and enterprises globally." },
     { q: "How do I get a project estimate?", a: "Simply fill out our project inquiry form or schedule a free 30-minute consultation call. We'll review your requirements and provide a detailed estimate within 48 hours." },
     { q: "What is the typical project timeline?", a: "Small projects take 4–8 weeks. Medium to large projects range from 3–6 months. We follow agile methodology with bi-weekly demos and clear milestone tracking." },
   ],
+  // ── NEW: Payment tab ──
+  Payment: [
+    { q: "Is the income-based payment option a loan?", a: "No. The income-based payment option (ISA-style) is not a loan. You pay a fixed percentage of your income only after securing qualifying employment, and only once your earnings exceed a defined income threshold. No job, no payment." },
+    { q: "Is placement guaranteed?", a: "We provide access to opportunities through employer partnerships and our 60+ monthly hiring drives. Placement is not guaranteed, but 90%+ of eligible graduates secure roles through our network within 3 months of completing their program." },
+    { q: "What if I don't get a job after completing the course?", a: "Under the income-based payment option, payments only begin after you start earning above the defined income threshold. If you don't reach that threshold, payment obligations do not apply. Not all applicants qualify for all payment options — terms vary by program and agreement." },
+    { q: "What other payment options are available?", a: "We offer three options: (1) No upfront tuition for eligible candidates, (2) Flexible financing — structured repayment up to the full program cost, and (3) Income-based payment option (ISA-style). Our counselors will help you choose the best fit during your free consultation." },
+  ],
 };
 
-const categories: FaqCategory[] = ["Courses", "Learning", "Placements", "IT Services"];
+const categories: FaqCategory[] = ["Courses", "Learning", "Placements", "IT Services", "Payment"];
 
 export default function FAQSection() {
   const [activeCategory, setActiveCategory] = useState<FaqCategory>("Courses");

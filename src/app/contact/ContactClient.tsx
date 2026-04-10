@@ -3,42 +3,37 @@
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
-import { toast } from "sonner"; // ← add
+import { toast } from "sonner";
 import {
   Mail, Phone, MapPin, CheckCircle2, ArrowRight,
   MessageCircle, Briefcase, GraduationCap, Clock,
 } from "lucide-react";
-import { courseSelectOptions } from "@/config/coursesConfig";
 
-// ── your existing constants stay exactly the same ────────────────────────────
 type InquiryType = "callback" | "project" | "general";
 
 const inquiryTypes = [
   { id: "callback" as InquiryType, label: "Course Inquiry",   icon: GraduationCap, desc: "Get free course counseling" },
-  { id: "project" as InquiryType,  label: "Start IT Project", icon: Briefcase,      desc: "Get a project estimate"    },
-  { id: "general" as InquiryType,  label: "General Query",    icon: MessageCircle,  desc: "Ask us anything"           },
+  { id: "project"  as InquiryType, label: "Start IT Project", icon: Briefcase,      desc: "Get a project estimate"    },
+  { id: "general"  as InquiryType, label: "General Query",    icon: MessageCircle,  desc: "Ask us anything"           },
 ];
 
 const offices = [
-  { city: "Noida (HQ)",  address: "2nd Floor, D69, Block-D, Sector 2, Noida, UP 201301",        phone: "+91 85955 63221" },
-  { city: "Hyderabad",   address: "23-25, Lumbini Avenue, Gachibowli, Hyderabad, TS 500032",    phone: "+91 85955 63222" },
-  { city: "Pune",        address: "5th Floor, Aria Tower, Baner, Pune, MH 411045",              phone: "+91 85955 63223" },
+  { city: "Noida (HQ)",  address: "2nd Floor, D69, Block-D, Sector 2, Noida, UP 201301",      phone: "+91 85955 63221" },
+  { city: "Hyderabad",   address: "23-25, Lumbini Avenue, Gachibowli, Hyderabad, TS 500032",  phone: "+91 85955 63222" },
+  { city: "Pune",        address: "5th Floor, Aria Tower, Baner, Pune, MH 411045",            phone: "+91 85955 63223" },
 ];
 
 const budgetOptions = ["₹50K – ₹2L", "₹2L – ₹10L", "₹10L – ₹50L", "₹50L+"];
 
-const FORMSPREE_ID = "mdapvpqr"; 
-// ─────────────────────────────────────────────────────────────────────────────
+const FORMSPREE_ID = "mdapvpqr";
 
 export default function ContactClient() {
-  const searchParams  = useSearchParams();
-  const initialType   = (searchParams.get("type") as InquiryType) || "callback";
+  const searchParams = useSearchParams();
+  const initialType  = (searchParams.get("type") as InquiryType) || "callback";
 
   const [type, setType]       = useState<InquiryType>(initialType);
-  const [loading, setLoading] = useState(false);          // ← new
-  const [form, setForm]       = useState({
-    name: "", phone: "", email: "", message: "", course: "", budget: "",
-  });
+  const [loading, setLoading] = useState(false);
+  const [form, setForm]       = useState({ name: "", phone: "", email: "", message: "", course: "", budget: "" });
   const [submitted, setSubmitted] = useState(false);
 
   const submitLabel =
@@ -46,26 +41,19 @@ export default function ContactClient() {
     type === "project"  ? "Get Project Quote"      : "Send Message";
 
   const messagePlaceholder =
-    type === "project"  ? "Describe your project requirements..." :
-    type === "callback" ? "Any specific questions or concerns?"  : "How can we help you?";
+    type === "project"  ? "Describe your project requirements..."  :
+    type === "callback" ? "Any specific questions or concerns?"    : "How can we help you?";
 
-  // ── Formspree submit ────────────────────────────────────────────────────────
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
     const toastId = toast.loading("Sending your message…");
-
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
         method: "POST",
         headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({
-          inquiry_type: type,
-          ...form,
-        }),
+        body: JSON.stringify({ inquiry_type: type, ...form }),
       });
-
       if (res.ok) {
         toast.success("Message sent! We'll get back to you in 2–4 hours.", {
           id: toastId,
@@ -74,10 +62,7 @@ export default function ContactClient() {
         setSubmitted(true);
       } else {
         const data = await res.json();
-        toast.error("Something went wrong. Please try again.", {
-          id: toastId,
-          description: data?.error ?? "Server error",
-        });
+        toast.error("Something went wrong. Please try again.", { id: toastId, description: data?.error ?? "Server error" });
       }
     } catch {
       toast.error("Network error. Check your connection and retry.", { id: toastId });
@@ -85,11 +70,10 @@ export default function ContactClient() {
       setLoading(false);
     }
   };
-  // ───────────────────────────────────────────────────────────────────────────
 
   return (
     <div className="min-h-screen bg-bg-primary pt-16">
-      {/* Hero — unchanged */}
+      {/* Hero */}
       <section className="relative py-20 mesh-bg overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
@@ -105,12 +89,12 @@ export default function ContactClient() {
         </div>
       </section>
 
-      {/* Main — unchanged */}
+      {/* Main */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-3 gap-12">
 
-            {/* Left: Info — 100% unchanged */}
+            {/* Left: Info */}
             <div className="space-y-6">
               <div className="glass rounded-2xl p-6 border border-white/5">
                 <h3 className="font-syne font-semibold text-black mb-5">Get in Touch</h3>
@@ -175,7 +159,7 @@ export default function ContactClient() {
             {/* Right: Form */}
             <div className="lg:col-span-2">
               <div className="glass rounded-3xl p-8 border border-primary/20">
-                {/* Inquiry type selector — unchanged */}
+                {/* Inquiry type selector */}
                 <div className="grid sm:grid-cols-3 gap-3 mb-8">
                   {inquiryTypes.map((t) => (
                     <button key={t.id} onClick={() => setType(t.id)}
@@ -198,7 +182,6 @@ export default function ContactClient() {
                     <p className="text-gray-400">Our team will get back to you within 2–4 hours.</p>
                   </motion.div>
                 ) : (
-                  // ── only onSubmit and button change below ─────────────────
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div className="grid sm:grid-cols-2 gap-4">
                       <div>
@@ -219,12 +202,31 @@ export default function ContactClient() {
                         onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm" />
                     </div>
 
+                    {/* ── UPDATED: grouped dropdown matching CTASection ── */}
                     {type === "callback" && (
                       <div>
-                        <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5 block">Interested Course</label>
+                        <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5 block">Interested In</label>
                         <select value={form.course} onChange={(e) => setForm({ ...form, course: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
-                          <option value="">Select a course</option>
-                          {courseSelectOptions.map((name) => <option key={name}>{name}</option>)}
+                          <option value="">Select a course / service</option>
+                          <optgroup label="Training Courses">
+                            <option>Java Full Stack Development</option>
+                            <option>MERN Full Stack Development</option>
+                            <option>Python Programming</option>
+                            <option>Data Science & AI</option>
+                            <option>Data Analytics</option>
+                            <option>Data Engineering</option>
+                            <option>Artificial Intelligence (AI)</option>
+                            <option>Quality Assurance (QA)</option>
+                            <option>Cybersecurity</option>
+                          </optgroup>
+                          <optgroup label="IT Services">
+                            <option>Web Development</option>
+                            <option>Mobile App Development</option>
+                            <option>Cloud & DevOps</option>
+                            <option>AI / ML Solutions</option>
+                            <option>Staffing & Recruitment</option>
+                          </optgroup>
+                          <option>Other</option>
                         </select>
                       </div>
                     )}
@@ -259,6 +261,11 @@ export default function ContactClient() {
                         <>{submitLabel}<ArrowRight size={18} /></>
                       )}
                     </button>
+
+                    <p className="text-center text-xs text-gray-500">
+                      By submitting, you agree to our{" "}
+                      <a href="/privacy" className="text-primary hover:underline">Privacy Policy</a>
+                    </p>
                   </form>
                 )}
               </div>

@@ -2,7 +2,7 @@
 
 import { useState, useEffect, useRef } from "react";
 import Link from "next/link";
-import { usePathname } from "next/navigation";
+import { usePathname, useRouter } from "next/navigation";
 import { motion, AnimatePresence } from "framer-motion";
 import { Menu, X, ChevronDown, Phone, Search as SearchIcon } from "lucide-react";
 import { Button } from "./ui/Button";
@@ -22,6 +22,7 @@ const Navbar = () => {
   const [searchQuery, setSearchQuery] = useState("");
   const searchRef = useRef(null);
   const pathname = usePathname();
+  const router = useRouter();
 
   // Derive search results reactively from both configs
   const courseResults = searchQuery.trim() ? searchCourses(searchQuery).slice(0, 3) : [];
@@ -39,10 +40,26 @@ const Navbar = () => {
     setOpenDropdown(null);
   }, [pathname]);
 
-  const DropdownMenu = ({
-    label,
-    items,
-  }) => (
+  // ── Navigate to service: go to /it-services, then scroll + open accordion ──
+  const handleServiceClick = (slug) => {
+    setSearchQuery("");
+    setIsSearchOpen(false);
+    // If already on /it-services, just update the hash (ITServicesClient listens to hashchange)
+    if (pathname === "/it-services") {
+      window.location.hash = slug;
+    } else {
+      router.push(`/it-services#${slug}`);
+    }
+  };
+
+  // ── Navigate to course page ──
+  const handleCourseClick = (href) => {
+    setSearchQuery("");
+    setIsSearchOpen(false);
+    router.push(href);
+  };
+
+  const DropdownMenu = ({ label, items }) => (
     <div
       className="relative group"
       onMouseEnter={() => setOpenDropdown(label)}
@@ -83,9 +100,7 @@ const Navbar = () => {
       animate={{ y: 0 }}
       transition={{ duration: 0.4 }}
       className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled
-          ? "bg-background shadow-sm border-b border-border/40"
-          : "bg-background"
+        scrolled ? "bg-background shadow-sm border-b border-border/40" : "bg-background"
       }`}
     >
       <div className="container-main flex items-center justify-between h-[68px]">
@@ -93,15 +108,8 @@ const Navbar = () => {
         <Link href="/" className="flex items-center gap-2.5">
           <div className="w-8 h-8">
             <svg viewBox="0 0 32 32" fill="none">
-              <path
-                d="M8 6L16 2L24 6L24 18L16 22L8 18Z"
-                fill="hsl(221, 83%, 53%)"
-              />
-              <path
-                d="M8 14L16 10L24 14L24 26L16 30L8 26Z"
-                fill="hsl(221, 83%, 43%)"
-                opacity="0.7"
-              />
+              <path d="M8 6L16 2L24 6L24 18L16 22L8 18Z" fill="hsl(221, 83%, 53%)" />
+              <path d="M8 14L16 10L24 14L24 26L16 30L8 26Z" fill="hsl(221, 83%, 43%)" opacity="0.7" />
             </svg>
           </div>
           <span className="text-[22px] font-bold">Aartechus</span>
@@ -109,36 +117,21 @@ const Navbar = () => {
 
         {/* Desktop nav */}
         <div className="hidden lg:flex items-center gap-8">
-          {/* Courses dropdown — data from coursesConfig */}
           <Link href="/courses" className="text-[15px] font-medium hover:text-primary">
-            
-          <DropdownMenu label="Courses" items={navCourseLinks} />
+            <DropdownMenu label="Courses" items={navCourseLinks} />
           </Link>
-
-          {/* Services dropdown — data from servicesConfig */}
-                    <Link href="/it-services" className="text-[15px] font-medium hover:text-primary">
+          <Link href="/it-services" className="text-[15px] font-medium hover:text-primary">
             Services
-          {/* <DropdownMenu label="Services" items={navServiceLinks} /> */}
-          </Link> 
-
-          <Link
-            href="/about"
-            className="text-[15px] font-medium hover:text-primary"
-          >
-            About
           </Link>
+          <Link href="/blog" className="text-[15px] font-medium hover:text-primary">Blog</Link>
+                      <Link href="/jobs" className="text-[15px] font-medium hover:text-primary">Jobs</Link>
+          <Link href="/about" className="text-[15px] font-medium hover:text-primary">About</Link>
 
-          <Link
-            href="/blog"
-            className="text-[15px] font-medium hover:text-primary"
-          >
-            Blog
-          </Link>
         </div>
 
         {/* CTA + Search */}
         <div className="hidden lg:flex items-center gap-3">
-          {/* Live search box — results driven by servicesConfig */}
+          {/* Live search box */}
           <div className="relative" ref={searchRef}>
             <div className="w-48">
               <Input
@@ -170,22 +163,23 @@ const Navbar = () => {
                             <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
                               Courses
                             </span>
-                            <a href="/courses" className="text-[10px] text-primary hover:underline">
+                            <button
+                              onMouseDown={() => handleCourseClick("/courses")}
+                              className="text-[10px] text-primary hover:underline"
+                            >
                               View all
-                            </a>
+                            </button>
                           </div>
                           {courseResults.map((course) => (
-                            <a
+                            <button
                               key={course.id}
-                              href={course.href}
-                              onMouseDown={() => {
-                                setSearchQuery("");
-                                setIsSearchOpen(false);
-                              }}
-                              className="flex items-start gap-3 px-4 py-3 hover:bg-primary/5 transition-colors border-b border-border/50 last:border-0"
+                              onMouseDown={() => handleCourseClick(course.href)}
+                              className="w-full flex items-start gap-3 px-4 py-3 hover:bg-primary/5 transition-colors border-b border-border/50 last:border-0 text-left"
                             >
-                              <div className="w-9 h-9 rounded-lg flex items-center justify-center text-lg flex-shrink-0"
-                                style={{ background: course.color }}>
+                              <div
+                                className="w-9 h-9 rounded-lg flex items-center justify-center text-lg flex-shrink-0"
+                                style={{ background: course.color }}
+                              >
                                 {course.icon}
                               </div>
                               <div className="flex-1 min-w-0">
@@ -200,10 +194,10 @@ const Navbar = () => {
                                   )}
                                 </div>
                                 <p className="text-xs text-muted-foreground">
-                                  {course.duration} · {course.fee} · {course.modes.map(m => m === "live" ? "Live" : m === "offline" ? "Offline" : "Self-paced").join(", ")}
+                                  {course.duration} · {course.fee} · {course.modes.map((m) => m === "live" ? "Live" : "Self-paced").join(", ")}
                                 </p>
                               </div>
-                            </a>
+                            </button>
                           ))}
                         </>
                       )}
@@ -215,21 +209,22 @@ const Navbar = () => {
                             <span className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground">
                               IT Services
                             </span>
-                            <a href="/it-services" className="text-[10px] text-primary hover:underline">
+                            <button
+                              onMouseDown={() => handleServiceClick("")}
+                              className="text-[10px] text-primary hover:underline"
+                            >
                               View all
-                            </a>
+                            </button>
                           </div>
                           {serviceResults.map((service) => (
-                            <a
+                            <button
                               key={service.slug}
-                              href={`/it-services/#${service.slug}`}
-                              onMouseDown={() => {
-                                setSearchQuery("");
-                                setIsSearchOpen(false);
-                              }}
-                              className="flex items-start gap-3 px-4 py-3 hover:bg-primary/5 transition-colors border-b border-border/50 last:border-0"
+                              onMouseDown={() => handleServiceClick(service.slug)}
+                              className="w-full flex items-start gap-3 px-4 py-3 hover:bg-primary/5 transition-colors border-b border-border/50 last:border-0 text-left"
                             >
-                              <div className={`w-9 h-9 rounded-lg bg-gradient-to-br ${service.gradient} flex items-center justify-center text-lg flex-shrink-0`}>
+                              <div
+                                className={`w-9 h-9 rounded-lg bg-gradient-to-br ${service.gradient} flex items-center justify-center text-lg flex-shrink-0`}
+                              >
                                 {service.emoji}
                               </div>
                               <div className="flex-1 min-w-0">
@@ -247,7 +242,7 @@ const Navbar = () => {
                                   {service.description}
                                 </p>
                               </div>
-                            </a>
+                            </button>
                           ))}
                         </>
                       )}
@@ -275,10 +270,7 @@ const Navbar = () => {
         </div>
 
         {/* Mobile menu toggle */}
-        <button
-          className="lg:hidden p-2"
-          onClick={() => setMobileOpen(!mobileOpen)}
-        >
+        <button className="lg:hidden p-2" onClick={() => setMobileOpen(!mobileOpen)}>
           {mobileOpen ? <X /> : <Menu />}
         </button>
       </div>
@@ -293,28 +285,16 @@ const Navbar = () => {
             className="lg:hidden bg-black/5 border-t border-border"
           >
             <div className="container-main flex flex-col py-4 space-y-2">
-            <Link href="/courses" className="text-[15px] font-medium hover:text-primary">
-            
-          <DropdownMenu label="Courses" items={navCourseLinks} />
-          </Link>
+              <Link href="/courses" className="text-[15px] font-medium hover:text-primary">
+                <DropdownMenu label="Courses" items={navCourseLinks} />
+              </Link>
+              <Link href="/it-services" className="text-[15px] font-medium hover:text-primary">
+                Services
+              </Link>
+              <Link href="/about" className="text-[15px] font-medium hover:text-primary">About</Link>
+              <Link href="/blog" className="text-[15px] font-medium hover:text-primary">Blog</Link>
+              <Link href="/jobs" className="text-[15px] font-medium hover:text-primary">Jobs</Link>
 
-          <Link href="/it-services" className="text-[15px] font-medium hover:text-primary">
-            Services
-          </Link> 
-
-          <Link href="/about"
-            className="text-[15px]  font-medium hover:text-primary"
-          >
-            About
-          </Link>
-
-          <Link
-            href="/blog"
-            className="text-[15px] font-medium hover:text-primary"
-          >
-            Blog
-          </Link>
-            
 
               <div className="pt-3">
                 <Link

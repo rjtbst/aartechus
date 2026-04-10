@@ -49,6 +49,15 @@ const services = [
     features: ["SaaS", "ERP/CRM", "APIs", "Scaling"],
     href: "/it-services#saas-development",
   },
+  // ── NEW: Staffing & Recruitment ──
+  {
+    icon: "🤝",
+    title: "Staffing & Recruitment",
+    desc: "Pre-vetted, job-ready candidates for contract & full-time roles.",
+    features: ["Contract", "Full-Time", "Enterprise", "Fortune Clients"],
+    href: "/it-services#staffing",
+    badge: "New",
+  },
 ];
 
 export default function ITServicesSection() {
@@ -74,7 +83,7 @@ export default function ITServicesSection() {
         </motion.div>
 
         {/* Grid */}
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
           {services.map((service, i) => (
             <motion.div
               key={service.title}
@@ -96,30 +105,23 @@ export default function ITServicesSection() {
                     )}
                   </div>
 
-                  {/* Title */}
                   <h3 className="font-display font-bold text-foreground text-lg mb-2">
                     {service.title}
                   </h3>
 
-                  {/* Desc */}
                   <p className="text-sm text-muted-foreground mb-4">
                     {service.desc}
                   </p>
 
-                  {/* Features */}
                   <div className="grid grid-cols-2 gap-2 mb-4">
                     {service.features.map((f) => (
-                      <div
-                        key={f}
-                        className="flex items-center gap-1 text-xs text-muted-foreground"
-                      >
+                      <div key={f} className="flex items-center gap-1 text-xs text-muted-foreground">
                         <CheckCircle2 className="w-3 h-3 text-primary" />
                         {f}
                       </div>
                     ))}
                   </div>
 
-                  {/* CTA */}
                   <div className="mt-auto">
                     <span className="text-primary text-sm font-semibold flex items-center gap-1 group-hover:gap-2 transition-all">
                       Learn more <ArrowRight className="w-4 h-4" />
@@ -145,16 +147,10 @@ export default function ITServicesSection() {
             Get a free consultation and project estimate.
           </p>
           <div className="flex justify-center gap-4 flex-wrap">
-            <Link
-              href="/contact?type=project"
-              className="px-6 py-3 rounded-xl bg-primary text-white font-semibold"
-            >
+            <Link href="/contact?type=project" className="px-6 py-3 rounded-xl bg-primary text-white font-semibold">
               Start a Project
             </Link>
-            <Link
-              href="/it-services"
-              className="px-6 py-3 rounded-xl border border-border text-foreground font-semibold"
-            >
+            <Link href="/it-services" className="px-6 py-3 rounded-xl border border-border text-foreground font-semibold">
               View All Services
             </Link>
           </div>

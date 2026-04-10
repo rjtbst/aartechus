@@ -19,15 +19,13 @@ import {
 import { servicesConfig } from "@/config/servicesConfig";
 import { coursesConfig } from "@/config/coursesConfig";
 
-// ─────────────────────────────────────────────────────────────────────────────
-
 const Chatbot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState([
     {
       role: "assistant",
       content:
-        "👋 Hi! I'm Arty, your Aartechus assistant. Ask me about our courses, IT services, fees, or placement — I'm here to help!",
+        "👋 Hi! I'm Arty, your Aartechus assistant. Ask me about our courses, IT services, fees, placement, or payment options — I'm here to help!",
       timestamp: new Date(),
     },
   ]);
@@ -37,7 +35,6 @@ const Chatbot = () => {
 
   // ── Dynamic system prompt — generated entirely from config ─────────────────
   const systemPrompt = useMemo(() => {
-    // Build courses list
     const coursesList = coursesConfig
       .map(
         (c, i) =>
@@ -48,17 +45,15 @@ const Chatbot = () => {
       )
       .join("\n\n");
 
-    // Build services list
     const servicesList = servicesConfig
       .map(
         (s, i) =>
           `${i + 1}. ${s.title} — ${s.description}\n` +
-          `   Tech: ${s.tech.slice(0, 4).join(", ")}\n` +
           `   Key deliverables: ${s.deliverables.slice(0, 3).join(", ")}`,
       )
       .join("\n\n");
 
-    return `You are "Arty", a friendly and knowledgeable assistant for Aartechus — a tech education and IT services company based in India.
+    return `You are "Arty", a friendly and knowledgeable assistant for Aartechus — a tech education and IT services company.
 
 COMPANY IDENTITY:
 - Name: Aartechus
@@ -70,9 +65,10 @@ COMPANY IDENTITY:
 - WhatsApp: +91 85955 63221
 
 WHAT WE DO:
-Aartechus has two pillars:
+Aartechus has three pillars:
 1. Tech Education — Job-ready coding courses with placement support
 2. IT Services — Custom software development for startups and enterprises
+3. Staffing & Recruitment — Pre-vetted tech talent for contract & full-time roles
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 COURSES WE OFFER (${coursesConfig.length} programs):
@@ -85,6 +81,12 @@ KEY COURSE FEATURES (apply to all courses):
 • Placement assistance & mock interviews
 • EMI options available
 • Live doubt-clearing sessions
+• No upfront tuition for eligible candidates
+
+PAYMENT OPTIONS (important — answer accurately):
+Option 1: No upfront tuition — for eligible candidates
+Option 2: Flexible financing — structured repayment up to full program cost
+Option 3: Income-based payment (ISA-style) — pay a fixed % of income ONLY after getting a qualifying job, above a defined income threshold. NOT a loan. Payments don't start until you're earning. Not all applicants qualify. Terms vary by program.
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 IT SERVICES WE OFFER (${servicesConfig.length} services):
@@ -92,20 +94,27 @@ IT SERVICES WE OFFER (${servicesConfig.length} services):
 ${servicesList}
 
 RESPONSE GUIDELINES:
-1. TONE: Friendly, concise, helpful — like a knowledgeable senior friend (not a salesperson)
+1. TONE: Friendly, concise, helpful — like a knowledgeable senior friend, not a salesperson
 2. STRUCTURE: 1-2 sentences for simple queries; use "•" bullet points for lists
-3. COURSES: When asked about a course, mention its fee, EMI, duration, modes, and a highlight or two
-4. SERVICES: When asked about a service, mention what we build, key tech used, and invite them to get a free quote
-5. COMPARISON: If a user seems unsure between courses, ask about their background and goals, then recommend
-6. NEXT STEPS: Always end with a clear next step — e.g., "Book a free callback at /contact" or "WhatsApp us at +91 85955 63221"
-7. SPECIFIC NAMES: Use exact course and service names from the lists above
-8. PLACEMENT: When asked about jobs/placement, mention: 200+ hiring partners, 60+ monthly drives, mock interviews, LeetCode prep, ₹30 LPA highest package
+3. COURSES: When asked about a course, mention fee, EMI, duration, modes, and 1-2 highlights
+4. PAYMENT OPTIONS: Always mention all 3 options when fees are asked. Be precise — ISA is not a loan, payments only start after employment above threshold
+5. SERVICES: When asked about a service, mention what we build and invite them to get a free quote
+6. COMPARISON: If a user seems unsure between courses, ask about their background and goals, then recommend
+7. NEXT STEPS: Always end with a clear next step — e.g., "Book a free callback at /contact" or "WhatsApp us at +91 85955 63221"
+8. PLACEMENT: When asked about jobs/placement, mention: 200+ hiring partners, 60+ monthly drives, mock interviews, ₹30 LPA highest package. Note: placement is not guaranteed but assistance is comprehensive.
+
+IMPORTANT DISCLOSURES (include when relevant):
+• Income-based payment option is not a loan
+• Payments apply only when income exceeds defined threshold
+• Not all applicants qualify for all payment options
+• No job placement is guaranteed — we provide access to opportunities
+• Terms vary by program and agreement
 
 OUT-OF-SCOPE TOPICS:
-For questions completely unrelated to tech education or software services (recipes, cricket, movies, personal advice):
-Politely redirect: "I'm here to help with Aartechus courses and IT services. Can I help you pick the right course or service for your goals?"
+For questions completely unrelated to tech education or software services:
+Politely redirect: "I'm here to help with Aartechus courses, IT services, and career opportunities. Can I help you with any of those?"
 
-REMEMBER: You represent a company that genuinely cares about students getting placed and clients getting quality software. Be warm, honest, and helpful.`;
+REMEMBER: Be warm, honest, and helpful. Always represent Aartechus accurately.`;
   }, []);
 
   const scrollToBottom = () => {
@@ -116,22 +125,13 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
     scrollToBottom();
   }, [messages]);
 
-  const handleCall = () => {
-    window.location.href = "tel:+918595563221";
-  };
-
+  const handleCall = () => { window.location.href = "tel:+918595563221"; };
   const handleEmail = () => {
-    window.location.href =
-      "mailto:hello@aartechus.com?subject=Inquiry%20from%20Aartechus%20Website&body=Hello%20Aartechus%20Team,%0D%0A%0D%0AI'm%20interested%20in%20learning%20more%20about%20your%20courses%20and%20services.%0D%0A%0D%0A";
+    window.location.href = "mailto:hello@aartechus.com?subject=Inquiry%20from%20Aartechus%20Website&body=Hello%20Aartechus%20Team,%0D%0A%0D%0AI'm%20interested%20in%20learning%20more%20about%20your%20courses%20and%20services.%0D%0A%0D%0A";
   };
+  const handleWebsite = () => { window.open("https://aartechus.com", "_blank"); };
 
-  const handleWebsite = () => {
-    window.open("https://aartechus.com", "_blank");
-  };
-
-  // ── Extract relevant service/course links from AI response ─────────────────
-  const escapeRegex = (str) =>
-    str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+  const escapeRegex = (str) => str.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
 
   const extractServiceLinks = (content) => {
     const contentLower = content.toLowerCase();
@@ -140,25 +140,13 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
       const titleLower = s.title.toLowerCase();
       if (contentLower.includes(titleLower)) score += 1000;
       const words = titleLower.split(/\s+/);
-      if (
-        words.length > 1 &&
-        words.every((w) =>
-          new RegExp(`\\b${escapeRegex(w)}\\b`, "i").test(contentLower),
-        )
-      )
-        score += 800;
-      if (s.keywords)
-        s.keywords.forEach((kw) => {
-          if (new RegExp(`\\b${escapeRegex(kw.toLowerCase())}\\b`, "i").test(contentLower))
-            score += 500;
-        });
+      if (words.length > 1 && words.every((w) => new RegExp(`\\b${escapeRegex(w)}\\b`, "i").test(contentLower))) score += 800;
+      if (s.keywords) s.keywords.forEach((kw) => {
+        if (new RegExp(`\\b${escapeRegex(kw.toLowerCase())}\\b`, "i").test(contentLower)) score += 500;
+      });
       return { slug: s.slug, score };
     });
-    return scored
-      .filter((x) => x.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 3)
-      .map((x) => x.slug);
+    return scored.filter((x) => x.score > 0).sort((a, b) => b.score - a.score).slice(0, 3).map((x) => x.slug);
   };
 
   const extractCourseLinks = (content) => {
@@ -168,36 +156,21 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
       const titleLower = c.title.toLowerCase();
       if (contentLower.includes(titleLower)) score += 1000;
       c.keywords.forEach((kw) => {
-        if (new RegExp(`\\b${escapeRegex(kw.toLowerCase())}\\b`, "i").test(contentLower))
-          score += 500;
+        if (new RegExp(`\\b${escapeRegex(kw.toLowerCase())}\\b`, "i").test(contentLower)) score += 500;
       });
       return { id: c.id, href: c.href, title: c.title, score };
     });
-    return scored
-      .filter((x) => x.score > 0)
-      .sort((a, b) => b.score - a.score)
-      .slice(0, 2)
-      .map((x) => x.id);
+    return scored.filter((x) => x.score > 0).sort((a, b) => b.score - a.score).slice(0, 2).map((x) => x.id);
   };
 
-  const handleServiceLinkClick = (slug) => {
-    window.open(`/it-services/#${slug}`, "_blank");
-  };
+  const handleServiceLinkClick = (slug) => { window.open(`/it-services/#${slug}`, "_blank"); };
+  const handleCourseLinkClick = (href) => { window.open(href, "_blank"); };
 
-  const handleCourseLinkClick = (href) => {
-    window.open(href, "_blank");
-  };
-
-  // ── Formatting helpers ─────────────────────────────────────────────────────
   const formatMessage = (content) => {
     const lines = content.split("\n");
     return lines.map((line, i) => {
       if (line.startsWith("**") && line.endsWith("**")) {
-        return (
-          <p key={i} className="font-bold text-sm mt-2 mb-1">
-            {line.slice(2, -2)}
-          </p>
-        );
+        return <p key={i} className="font-bold text-sm mt-2 mb-1">{line.slice(2, -2)}</p>;
       }
       if (line.startsWith("• ") || line.startsWith("- ")) {
         return (
@@ -208,74 +181,50 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
         );
       }
       if (line.trim() === "") return <div key={i} className="h-1" />;
-      return (
-        <p key={i} className="text-sm">
-          {line}
-        </p>
-      );
+      return <p key={i} className="text-sm">{line}</p>;
     });
   };
 
-  const formatTime = (date) =>
-    date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
+  const formatTime = (date) => date.toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
 
-  // ── Send message ───────────────────────────────────────────────────────────
   const sendMessage = async (text) => {
     const userText = (text || input).trim();
     if (!userText) return;
 
-    const userMsg = {
-      role: "user",
-      content: userText,
-      timestamp: new Date(),
-    };
+    const userMsg = { role: "user", content: userText, timestamp: new Date() };
     const updatedMessages = [...messages, userMsg];
     setMessages(updatedMessages);
     setInput("");
     setIsLoading(true);
+
     try {
-     const response = await fetch("/api/chat", {
-  method: "POST",
-  headers: {
-    "Content-Type": "application/json",
-  },
-  body: JSON.stringify({
-    model: "llama-3.3-70b-versatile",
-    messages: [
-      { role: "system", content: systemPrompt },
-      ...updatedMessages.map(msg => ({
-        role: msg.role,
-        content: msg.content,
-      })),
-    ],
-  }),
-});
+      const response = await fetch("/api/chat", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          model: "llama-3.3-70b-versatile",
+          messages: [
+            { role: "system", content: systemPrompt },
+            ...updatedMessages.map((msg) => ({ role: msg.role, content: msg.content })),
+          ],
+        }),
+      });
 
       const data = await response.json();
-      console.log("AI response:", data);
-      const reply =
-  data.choices?.[0]?.message?.content ||
-  "Error getting response";
+      const reply = data.choices?.[0]?.message?.content || "Error getting response";
       const serviceLinks = extractServiceLinks(reply);
       const courseLinks = extractCourseLinks(reply);
 
       setMessages((prev) => [
         ...prev,
-        {
-          role: "assistant",
-          content: reply,
-          timestamp: new Date(),
-          serviceLinks,
-          courseLinks,
-        } ,
+        { role: "assistant", content: reply, timestamp: new Date(), serviceLinks, courseLinks },
       ]);
     } catch {
       setMessages((prev) => [
         ...prev,
         {
           role: "assistant",
-          content:
-            "Sorry, I'm having connectivity issues. Please reach us directly at hello@aartechus.com or call +91 85955 63221.",
+          content: "Sorry, I'm having connectivity issues. Please reach us directly at hello@aartechus.com or call +91 85955 63221.",
           timestamp: new Date(),
         },
       ]);
@@ -285,18 +234,14 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
   };
 
   const handleKeyPress = (e) => {
-    if (e.key === "Enter" && !e.shiftKey) {
-      e.preventDefault();
-      sendMessage();
-    }
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); sendMessage(); }
   };
 
-  // ── Quick reply chips ──────────────────────────────────────────────────────
   const quickReplies = [
     "Which course is best for me?",
-    "Tell me about web development service",
-    "What are the course fees?",
-    "Do you offer placement guarantee?",
+    "What are the payment options?",
+    "Do you offer placement support?",
+    "Tell me about IT services",
   ];
 
   return (
@@ -331,49 +276,31 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
                 </div>
                 <div className="flex-1">
                   <h3 className="font-bold text-base leading-tight">Arty — Aartechus</h3>
-                  <p className="text-xs text-blue-100 mt-0.5">
-                    Courses & IT Services
-                  </p>
+                  <p className="text-xs text-blue-100 mt-0.5">Courses, Services & Careers</p>
                   <div className="flex items-center gap-1.5 mt-1">
                     <motion.span
                       className="w-2 h-2 bg-emerald-400 rounded-full shadow-lg"
                       animate={{ scale: [1, 1.2, 1] }}
                       transition={{ duration: 2, repeat: Infinity }}
                     />
-                    <span className="text-xs text-emerald-300 font-medium">
-                      Online 24/7
-                    </span>
+                    <span className="text-xs text-emerald-300 font-medium">Online 24/7</span>
                   </div>
                 </div>
               </div>
-              <button
-                onClick={() => setIsOpen(false)}
-                className="p-1.5 rounded-lg hover:bg-white/15 transition-colors"
-              >
+              <button onClick={() => setIsOpen(false)} className="p-1.5 rounded-lg hover:bg-white/15 transition-colors">
                 <X className="w-4 h-4" />
               </button>
             </div>
 
             {/* Quick contact bar */}
             <div className="bg-slate-50 dark:bg-slate-800 p-2.5 border-b border-slate-200 dark:border-slate-700 flex gap-2">
-              <button
-                onClick={handleCall}
-                className="flex-1 flex items-center justify-center gap-1.5 px-2 py-2 bg-white dark:bg-slate-700 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-emerald-50 hover:text-emerald-700 transition-all shadow-sm border border-slate-200 dark:border-slate-600"
-              >
-                <Phone className="w-3.5 h-3.5" />
-                Call
+              <button onClick={handleCall} className="flex-1 flex items-center justify-center gap-1.5 px-2 py-2 bg-white dark:bg-slate-700 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-emerald-50 hover:text-emerald-700 transition-all shadow-sm border border-slate-200 dark:border-slate-600">
+                <Phone className="w-3.5 h-3.5" /> Call
               </button>
-              <button
-                onClick={handleEmail}
-                className="flex-1 flex items-center justify-center gap-1.5 px-2 py-2 bg-white dark:bg-slate-700 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-blue-50 hover:text-blue-700 transition-all shadow-sm border border-slate-200 dark:border-slate-600"
-              >
-                <Mail className="w-3.5 h-3.5" />
-                Email
+              <button onClick={handleEmail} className="flex-1 flex items-center justify-center gap-1.5 px-2 py-2 bg-white dark:bg-slate-700 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-blue-50 hover:text-blue-700 transition-all shadow-sm border border-slate-200 dark:border-slate-600">
+                <Mail className="w-3.5 h-3.5" /> Email
               </button>
-              <button
-                onClick={handleWebsite}
-                className="flex items-center justify-center gap-1.5 px-2 py-2 bg-white dark:bg-slate-700 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-purple-50 hover:text-purple-700 transition-all shadow-sm border border-slate-200 dark:border-slate-600"
-              >
+              <button onClick={handleWebsite} className="flex items-center justify-center gap-1.5 px-2 py-2 bg-white dark:bg-slate-700 rounded-lg text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-purple-50 hover:text-purple-700 transition-all shadow-sm border border-slate-200 dark:border-slate-600">
                 <ExternalLink className="w-3.5 h-3.5" />
               </button>
             </div>
@@ -388,44 +315,22 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
                   transition={{ duration: 0.3 }}
                   className={`flex gap-2.5 ${message.role === "user" ? "flex-row-reverse" : ""}`}
                 >
-                  <div
-                    className={`w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center shadow-md text-sm ${
-                      message.role === "user"
-                        ? "bg-gradient-to-br from-slate-700 to-slate-800 text-white"
-                        : "bg-gradient-to-br from-primary to-blue-700 text-white ring-2 ring-blue-200 dark:ring-blue-900"
-                    }`}
-                  >
-                    {message.role === "user" ? (
-                      <User className="w-4 h-4" />
-                    ) : (
-                      "🎓"
-                    )}
+                  <div className={`w-9 h-9 rounded-xl flex-shrink-0 flex items-center justify-center shadow-md text-sm ${message.role === "user" ? "bg-gradient-to-br from-slate-700 to-slate-800 text-white" : "bg-gradient-to-br from-primary to-blue-700 text-white ring-2 ring-blue-200 dark:ring-blue-900"}`}>
+                    {message.role === "user" ? <User className="w-4 h-4" /> : "🎓"}
                   </div>
 
                   <div className="flex-1 max-w-[85%]">
-                    <div
-                      className={`rounded-2xl px-3.5 py-2.5 shadow-md ${
-                        message.role === "user"
-                          ? "bg-gradient-to-br from-primary to-blue-700 text-white rounded-br-md"
-                          : "bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-bl-md border border-slate-200 dark:border-slate-700"
-                      }`}
-                    >
-                      <div className="text-sm leading-relaxed">
-                        {formatMessage(message.content)}
-                      </div>
+                    <div className={`rounded-2xl px-3.5 py-2.5 shadow-md ${message.role === "user" ? "bg-gradient-to-br from-primary to-blue-700 text-white rounded-br-md" : "bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-200 rounded-bl-md border border-slate-200 dark:border-slate-700"}`}>
+                      <div className="text-sm leading-relaxed">{formatMessage(message.content)}</div>
                     </div>
 
-                    {/* Service quick-links */}
-                    {(message).serviceLinks?.length > 0 && (
+                    {message.serviceLinks?.length > 0 && (
                       <div className="mt-2 flex flex-wrap gap-1.5">
-                        {(message).serviceLinks.map((slug, idx) => {
+                        {message.serviceLinks.map((slug, idx) => {
                           const svc = servicesConfig.find((s) => s.slug === slug);
                           return (
-                            <button
-                              key={idx}
-                              onClick={() => handleServiceLinkClick(slug)}
-                              className="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-lg text-xs font-medium hover:bg-blue-100 transition-all border border-blue-200 dark:border-blue-800"
-                            >
+                            <button key={idx} onClick={() => handleServiceLinkClick(slug)}
+                              className="inline-flex items-center gap-1 px-2.5 py-1 bg-blue-50 dark:bg-blue-900/20 text-blue-700 dark:text-blue-300 rounded-lg text-xs font-medium hover:bg-blue-100 transition-all border border-blue-200 dark:border-blue-800">
                               <Link2 className="w-3 h-3" />
                               {svc?.title || slug.replace(/-/g, " ")}
                             </button>
@@ -434,18 +339,14 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
                       </div>
                     )}
 
-                    {/* Course quick-links */}
-                    {(message).courseLinks?.length > 0 && (
+                    {message.courseLinks?.length > 0 && (
                       <div className="mt-1.5 flex flex-wrap gap-1.5">
-                        {(message).courseLinks.map((id, idx) => {
+                        {message.courseLinks.map((id, idx) => {
                           const course = coursesConfig.find((c) => c.id === id);
                           if (!course) return null;
                           return (
-                            <button
-                              key={idx}
-                              onClick={() => handleCourseLinkClick(course.href)}
-                              className="inline-flex items-center gap-1 px-2.5 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-lg text-xs font-medium hover:bg-green-100 transition-all border border-green-200 dark:border-green-800"
-                            >
+                            <button key={idx} onClick={() => handleCourseLinkClick(course.href)}
+                              className="inline-flex items-center gap-1 px-2.5 py-1 bg-green-50 dark:bg-green-900/20 text-green-700 dark:text-green-300 rounded-lg text-xs font-medium hover:bg-green-100 transition-all border border-green-200 dark:border-green-800">
                               <GraduationCap className="w-3 h-3" />
                               {course.title}
                             </button>
@@ -455,11 +356,7 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
                     )}
 
                     {message.timestamp && (
-                      <div
-                        className={`text-[10px] text-slate-400 mt-1 px-1 ${
-                          message.role === "user" ? "text-right" : "text-left"
-                        }`}
-                      >
+                      <div className={`text-[10px] text-slate-400 mt-1 px-1 ${message.role === "user" ? "text-right" : "text-left"}`}>
                         {formatTime(message.timestamp)}
                       </div>
                     )}
@@ -467,15 +364,11 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
                 </motion.div>
               ))}
 
-              {/* Quick replies — shown only before any user message */}
               {messages.length === 1 && (
                 <div className="flex flex-wrap gap-2 pt-1">
                   {quickReplies.map((q) => (
-                    <button
-                      key={q}
-                      onClick={() => sendMessage(q)}
-                      className="px-3 py-1.5 rounded-full text-xs bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-primary hover:text-primary transition-all shadow-sm"
-                    >
+                    <button key={q} onClick={() => sendMessage(q)}
+                      className="px-3 py-1.5 rounded-full text-xs bg-white dark:bg-slate-700 border border-slate-200 dark:border-slate-600 text-slate-600 dark:text-slate-300 hover:border-primary hover:text-primary transition-all shadow-sm">
                       {q}
                     </button>
                   ))}
@@ -484,15 +377,12 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
 
               {isLoading && (
                 <div className="flex gap-2.5">
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-blue-700 text-white flex items-center justify-center shadow-md ring-2 ring-blue-200 dark:ring-blue-900">
-                    🎓
-                  </div>
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary to-blue-700 text-white flex items-center justify-center shadow-md ring-2 ring-blue-200 dark:ring-blue-900">🎓</div>
                   <div className="bg-white dark:bg-slate-800 rounded-2xl rounded-bl-md px-3.5 py-2.5 border border-slate-200 dark:border-slate-700 shadow-md">
                     <Loader2 className="w-4 h-4 animate-spin text-primary" />
                   </div>
                 </div>
               )}
-
               <div ref={messagesEndRef} />
             </div>
 
@@ -504,7 +394,7 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyPress}
-                  placeholder="Ask about courses or services..."
+                  placeholder="Ask about courses, fees, payment options..."
                   disabled={isLoading}
                   className="flex-1 px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:opacity-50 transition-all"
                 />
@@ -517,11 +407,8 @@ REMEMBER: You represent a company that genuinely cares about students getting pl
                 </button>
               </div>
               <div className="flex items-center justify-between mt-2 text-[10px] text-slate-400">
-                <span className="font-medium">© 2025 Aartechus</span>
-                <span className="flex items-center gap-1">
-                  <MapPin className="w-2.5 h-2.5" />
-                  Noida, India
-                </span>
+                <span className="font-medium">© 2026 Aartechus</span>
+                <span className="flex items-center gap-1"><MapPin className="w-2.5 h-2.5" />Noida, India</span>
               </div>
             </div>
           </motion.div>
