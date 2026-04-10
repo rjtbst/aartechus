@@ -1,11 +1,10 @@
 "use client";
 import { useState } from "react";
 import { motion } from "framer-motion";
-import { toast } from "sonner"; // ← add
+import { toast } from "sonner";
 import { Phone, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 
-const FORMSPREE_ID = "mdapvpqr"; 
-// ─────────────────────────────────────────────────────────────────────────────
+const FORMSPREE_ID = "mdapvpqr";
 
 export default function CTASection() {
   const [form, setForm]       = useState({ name: "", phone: "", course: "", email: "" });
@@ -45,7 +44,6 @@ export default function CTASection() {
     }
   };
 
-  // ── JSX is 100% unchanged from your original ─────────────────────────────
   return (
     <section className="relative py-24 overflow-hidden bg-gray-50">
       <div className="absolute inset-0 grid-bg opacity-40" />
@@ -59,7 +57,8 @@ export default function CTASection() {
 
           <div className="p-8 md:p-14">
             <div className="grid lg:grid-cols-2 gap-12 items-center">
-              {/* Left — unchanged */}
+
+              {/* Left */}
               <div>
                 <motion.div initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}>
                   <div className="flex items-center gap-2 mb-5">
@@ -72,20 +71,23 @@ export default function CTASection() {
                   <p className="text-gray-500 text-lg leading-relaxed mb-8">
                     Request a free callback from our expert counselors. Get personalized course recommendations and career roadmap — at zero cost.
                   </p>
+
+                  {/* ── UPDATED: Benefits checklist ── */}
                   <div className="space-y-3">
                     {[
                       "Free 1:1 career counseling session",
-                      "Personalized course recommendation",
-                      "EMI options from ₹0 down payment",
-                      "Scholarship assessment available",
+                      "No upfront tuition for eligible candidates",
+                      "Income-based payment option (ISA-style) — pay after you're hired",
+                      "Flexible financing — up to full program cost with structured repayment",
                       "No spam — we respect your privacy",
                     ].map((item) => (
-                      <div key={item} className="flex items-center gap-3 text-sm text-gray-600">
-                        <CheckCircle2 size={16} className="text-green-500 flex-shrink-0" />
+                      <div key={item} className="flex items-start gap-3 text-sm text-gray-600">
+                        <CheckCircle2 size={16} className="text-green-500 flex-shrink-0 mt-0.5" />
                         {item}
                       </div>
                     ))}
                   </div>
+
                   <div className="mt-8 flex items-center gap-3 p-4 rounded-xl bg-blue-50 border border-blue-100">
                     <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
                       <Phone size={18} className="text-blue-600" />
@@ -127,21 +129,34 @@ export default function CTASection() {
                       <input type="email" placeholder="your@email.com" value={form.email}
                         onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm" />
                     </div>
+
+                    {/* ── UPDATED: Dropdown with all training domains ── */}
                     <div>
                       <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Interested In</label>
                       <select value={form.course} onChange={(e) => setForm({ ...form, course: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
                         <option value="">Select a course / service</option>
-                        <option>Java Full Stack Development</option>
-                        <option>MERN Full Stack Development</option>
-                        <option>Data Science & AI</option>
-                        <option>Data Analytics</option>
-                        <option>Web Development (IT Service)</option>
-                        <option>Mobile App Development</option>
-                        <option>AI / ML Solutions</option>
-                        <option>Cloud & DevOps</option>
+                        <optgroup label="Training Courses">
+                          <option>Java Full Stack Development</option>
+                          <option>MERN Full Stack Development</option>
+                          <option>Python Programming</option>
+                          <option>Data Science & AI</option>
+                          <option>Data Analytics</option>
+                          <option>Data Engineering</option>
+                          <option>Artificial Intelligence (AI)</option>
+                          <option>Quality Assurance (QA)</option>
+                          <option>Cybersecurity</option>
+                        </optgroup>
+                        <optgroup label="IT Services">
+                          <option>Web Development</option>
+                          <option>Mobile App Development</option>
+                          <option>Cloud & DevOps</option>
+                          <option>AI / ML Solutions</option>
+                          <option>Staffing & Recruitment</option>
+                        </optgroup>
                         <option>Other</option>
                       </select>
                     </div>
+
                     <button type="submit" disabled={loading}
                       className="glow-btn w-full flex items-center justify-center gap-2 py-4 rounded-xl font-semibold text-white text-base mt-2 disabled:opacity-60 disabled:cursor-not-allowed">
                       {loading ? (
