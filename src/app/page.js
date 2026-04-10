@@ -24,8 +24,8 @@ import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 
 const Hero = () => (
-  <section className="pt-[68px]">
-    <div className="container-main py-12 md:py-10">
+  <section className="pt-[54px]">
+    <div className="container-main py-10 md:py-10">
       <div className="grid lg:grid-cols-[1fr_420px] gap-8 items-start">
         {/* Left side */}
         <div className="pt-4">
@@ -90,7 +90,7 @@ const Hero = () => (
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.5 }}
-            className="mt-10 flex items-center gap-6 flex-wrap"
+            className="mt-6 flex items-center gap-6 flex-wrap"
           >
             {[
               { icon: "🏆", text: "LinkedIn Top 20 Startup" },
@@ -109,7 +109,7 @@ const Hero = () => (
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 0.6 }}
-            className="mt-6 text-xs text-muted-foreground/50 max-w-md leading-relaxed"
+            className="mt-4 text-xs text-muted-foreground/50 max-w-md leading-relaxed"
           >
             No upfront tuition for eligible candidates. Flexible financing options
             including income-based payment plans available for qualified applicants.
@@ -184,7 +184,7 @@ const Hero = () => (
 
 /* ═══════════════════════ IMPACT STATS ═══════════════════════ */
 const ImpactStats = () => (
-  <section className="gradient-impact py-14">
+  <section className="gradient-impact py-12">
     <div className="container-main">
       <motion.p
         initial={{ opacity: 0 }}
