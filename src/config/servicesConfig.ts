@@ -13,6 +13,7 @@ import {
   Cloud,
   Palette,
   PackageOpen,
+  Handshake,
   LucideIcon,
 } from "lucide-react";
 
@@ -25,41 +26,23 @@ export interface ServiceCaseStudy {
 }
 
 export interface Service {
-  /** Unique slug → also used in URL: /services/[slug] */
   slug: string;
-  /** Full service title */
   title: string;
-  /** One-line tagline for detail page */
   tagline: string;
-  /** 2–3 sentence description for cards, chatbot, and SEO */
   description: string;
-  /** Emoji icon for homepage section cards */
   emoji: string;
-  /** Lucide icon component for detail page & search results */
   icon: LucideIcon;
-  /** Optional badge label ("Popular" | "Hot" | "") */
   badge?: string;
-  /** CSS gradient string — card top-bar & CTA button */
   color: string;
-  /** Tailwind text colour class for icon tint */
   textColor: string;
-  /** Tailwind bg colour class for icon container */
   bgColor: string;
-  /** Tailwind gradient for search result icon bg */
   gradient: string;
-  /** Short feature bullets shown on homepage card (max 4) */
   features: string[];
-  /** Full tech stack listed on detail page */
   tech: string[];
-  /** Deliverables listed on detail page */
   deliverables: string[];
-  /** Mini case-study shown on detail page */
   caseStudy: ServiceCaseStudy;
-  /** Category / categories — used for filtering and chatbot grouping */
   category: string | string[];
-  /** Keywords for search scoring */
   keywords?: string[];
-  /** Relative path for image asset */
   image?: string;
 }
 
@@ -86,14 +69,7 @@ export const servicesConfig: Service[] = [
     bgColor: "bg-purple-500/10",
     gradient: "from-purple-500/20 to-indigo-500/20",
     features: ["React / Next.js", "APIs", "SEO", "PWA"],
-    tech: [
-      "React / Next.js",
-      "Vue.js / Nuxt",
-      "Node.js",
-      "Django / FastAPI",
-      "GraphQL",
-      "TypeScript",
-    ],
+    tech: ["React / Next.js", "Vue.js / Nuxt", "Node.js", "Django / FastAPI", "GraphQL", "TypeScript"],
     deliverables: [
       "Responsive UI/UX design system",
       "REST / GraphQL APIs",
@@ -102,23 +78,9 @@ export const servicesConfig: Service[] = [
       "SEO & performance optimization",
       "Admin dashboard & CMS",
     ],
-    caseStudy: {
-      client: "FinTech Startup",
-      result: "3× faster load time, 45% conversion lift",
-      time: "3 months",
-    },
+    caseStudy: { client: "FinTech Startup", result: "3× faster load time, 45% conversion lift", time: "3 months" },
     category: "Core",
-    keywords: [
-      "web",
-      "website",
-      "next.js",
-      "react",
-      "frontend",
-      "backend",
-      "full stack",
-      "seo",
-      "pwa",
-    ],
+    keywords: ["web", "website", "next.js", "react", "frontend", "backend", "full stack", "seo", "pwa"],
   },
   {
     slug: "app-development",
@@ -134,14 +96,7 @@ export const servicesConfig: Service[] = [
     bgColor: "bg-blue-500/10",
     gradient: "from-blue-500/20 to-cyan-500/20",
     features: ["Flutter", "React Native", "Publishing", "Push"],
-    tech: [
-      "Flutter",
-      "React Native",
-      "Swift / SwiftUI",
-      "Kotlin / Jetpack Compose",
-      "Firebase",
-      "RevenueCat",
-    ],
+    tech: ["Flutter", "React Native", "Swift / SwiftUI", "Kotlin / Jetpack Compose", "Firebase", "RevenueCat"],
     deliverables: [
       "App Store & Play Store submission",
       "Push notifications",
@@ -150,21 +105,9 @@ export const servicesConfig: Service[] = [
       "Analytics integration",
       "OTA updates",
     ],
-    caseStudy: {
-      client: "EdTech Platform",
-      result: "100K+ downloads in 6 weeks",
-      time: "4 months",
-    },
+    caseStudy: { client: "EdTech Platform", result: "100K+ downloads in 6 weeks", time: "4 months" },
     category: "Core",
-    keywords: [
-      "mobile",
-      "app",
-      "ios",
-      "android",
-      "flutter",
-      "react native",
-      "cross-platform",
-    ],
+    keywords: ["mobile", "app", "ios", "android", "flutter", "react native", "cross-platform"],
   },
   {
     slug: "ai-solutions",
@@ -180,14 +123,7 @@ export const servicesConfig: Service[] = [
     bgColor: "bg-orange-500/10",
     gradient: "from-orange-500/20 to-red-500/20",
     features: ["LLMs", "Vision", "NLP", "Chatbots"],
-    tech: [
-      "PyTorch / TensorFlow",
-      "Hugging Face",
-      "LangChain / LlamaIndex",
-      "OpenAI / Anthropic APIs",
-      "Pinecone / Weaviate",
-      "MLflow / W&B",
-    ],
+    tech: ["PyTorch / TensorFlow", "Hugging Face", "LangChain / LlamaIndex", "OpenAI / Anthropic APIs", "Pinecone / Weaviate", "MLflow / W&B"],
     deliverables: [
       "Custom model training & fine-tuning",
       "LLM application development",
@@ -196,23 +132,9 @@ export const servicesConfig: Service[] = [
       "MLOps pipeline",
       "AI chatbot with memory",
     ],
-    caseStudy: {
-      client: "Healthcare Provider",
-      result: "Medical report analysis in 3s vs 2 hrs",
-      time: "5 months",
-    },
+    caseStudy: { client: "Healthcare Provider", result: "Medical report analysis in 3s vs 2 hrs", time: "5 months" },
     category: ["Core", "Advanced"],
-    keywords: [
-      "ai",
-      "artificial intelligence",
-      "machine learning",
-      "llm",
-      "chatbot",
-      "nlp",
-      "computer vision",
-      "genai",
-      "generative ai",
-    ],
+    keywords: ["ai", "artificial intelligence", "machine learning", "llm", "chatbot", "nlp", "computer vision", "genai", "generative ai"],
   },
   {
     slug: "ui-ux-design",
@@ -228,14 +150,7 @@ export const servicesConfig: Service[] = [
     bgColor: "bg-pink-500/10",
     gradient: "from-pink-500/20 to-purple-500/20",
     features: ["Figma", "Prototypes", "Design Systems", "User Research"],
-    tech: [
-      "Figma",
-      "Adobe XD",
-      "Framer",
-      "Storybook",
-      "Tailwind CSS",
-      "Lottie Animations",
-    ],
+    tech: ["Figma", "Adobe XD", "Framer", "Storybook", "Tailwind CSS", "Lottie Animations"],
     deliverables: [
       "User research & personas",
       "Information architecture",
@@ -244,23 +159,9 @@ export const servicesConfig: Service[] = [
       "Interactive Figma prototype",
       "Design system & component library",
     ],
-    caseStudy: {
-      client: "SaaS Startup",
-      result: "52% drop in user drop-off after redesign",
-      time: "6 weeks",
-    },
+    caseStudy: { client: "SaaS Startup", result: "52% drop in user drop-off after redesign", time: "6 weeks" },
     category: "Core",
-    keywords: [
-      "ui",
-      "ux",
-      "design",
-      "figma",
-      "prototype",
-      "wireframe",
-      "user experience",
-      "interface",
-      "design system",
-    ],
+    keywords: ["ui", "ux", "design", "figma", "prototype", "wireframe", "user experience", "interface", "design system"],
   },
   {
     slug: "saas-development",
@@ -276,14 +177,7 @@ export const servicesConfig: Service[] = [
     bgColor: "bg-green-500/10",
     gradient: "from-green-500/20 to-emerald-500/20",
     features: ["SaaS", "ERP/CRM", "APIs", "Scaling"],
-    tech: [
-      "Next.js",
-      "Stripe / Razorpay",
-      "Prisma / Supabase",
-      "AWS / GCP",
-      "Kubernetes",
-      "Segment / Mixpanel",
-    ],
+    tech: ["Next.js", "Stripe / Razorpay", "Prisma / Supabase", "AWS / GCP", "Kubernetes", "Segment / Mixpanel"],
     deliverables: [
       "Multi-tenant architecture",
       "Subscription billing integration",
@@ -292,22 +186,9 @@ export const servicesConfig: Service[] = [
       "Role-based access control",
       "API documentation",
     ],
-    caseStudy: {
-      client: "HR Tech Startup",
-      result: "Launched MVP in 10 weeks, 200 paying customers in Month 1",
-      time: "10 weeks",
-    },
+    caseStudy: { client: "HR Tech Startup", result: "Launched MVP in 10 weeks, 200 paying customers in Month 1", time: "10 weeks" },
     category: ["Core", "Advanced"],
-    keywords: [
-      "saas",
-      "software as a service",
-      "erp",
-      "crm",
-      "subscription",
-      "multi-tenant",
-      "product",
-      "startup",
-    ],
+    keywords: ["saas", "software as a service", "erp", "crm", "subscription", "multi-tenant", "product", "startup"],
   },
   {
     slug: "cloud-devops",
@@ -323,14 +204,7 @@ export const servicesConfig: Service[] = [
     bgColor: "bg-cyan-500/10",
     gradient: "from-cyan-500/20 to-teal-500/20",
     features: ["AWS / GCP", "Docker", "CI/CD", "Scaling"],
-    tech: [
-      "AWS / Azure / GCP",
-      "Terraform / Pulumi",
-      "Kubernetes / Docker",
-      "GitHub Actions / Jenkins",
-      "Prometheus / Grafana",
-      "Istio / Service Mesh",
-    ],
+    tech: ["AWS / Azure / GCP", "Terraform / Pulumi", "Kubernetes / Docker", "GitHub Actions / Jenkins", "Prometheus / Grafana", "Istio / Service Mesh"],
     deliverables: [
       "Cloud architecture design",
       "Kubernetes deployment",
@@ -339,24 +213,9 @@ export const servicesConfig: Service[] = [
       "Cost optimization audit",
       "24/7 monitoring & alerting",
     ],
-    caseStudy: {
-      client: "E-Commerce Giant",
-      result: "60% infra cost reduction, 99.99% uptime",
-      time: "2 months",
-    },
+    caseStudy: { client: "E-Commerce Giant", result: "60% infra cost reduction, 99.99% uptime", time: "2 months" },
     category: "Advanced",
-    keywords: [
-      "cloud",
-      "devops",
-      "aws",
-      "azure",
-      "gcp",
-      "kubernetes",
-      "docker",
-      "ci/cd",
-      "terraform",
-      "infrastructure",
-    ],
+    keywords: ["cloud", "devops", "aws", "azure", "gcp", "kubernetes", "docker", "ci/cd", "terraform", "infrastructure"],
   },
   {
     slug: "cybersecurity",
@@ -372,14 +231,7 @@ export const servicesConfig: Service[] = [
     bgColor: "bg-green-500/10",
     gradient: "from-green-500/20 to-lime-500/20",
     features: ["PenTest", "Audits", "VAPT", "Compliance"],
-    tech: [
-      "Burp Suite",
-      "Metasploit",
-      "Nessus / OpenVAS",
-      "SIEM tools",
-      "Wireshark",
-      "OWASP ZAP",
-    ],
+    tech: ["Burp Suite", "Metasploit", "Nessus / OpenVAS", "SIEM tools", "Wireshark", "OWASP ZAP"],
     deliverables: [
       "Penetration testing report",
       "VAPT certification",
@@ -388,23 +240,9 @@ export const servicesConfig: Service[] = [
       "Security training for teams",
       "Incident response playbook",
     ],
-    caseStudy: {
-      client: "Banking Platform",
-      result: "0 critical vulnerabilities post-audit",
-      time: "6 weeks",
-    },
+    caseStudy: { client: "Banking Platform", result: "0 critical vulnerabilities post-audit", time: "6 weeks" },
     category: "Advanced",
-    keywords: [
-      "security",
-      "cybersecurity",
-      "penetration testing",
-      "pentest",
-      "vapt",
-      "compliance",
-      "iso 27001",
-      "soc2",
-      "gdpr",
-    ],
+    keywords: ["security", "cybersecurity", "penetration testing", "pentest", "vapt", "compliance", "iso 27001", "soc2", "gdpr"],
   },
   {
     slug: "custom-software",
@@ -420,14 +258,7 @@ export const servicesConfig: Service[] = [
     bgColor: "bg-pink-500/10",
     gradient: "from-pink-500/20 to-rose-500/20",
     features: ["Java / Python", "ERP/CRM", "APIs", "Modernization"],
-    tech: [
-      "Java / Spring",
-      "Python / Django",
-      "Go / Rust",
-      "PostgreSQL / MongoDB",
-      "RabbitMQ / Kafka",
-      "Elasticsearch",
-    ],
+    tech: ["Java / Spring", "Python / Django", "Go / Rust", "PostgreSQL / MongoDB", "RabbitMQ / Kafka", "Elasticsearch"],
     deliverables: [
       "Requirements & system design",
       "Agile sprint development",
@@ -436,22 +267,48 @@ export const servicesConfig: Service[] = [
       "Deployment & handover",
       "Ongoing maintenance",
     ],
-    caseStudy: {
-      client: "Logistics Company",
-      result: "30% ops cost reduction via automation",
-      time: "8 months",
-    },
+    caseStudy: { client: "Logistics Company", result: "30% ops cost reduction via automation", time: "8 months" },
     category: "Core",
+    keywords: ["custom software", "enterprise", "erp", "crm", "automation", "legacy modernization", "bespoke", "java", "python"],
+  },
+
+  // ── NEW: Staffing & Recruitment ──
+  {
+    slug: "staffing-recruitment",
+    title: "Staffing & Recruitment",
+    tagline: "Pre-vetted, job-ready talent on demand",
+    description:
+      "We connect enterprises and startups with pre-vetted, job-ready tech talent. From contract staffing to full-time placements — we source, screen, and deliver candidates aligned to your exact requirements.",
+    emoji: "🤝",
+    icon: Handshake,
+    badge: "New",
+    color: "linear-gradient(135deg,#7c3aed,#2563eb)",
+    textColor: "text-violet-400",
+    bgColor: "bg-violet-500/10",
+    gradient: "from-violet-500/20 to-blue-500/20",
+    features: ["Contract", "Full-Time", "Enterprise", "Fortune Clients"],
+    tech: [
+      "Talent sourcing & screening",
+      "Technical assessment",
+      "Background verification",
+      "Onboarding support",
+      "ATS integration",
+      "RPO / MSP models",
+    ],
+    deliverables: [
+      "Curated candidate shortlist",
+      "Technical interview coordination",
+      "Background & reference checks",
+      "Offer negotiation support",
+      "90-day replacement guarantee",
+      "Dedicated account manager",
+    ],
+    caseStudy: { client: "Fortune 500 Tech Firm", result: "42 engineers hired in 6 weeks, 94% retention at 1 year", time: "6 weeks" },
+    category: ["Core", "Advanced"],
     keywords: [
-      "custom software",
-      "enterprise",
-      "erp",
-      "crm",
-      "automation",
-      "legacy modernization",
-      "bespoke",
-      "java",
-      "python",
+      "staffing", "recruitment", "hiring", "talent", "contract staffing",
+      "full-time", "tech hiring", "it recruitment", "enterprise hiring",
+      "job-ready", "pre-vetted", "placement", "rpo",
     ],
   },
 ];
@@ -459,16 +316,8 @@ export const servicesConfig: Service[] = [
 // ─── CATEGORIES ──────────────────────────────────────────────────────────────
 
 export const categoriesConfig: Category[] = [
-  {
-    id: "core",
-    name: "Core",
-    description: "Foundation services every digital business needs",
-  },
-  {
-    id: "advanced",
-    name: "Advanced",
-    description: "Cutting-edge solutions for complex challenges",
-  },
+  { id: "core", name: "Core", description: "Foundation services every digital business needs" },
+  { id: "advanced", name: "Advanced", description: "Cutting-edge solutions for complex challenges" },
 ];
 
 export const categoryIdMap: Record<string, string> = {
@@ -478,7 +327,6 @@ export const categoryIdMap: Record<string, string> = {
 
 // ─── NAVBAR LINKS ─────────────────────────────────────────────────────────────
 
-/** Items for Navbar services dropdown — { name, path } */
 export const navServiceLinks = servicesConfig.map((s) => ({
   name: s.title,
   path: `/services/${s.slug}`,
@@ -498,9 +346,7 @@ export const getServiceBySlug = (slug: string): Service | undefined =>
   servicesConfig.find((s) => s.slug === slug);
 
 export const serviceHasCategory = (s: Service, category: string): boolean =>
-  Array.isArray(s.category)
-    ? s.category.includes(category)
-    : s.category === category;
+  Array.isArray(s.category) ? s.category.includes(category) : s.category === category;
 
 export const getServiceCategories = (slug: string): string[] => {
   const s = getServiceBySlug(slug);
@@ -522,9 +368,7 @@ export const getFeaturedServices = (count = 6): Service[] =>
 export const getRelatedServices = (slug: string, count = 3): Service[] => {
   const current = getServiceBySlug(slug);
   if (!current) return [];
-  const currentCats = Array.isArray(current.category)
-    ? current.category
-    : [current.category];
+  const currentCats = Array.isArray(current.category) ? current.category : [current.category];
   return servicesConfig
     .filter((s) => {
       if (s.slug === slug) return false;
@@ -558,14 +402,8 @@ export const searchServices = (query: string): Service[] => {
 
     if (s.keywords) {
       if (s.keywords.some((k) => k.toLowerCase() === q)) score += 800;
-      else if (s.keywords.some((k) => k.toLowerCase().startsWith(q)))
-        score += 200;
-      else if (
-        s.keywords.some((k) =>
-          new RegExp(`\\b${escapeRegex(q)}\\b`).test(k.toLowerCase()),
-        )
-      )
-        score += 100;
+      else if (s.keywords.some((k) => k.toLowerCase().startsWith(q))) score += 200;
+      else if (s.keywords.some((k) => new RegExp(`\\b${escapeRegex(q)}\\b`).test(k.toLowerCase()))) score += 100;
       else if (s.keywords.some((k) => k.toLowerCase().includes(q))) score += 50;
     }
 
@@ -574,8 +412,7 @@ export const searchServices = (query: string): Service[] => {
     else if (sl.includes(q)) score += 60;
 
     const catMatch = cats.some((c) => c.toLowerCase().includes(q));
-    if (catMatch)
-      score += cats.some((c) => c.toLowerCase() === q) ? 80 : 40;
+    if (catMatch) score += cats.some((c) => c.toLowerCase() === q) ? 80 : 40;
 
     if (new RegExp(`\\b${escapeRegex(q)}\\b`).test(d)) score += 30;
     else if (d.includes(q)) score += 15;
@@ -585,13 +422,7 @@ export const searchServices = (query: string): Service[] => {
     const qWords = q.split(/\s+/);
     if (qWords.length > 1) {
       if (qWords.every((w) => t.includes(w))) score += 100;
-      if (
-        s.keywords &&
-        qWords.every((w) =>
-          s.keywords!.some((k) => k.toLowerCase().includes(w)),
-        )
-      )
-        score += 50;
+      if (s.keywords && qWords.every((w) => s.keywords!.some((k) => k.toLowerCase().includes(w)))) score += 50;
     }
 
     return { s, score };
@@ -599,9 +430,7 @@ export const searchServices = (query: string): Service[] => {
 
   return scored
     .filter((x) => x.score > 0)
-    .sort((a, b) =>
-      b.score !== a.score ? b.score - a.score : a.s.title.length - b.s.title.length,
-    )
+    .sort((a, b) => b.score !== a.score ? b.score - a.score : a.s.title.length - b.s.title.length)
     .map((x) => x.s);
 };
 

@@ -90,8 +90,23 @@ export default function AboutClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="grid md:grid-cols-2 gap-8 max-w-4xl mx-auto">
             {[
-              { icon: Target, title: "Our Mission", color: "text-blue-600", bg: "bg-blue-50", border: "border-blue-100", text: "To empower every ambitious Indian with world-class tech skills, mentorship, and the job opportunities they deserve — regardless of their college or background." },
-              { icon: Eye, title: "Our Vision", color: "text-orange-600", bg: "bg-orange-50", border: "border-orange-100", text: "To become India's most trusted tech education and IT services company — where students transform careers and businesses transform with technology." },
+              {
+                icon: Target,
+                title: "Our Mission",
+                color: "text-blue-600",
+                bg: "bg-blue-50",
+                border: "border-blue-100",
+                // ── UPDATED: mission text from doc ──
+                text: "To empower individuals with the skills, confidence, and opportunities needed to build successful careers in the tech industry.",
+              },
+              {
+                icon: Eye,
+                title: "Our Vision",
+                color: "text-orange-600",
+                bg: "bg-orange-50",
+                border: "border-orange-100",
+                text: "To become India's most trusted tech education and IT services company — where students transform careers and businesses transform with technology.",
+              },
             ].map((item) => (
               <motion.div key={item.title}
                 initial={{ opacity: 0, y: 20 }} whileInView={{ opacity: 1, y: 0 }} viewport={{ once: true }}
