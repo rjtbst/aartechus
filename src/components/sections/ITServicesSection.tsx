@@ -5,13 +5,12 @@ import Link from "next/link";
 import { ArrowRight, CheckCircle2 } from "lucide-react";
 
 const services = [
-  // ── NEW: Staffing & Recruitment ──
   {
     icon: "🤝",
     title: "Staffing & Recruitment",
-    desc: "Pre-vetted, job-ready candidates for contract & full-time roles.",
-    features: ["Contract", "Full-Time", "Enterprise", "Fortune Clients"],
-    href: "/it-services#staffing",
+    desc: "Pre-vetted, job-ready candidates for contract & full-time roles across all work authorizations.",
+    features: ["Contract", "Full-Time", "Enterprise", "Fortune 500"],
+    href: "/it-services#staffing-recruitment",
     badge: "New",
   },
   {
@@ -25,40 +24,39 @@ const services = [
   {
     icon: "📱",
     title: "App Development",
-    desc: "Native & cross-platform mobile apps.",
+    desc: "Native & cross-platform mobile apps for iOS and Android.",
     features: ["Flutter", "React Native", "Publishing", "Push"],
     href: "/it-services#app-development",
   },
   {
-    icon: "☁️",
-    title: "Cloud & DevOps",
-    desc: "Deploy, scale & automate infrastructure.",
-    features: ["AWS / GCP", "Docker", "CI/CD", "Scaling"],
-    href: "/it-services#cloud-devops",
-  },
-  {
     icon: "🤖",
     title: "AI Solutions",
-    desc: "Intelligent automation & ML systems.",
+    desc: "Intelligent automation, LLMs & custom ML systems.",
     features: ["LLMs", "Vision", "NLP", "Chatbots"],
     href: "/it-services#ai-solutions",
     badge: "Hot",
   },
   {
-    icon: "🛡️",
-    title: "Cybersecurity",
-    desc: "Security audits & protection systems.",
-    features: ["PenTest", "Audits", "VAPT", "Compliance"],
-    href: "/it-services#cybersecurity",
+    icon: "🎨",
+    title: "UI/UX Design",
+    desc: "Intuitive interfaces that users love, from wireframes to design systems.",
+    features: ["Figma", "Prototypes", "Design Systems", "User Research"],
+    href: "/it-services#ui-ux-design",
   },
   {
     icon: "🚀",
     title: "SaaS Development",
-    desc: "End-to-end SaaS product building.",
+    desc: "End-to-end SaaS product building for US startups and enterprises.",
     features: ["SaaS", "ERP/CRM", "APIs", "Scaling"],
     href: "/it-services#saas-development",
   },
-  
+  {
+    icon: "💻",
+    title: "Custom Software",
+    desc: "Bespoke enterprise software, ERPs, CRMs, and legacy modernization.",
+    features: ["Java / Python", "ERP/CRM", "APIs", "Modernization"],
+    href: "/it-services#custom-software",
+  },
 ];
 
 export default function ITServicesSection() {
@@ -79,7 +77,7 @@ export default function ITServicesSection() {
             Build World-Class Digital Products
           </h2>
           <p className="mt-3 text-muted-foreground max-w-xl mx-auto">
-            From startups to enterprises, we deliver production-grade software solutions.
+            From startups to Fortune 500, we deliver production-grade software solutions across the US.
           </p>
         </motion.div>
 
