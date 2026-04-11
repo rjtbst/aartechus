@@ -7,6 +7,8 @@ import {
   ChevronDown,
   ChevronLeft,
   ChevronRight,
+  Sparkles,
+  Code2, Brain, Zap,
   Download,
   Star,
 } from "lucide-react";
@@ -23,52 +25,89 @@ import HiringDrivesSection from "@/components/sections/HiringDrivesSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 import HowItWorks from "@/components/sections/HowItWorks";
-import HeroSection from "@/components/sections/HeroSection";
+
+
+
+const floatingBadges = [
+  { icon: "☕", label: "Java + AI", color: "bg-violet-50 border-violet-200 text-violet-700", delay: 0 },
+  { icon: "🤖", label: "GenAI Dev", color: "bg-rose-50 border-rose-200 text-rose-700", delay: 0.15 },
+  { icon: "📊", label: "Data Science", color: "bg-blue-50 border-blue-200 text-blue-700", delay: 0.3 },
+  { icon: "⚙️", label: "Data Engineer", color: "bg-amber-50 border-amber-200 text-amber-700", delay: 0.45 },
+];
 
 const Hero = () => (
-  <section className="pt-[54px]">
-    <div className="container-main py-10 md:py-10">
-      <div className="grid lg:grid-cols-[1fr_420px] gap-8 items-start">
-        {/* Left side */}
+  <section className="pt-[48px] overflow-hidden">
+    <div className="container-main py-10 md:py-12">
+      <div className="grid lg:grid-cols-[1fr_420px] gap-10 items-start">
+
+        {/* ── Left side ── */}
         <div className="pt-4">
+
+          {/* Students pill */}
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5 }}
-            className="inline-flex items-center gap-2 bg-secondary rounded-full px-4 py-2 mb-8"
+            className="inline-flex items-center gap-2 bg-secondary rounded-full px-4 py-2 mb-6"
           >
             <div className="flex -space-x-2">
               {["A","S","R","M"].map((l, i) => (
                 <div key={i} className="w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-[10px] font-bold border-2 border-background">{l}</div>
               ))}
             </div>
-            <span className="text-sm font-medium text-foreground">35k+ Happy Students</span>
+            <span className="text-sm font-medium text-foreground">35k+ Happy Alumni</span>
           </motion.div>
 
-          {/* ── UPDATED HEADLINE ── */}
+          {/* ── AI banner ── */}
+          <motion.div
+            initial={{ opacity: 0, x: -20 }}
+            animate={{ opacity: 1, x: 0 }}
+            transition={{ duration: 0.5, delay: 0.08 }}
+            className="inline-flex items-center gap-2.5 mb-5 px-4 py-2 rounded-xl border border-primary/20 bg-primary/5"
+          >
+            <motion.div
+              animate={{ rotate: [0, 15, -10, 15, 0] }}
+              transition={{ duration: 2.5, repeat: Infinity, repeatDelay: 3 }}
+            >
+              <Sparkles size={15} className="text-primary" />
+            </motion.div>
+            <span className="text-sm font-semibold text-primary">
+              Not Just Coding — Learn How to Build AI-Powered Applications
+            </span>
+            <motion.div
+              animate={{ x: [0, 4, 0] }}
+              transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
+            >
+              <ArrowUpRight size={14} className="text-primary" />
+            </motion.div>
+          </motion.div>
+
+          {/* Headline */}
           <motion.h1
             initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.1 }}
+            transition={{ duration: 0.6, delay: 0.12 }}
             className="text-[40px] md:text-[52px] lg:text-[60px] font-display font-bold leading-[1.1] text-foreground"
           >
-            Build Your <span className="text-primary">Career.</span> Get Skilled.{" "}
-            Get <span className="text-primary">Hired</span> — Without Paying Upfront
+            Build Your <span className="text-primary">Career.</span>{" "}
+            Get Skilled.{" "}
+            Get <span className="text-primary">Hired</span>{" "}
+            — Without Paying Upfront
           </motion.h1>
 
-          {/* ── UPDATED SUBTEXT ── */}
+          {/* Subtext */}
           <motion.p
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.5, delay: 0.25 }}
             className="mt-6 text-lg text-muted-foreground max-w-lg"
           >
-            We provide end-to-end employment solutions — from technical training
+            We provide end-to-end employment solutions — from AI-integrated bootcamps
             and career development to staffing and recruitment — designed to
-            connect you with real opportunities at leading companies.
+            connect you with real opportunities at leading US companies.
           </motion.p>
 
-          {/* ── NEW: Bullet points ── */}
+          {/* Bullet points */}
           <motion.ul
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -76,28 +115,64 @@ const Hero = () => (
             className="mt-4 space-y-2"
           >
             {[
-              "Learn in-demand tech skills",
-              "Train for real job roles",
-              "Access opportunities with top-tier employers",
-            ].map((item) => (
-              <li key={item} className="flex items-center gap-2 text-sm text-muted-foreground">
-                <span className="w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-                {item}
-              </li>
+              { icon: Code2, text: "Learn in-demand AI & tech skills" },
+              { icon: Brain, text: "Build real AI-powered applications" },
+              { icon: Zap, text: "Access opportunities with top US employers" },
+            ].map(({ icon: Icon, text }, i) => (
+              <motion.li
+                key={text}
+                initial={{ opacity: 0, x: -10 }}
+                animate={{ opacity: 1, x: 0 }}
+                transition={{ delay: 0.4 + i * 0.08 }}
+                className="flex items-center gap-2 text-sm text-muted-foreground"
+              >
+                <Icon size={14} className="text-primary flex-shrink-0" />
+                {text}
+              </motion.li>
             ))}
           </motion.ul>
+
+          {/* Floating course badges */}
+          <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.55 }}
+            className="mt-6 flex flex-wrap gap-2"
+          >
+            {floatingBadges.map((b, i) => (
+              <motion.span
+                key={b.label}
+                initial={{ opacity: 0, y: 10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.55 + b.delay }}
+                whileHover={{ y: -2, scale: 1.04 }}
+                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border ${b.color} cursor-default`}
+              >
+                <span className="text-sm">{b.icon}</span>
+                {b.label}
+              </motion.span>
+            ))}
+            <motion.span
+              initial={{ opacity: 0, y: 10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.75 }}
+              className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border border-border bg-secondary text-muted-foreground cursor-default"
+            >
+              +more
+            </motion.span>
+          </motion.div>
 
           {/* Trust badges */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.5 }}
+            transition={{ delay: 0.6 }}
             className="mt-6 flex items-center gap-6 flex-wrap"
           >
             {[
               { icon: "🏆", text: "LinkedIn Top 20 Startup" },
               { icon: "🚀", text: "Y Combinator Backed" },
-              { icon: "🎓", text: "IIT Delhi Alumni Founded" },
+              { icon: "🇺🇸", text: "US-Based Since 2013" },
             ].map((b) => (
               <div key={b.text} className="flex items-center gap-2 text-muted-foreground/60">
                 <span className="text-lg">{b.icon}</span>
@@ -106,37 +181,78 @@ const Hero = () => (
             ))}
           </motion.div>
 
-          {/* ── NEW: Disclaimer line ── */}
-          <motion.p
+          {/* Disclaimer */}
+          {/* <motion.p
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            transition={{ delay: 0.6 }}
+            transition={{ delay: 0.7 }}
             className="mt-4 text-xs text-muted-foreground/50 max-w-md leading-relaxed"
           >
             No upfront tuition for eligible candidates. Flexible financing options
             including income-based payment plans available for qualified applicants.
             Terms apply.
-          </motion.p>
+          </motion.p> */}
         </div>
 
-        {/* Right side - Cards — unchanged */}
-        <div className="space-y-10 py-12">
+        {/* ── Right side — Cards ── */}
+        <div className="space-y-6 py-8">
+
+          {/* Animated stats row */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.2 }}
+            className="grid grid-cols-3 gap-3"
+          >
+            {[
+              { value: "35K+", label: "Alumni" },
+              { value: "$200K", label: "Top Salary" },
+              { value: "200+", label: "US Partners" },
+            ].map((s, i) => (
+              <motion.div
+                key={s.label}
+                initial={{ opacity: 0, scale: 0.9 }}
+                animate={{ opacity: 1, scale: 1 }}
+                transition={{ delay: 0.3 + i * 0.1 }}
+                className="bg-secondary rounded-xl p-3 text-center border border-border"
+              >
+                <div className="font-display font-bold text-foreground text-lg leading-tight">{s.value}</div>
+                <div className="text-xs text-muted-foreground mt-0.5">{s.label}</div>
+              </motion.div>
+            ))}
+          </motion.div>
+
+          {/* Courses card */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.6, delay: 0.25 }}
           >
             <Link href="/courses" className="block group">
               <div className="gradient-courses rounded-2xl p-6 relative overflow-hidden h-[200px] flex flex-col justify-between">
+                {/* Subtle animated pulse ring */}
+                <motion.div
+                  className="absolute top-4 right-4 w-24 h-24 rounded-full border border-white/10"
+                  animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.1, 0.3] }}
+                  transition={{ duration: 3, repeat: Infinity }}
+                />
                 <div className="relative z-10">
-                  <p className="text-primary-foreground font-display font-bold text-lg">COURSES</p>
+                  <div className="flex items-center gap-2 mb-1">
+                    <p className="text-primary-foreground font-display font-bold text-lg">BOOTCAMPS</p>
+                    <motion.div
+                      animate={{ rotate: [0, 10, -10, 0] }}
+                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 4 }}
+                    >
+                      <Sparkles size={14} className="text-white/70" />
+                    </motion.div>
+                  </div>
                   <p className="text-primary-foreground/80 text-sm mt-1 max-w-[200px]">
-                    Industry Ready Training to get you placed!
+                    AI-integrated training to get you hired.
                   </p>
                 </div>
                 <div className="relative z-10">
-                  <span className="inline-flex items-center gap-2 bg-background text-foreground text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-background/90 transition-colors">
-                    View Courses <ArrowUpRight className="w-4 h-4" />
+                  <span className="inline-flex items-center gap-2 bg-background text-foreground text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-background/90 transition-colors group-hover:gap-3">
+                    View Bootcamps <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
                 <Image
@@ -150,22 +266,28 @@ const Hero = () => (
             </Link>
           </motion.div>
 
+          {/* IT Services card */}
           <motion.div
             initial={{ opacity: 0, x: 40 }}
             animate={{ opacity: 1, x: 0 }}
-            transition={{ duration: 0.6, delay: 0.35 }}
+            transition={{ duration: 0.6, delay: 0.4 }}
           >
             <Link href="/it-services" className="block group">
               <div className="gradient-jobs rounded-2xl p-6 relative overflow-hidden h-[200px] flex flex-col justify-between">
+                <motion.div
+                  className="absolute top-4 right-4 w-24 h-24 rounded-full border border-white/10"
+                  animate={{ scale: [1, 1.15, 1], opacity: [0.3, 0.1, 0.3] }}
+                  transition={{ duration: 3, repeat: Infinity, delay: 1.5 }}
+                />
                 <div className="relative z-10">
                   <p className="text-primary-foreground font-display font-bold text-lg">IT SERVICES</p>
                   <p className="text-primary-foreground/80 text-sm mt-1 max-w-[220px]">
-                    Build world-class products with our expert team!
+                    Build world-class products with our expert team.
                   </p>
                 </div>
                 <div className="relative z-10">
-                  <span className="inline-flex items-center gap-2 bg-background text-foreground text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-background/90 transition-colors">
-                    View Services <ArrowUpRight className="w-4 h-4" />
+                  <span className="inline-flex items-center gap-2 bg-background text-foreground text-sm font-medium px-5 py-2.5 rounded-lg hover:bg-background/90 transition-colors group-hover:gap-3">
+                    View Services <ArrowUpRight className="w-4 h-4 transition-transform group-hover:translate-x-0.5 group-hover:-translate-y-0.5" />
                   </span>
                 </div>
                 <Image
@@ -178,11 +300,26 @@ const Hero = () => (
               </div>
             </Link>
           </motion.div>
+
+           {/* Disclaimer */}
+          <motion.p
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 0.7 }}
+            className="mt-4 text-xs text-muted-foreground/70 max-w-md leading-relaxed"
+          >
+            No upfront tuition for eligible candidates. Flexible financing options
+            including income-based payment plans available for qualified applicants.
+            Terms apply.
+          </motion.p>
         </div>
+
       </div>
     </div>
   </section>
 );
+
+
 
 /* ═══════════════════════ IMPACT STATS ═══════════════════════ */
 const ImpactStats = () => (
@@ -312,7 +449,7 @@ export default function Page() {
   return (
     <div>
       <Hero />
-      <HeroSection />
+      
       <ImpactStats />
       <HowItWorks />
       <TestimonialSection />
