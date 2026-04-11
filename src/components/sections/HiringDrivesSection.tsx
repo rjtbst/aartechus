@@ -4,12 +4,12 @@ import Link from "next/link";
 import { Calendar, MapPin, Users, ArrowRight, Briefcase, CheckCircle2 } from "lucide-react";
 
 const drives = [
-  { company: "Infosys", role: "Software Engineer", location: "Pan India", date: "Apr 15, 2026", slots: 150, type: "Online", logo: "IN" },
-  { company: "Wipro", role: "Associate Dev", location: "Noida", date: "Apr 18, 2026", slots: 80, type: "Offline", logo: "WI" },
-  { company: "HCL Tech", role: "Full Stack Dev", location: "Hyderabad", date: "Apr 22, 2026", slots: 60, type: "Offline", logo: "HC" },
-  { company: "Capgemini", role: "Data Analyst", location: "Pan India", date: "Apr 25, 2026", slots: 120, type: "Online", logo: "CA" },
-  { company: "TCS", role: "ML Engineer", location: "Pune", date: "May 2, 2026", slots: 40, type: "Offline", logo: "TC" },
-  { company: "Tech Mahindra", role: "Backend Dev", location: "Bangalore", date: "May 5, 2026", slots: 70, type: "Hybrid", logo: "TM" },
+  { company: "Amazon", role: "Software Engineer", location: "Seattle, WA", date: "Apr 15, 2026", slots: 50, type: "Remote", logo: "AM" },
+  { company: "Microsoft", role: "Full Stack Developer", location: "Redmond, WA", date: "Apr 18, 2026", slots: 40, type: "Hybrid", logo: "MS" },
+  { company: "Salesforce", role: "Backend Engineer", location: "San Francisco, CA", date: "Apr 22, 2026", slots: 35, type: "Hybrid", logo: "SF" },
+  { company: "Stripe", role: "Data Analyst", location: "New York, NY", date: "Apr 25, 2026", slots: 25, type: "Remote", logo: "ST" },
+  { company: "Netflix", role: "ML Engineer", location: "Los Angeles, CA", date: "May 2, 2026", slots: 20, type: "Hybrid", logo: "NF" },
+  { company: "Cloudflare", role: "React Developer", location: "Austin, TX", date: "May 5, 2026", slots: 30, type: "Remote", logo: "CF" },
 ];
 
 const process = [
@@ -20,7 +20,7 @@ const process = [
 ];
 
 const modeColors: Record<string, string> = {
-  Online: "badge-blue",
+  Remote: "badge-blue",
   Offline: "badge-orange",
   Hybrid: "badge-green",
 };
@@ -51,7 +51,7 @@ export default function HiringDrivesSection() {
               Attend <span className="text-gradient">FREE</span><br />Hiring Drives
             </h2>
             <p className="text-gray-500 text-lg max-w-lg">
-              Already skilled? Get hired directly through our verified hiring drives. 60+ drives monthly. No fees ever.
+              Already skilled? Get hired directly through our verified hiring drives at top US tech companies. 60+ drives monthly. No fees ever.
             </p>
           </motion.div>
           <Link href="/jobs" className="glow-btn inline-flex items-center gap-2 px-6 py-3 rounded-xl font-semibold text-white text-sm whitespace-nowrap">
@@ -129,8 +129,8 @@ export default function HiringDrivesSection() {
                 "60+ drives every month",
                 "Direct company interviews",
                 "Pre-interview prep support",
-                "Available online & offline",
-                "Roles from ₹4L to ₹25L+",
+                "Remote & hybrid opportunities",
+                "Roles from $70K to $200K+",
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2 text-sm text-gray-600 mb-2">
                   <CheckCircle2 size={14} className="text-green-500 flex-shrink-0" />

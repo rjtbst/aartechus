@@ -23,13 +23,13 @@ const values = [
 ];
 
 const milestones = [
-  { year: "2019", title: "Founded in Noida", desc: "Started with 15 students in a small room in Sector 63, Noida." },
-  { year: "2020", title: "First 500 Placements", desc: "Despite COVID-19, placed 500+ students in remote tech roles." },
-  { year: "2021", title: "Y Combinator Batch", desc: "Backed by Y Combinator's W21 batch. Expanded to Hyderabad." },
-  { year: "2022", title: "Launched IT Services", desc: "Expanded into premium IT services, delivering for global clients." },
-  { year: "2023", title: "10,000 Placed", desc: "Crossed 10,000 placements. Opened Pune skill centre." },
-  { year: "2024", title: "Gen AI Curriculum", desc: "Launched India's first Gen AI integrated Full Stack + DS programs." },
-  { year: "2025", title: "35,000+ Alumni", desc: "500+ IT projects delivered. 15+ countries served." },
+  { year: "2013", title: "Founded in the US", desc: "Started with a mission to bridge the gap between tech education and real industry hiring in the US market." },
+  { year: "2015", title: "First 200 Placements", desc: "Placed 200+ students at US tech companies. Established partnerships with Fortune 500 recruiters." },
+  { year: "2017", title: "IT Services Launched", desc: "Expanded into premium IT services, delivering software solutions for US startups and enterprises." },
+  { year: "2019", title: "Y Combinator Backed", desc: "Backed by Y Combinator. Scaled operations nationally with remote-first delivery across the US." },
+  { year: "2021", title: "Gen AI Curriculum", desc: "Launched the first Gen AI integrated Full Stack and Data Science bootcamps in the US market." },
+  { year: "2023", title: "10,000+ Alumni", desc: "Crossed 10,000 alumni placed at companies like Amazon, Google, Microsoft, Salesforce, and Netflix." },
+  { year: "2025", title: "35,000+ Alumni", desc: "500+ IT projects delivered. 200+ US hiring partners. 15+ countries served." },
 ];
 
 export default function AboutClient() {
