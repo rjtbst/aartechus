@@ -1,7 +1,7 @@
 "use client";
 
 import Link from "next/link";
-import { Mail, Phone, MapPin } from "lucide-react";
+import { Mail, Phone } from "lucide-react";
 
 const Footer = () => (
   <footer className="bg-foreground text-background">
@@ -23,43 +23,43 @@ const Footer = () => (
             </span>
           </div>
           <p className="text-background/50 text-sm leading-relaxed max-w-xs">
-            Aartechus is a career-focused platform providing end-to-end employment solutions — technical training, career development, staffing, and recruitment — connecting talent with real opportunities.
+            Aartechus is a US-based career platform providing end-to-end employment solutions — technical bootcamps, career development, staffing, and recruitment — connecting talent with real opportunities since 2013.
           </p>
         </div>
 
-        {/* Courses — updated with all training domains */}
+        {/* Training Programs */}
         <div>
           <h4 className="font-display font-semibold text-sm uppercase tracking-wider text-background/60 mb-4">
-            Training Programs
+            Bootcamps
           </h4>
           <ul className="space-y-2.5">
             <li>
-              <Link href="/courses/full-stack-development" className="text-background/70 hover:text-background text-sm transition-colors">
-                Full Stack Development
+              <Link href="/courses/java-developer-ai" className="text-background/70 hover:text-background text-sm transition-colors">
+                Java Developer + AI Bootcamp
               </Link>
             </li>
             <li>
-              <Link href="/courses/data-science-ai" className="text-background/70 hover:text-background text-sm transition-colors">
-                Data Science & AI
+              <Link href="/courses/data-engineer-ai" className="text-background/70 hover:text-background text-sm transition-colors">
+                Data Engineer + AI Bootcamp
               </Link>
             </li>
             <li>
-              <Link href="/courses/data-analytics" className="text-background/70 hover:text-background text-sm transition-colors">
-                Data Analytics
+              <Link href="/courses/ai-developer-bootcamp" className="text-background/70 hover:text-background text-sm transition-colors">
+                AI Developer Bootcamp
               </Link>
             </li>
             <li>
-              <Link href="/courses" className="text-background/70 hover:text-background text-sm transition-colors">
+              <Link href="/courses/data-scientist-ai" className="text-background/70 hover:text-background text-sm transition-colors">
+                Data Scientist + AI Bootcamp
+              </Link>
+            </li>
+            <li>
+              <Link href="/courses/python-programming" className="text-background/70 hover:text-background text-sm transition-colors">
                 Python Programming
               </Link>
             </li>
             <li>
-              <Link href="/courses" className="text-background/70 hover:text-background text-sm transition-colors">
-                Cybersecurity
-              </Link>
-            </li>
-            <li>
-              <Link href="/courses" className="text-background/70 hover:text-background text-sm transition-colors">
+              <Link href="/courses/quality-assurance" className="text-background/70 hover:text-background text-sm transition-colors">
                 Quality Assurance (QA)
               </Link>
             </li>
@@ -75,6 +75,16 @@ const Footer = () => (
             <li>
               <Link href="/about" className="text-background/70 hover:text-background text-sm transition-colors">
                 About Us
+              </Link>
+            </li>
+            <li>
+              <Link href="/it-services" className="text-background/70 hover:text-background text-sm transition-colors">
+                IT Services
+              </Link>
+            </li>
+            <li>
+              <Link href="/jobs" className="text-background/70 hover:text-background text-sm transition-colors">
+                Hiring Drives
               </Link>
             </li>
             <li>
@@ -103,27 +113,47 @@ const Footer = () => (
           <ul className="space-y-3">
             <li className="flex items-center gap-3 text-sm text-background/70">
               <Mail className="w-4 h-4 text-primary flex-shrink-0" />
-              contact@Aartechus.com
+              hello@aartechus.com
             </li>
             <li className="flex items-center gap-3 text-sm text-background/70">
               <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-              +91 85955 63221
+              +1 307 998 3803
             </li>
-            <li className="flex items-start gap-3 text-sm text-background/70">
-              <MapPin className="w-4 h-4 text-primary flex-shrink-0 mt-0.5" />
-              Corporate Office - Sector 44, Gurugram
+            <li className="flex items-center gap-3 text-sm text-background/70">
+              <span className="text-lg leading-none">💬</span>
+              <a href="https://wa.me/13079983803" className="hover:text-background transition-colors">
+                WhatsApp Us
+              </a>
             </li>
           </ul>
+
+          {/* Social / trust badges */}
+          <div className="mt-6">
+            <p className="text-background/40 text-xs mb-2 uppercase tracking-wider">Follow Us</p>
+            <div className="flex gap-3">
+              {[
+                { label: "LI", href: "#", title: "LinkedIn" },
+                { label: "TW", href: "#", title: "Twitter / X" },
+                { label: "YT", href: "#", title: "YouTube" },
+              ].map((s) => (
+                <a key={s.label} href={s.href} title={s.title}
+                  className="w-8 h-8 rounded-lg bg-background/10 hover:bg-background/20 flex items-center justify-center text-background/60 hover:text-background text-xs font-bold transition-all">
+                  {s.label}
+                </a>
+              ))}
+            </div>
+          </div>
         </div>
       </div>
 
-      {/* ── NEW: Compliance disclaimer ── */}
+      {/* Compliance disclaimer */}
       <div className="border-t border-background/10 mt-10 pt-6">
         <p className="text-background/25 text-xs leading-relaxed max-w-4xl">
           <strong className="text-background/35 font-medium">Important Disclosures:</strong>{" "}
           Income-based payment option is not a loan. Payments apply only when income exceeds the defined threshold.
-          Not all applicants qualify for all payment options. No job placement is guaranteed.
+          Not all applicants qualify for all payment options. Career outcomes are not guaranteed.
           Employer partnerships provide access to opportunities, not guaranteed placement.
+          Salary figures represent average US market ranges and are not guarantees of individual earnings.
           Terms vary by program and agreement. Available for qualified applicants only.
         </p>
       </div>
@@ -131,7 +161,7 @@ const Footer = () => (
       {/* Bottom */}
       <div className="border-t border-background/10 mt-6 pt-6 flex flex-col md:flex-row justify-between items-center gap-4">
         <p className="text-background/30 text-sm">
-          © Copyright 2026, All Rights Reserved
+          © 2013–2026 Aartechus. All Rights Reserved. United States.
         </p>
         <div className="flex gap-6">
           <a href="#" className="text-background/30 hover:text-background/60 text-sm transition-colors">
