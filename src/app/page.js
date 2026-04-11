@@ -23,6 +23,7 @@ import HiringDrivesSection from "@/components/sections/HiringDrivesSection";
 import FAQSection from "@/components/sections/FAQSection";
 import CTASection from "@/components/sections/CTASection";
 import HowItWorks from "@/components/sections/HowItWorks";
+import HeroSection from "@/components/sections/HeroSection";
 
 const Hero = () => (
   <section className="pt-[54px]">
@@ -311,6 +312,7 @@ export default function Page() {
   return (
     <div>
       <Hero />
+      <HeroSection />
       <ImpactStats />
       <HowItWorks />
       <TestimonialSection />
