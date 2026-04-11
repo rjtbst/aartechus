@@ -5,18 +5,18 @@ import Link from "next/link";
 import { Search, MapPin, Calendar, Users, ArrowRight, Briefcase, Filter, CheckCircle2, TrendingUp, Star } from "lucide-react";
 
 const jobs = [
-  { id: 1, company: "Amazon", role: "Software Development Engineer", location: "Bangalore", type: "Full Time", package: "₹18–28 LPA", deadline: "Apr 20, 2026", skills: ["Java", "DSA", "System Design"], mode: "Online", seats: 50 },
-  { id: 2, company: "Infosys", role: "Systems Engineer", location: "Pan India", type: "Full Time", package: "₹4–8 LPA", deadline: "Apr 22, 2026", skills: ["Java", "SQL", "Agile"], mode: "Online", seats: 200 },
-  { id: 3, company: "Wipro", role: "Associate – Full Stack", location: "Noida", type: "Full Time", package: "₹5–9 LPA", deadline: "Apr 25, 2026", skills: ["React", "Node.js", "MySQL"], mode: "Online", seats: 80 },
-  { id: 4, company: "Paytm", role: "Data Analyst", location: "Gurgaon", type: "Full Time", package: "₹9–14 LPA", deadline: "Apr 28, 2026", skills: ["Python", "SQL", "Power BI"], mode: "Hybrid", seats: 25 },
-  { id: 5, company: "TCS", role: "ML Engineer Trainee", location: "Pune", type: "Full Time", package: "₹7–12 LPA", deadline: "May 2, 2026", skills: ["Python", "TensorFlow", "SQL"], mode: "Online", seats: 40 },
-  { id: 6, company: "HCL Technologies", role: "React Developer", location: "Hyderabad", type: "Full Time", package: "₹6–11 LPA", deadline: "May 5, 2026", skills: ["React", "TypeScript", "Git"], mode: "Hybrid", seats: 60 },
-  { id: 7, company: "Capgemini", role: "Data Science Associate", location: "Pan India", type: "Full Time", package: "₹8–13 LPA", deadline: "May 8, 2026", skills: ["Python", "ML", "Statistics"], mode: "Online", seats: 100 },
-  { id: 8, company: "Tech Mahindra", role: "Backend Developer", location: "Bangalore", type: "Full Time", package: "₹7–12 LPA", deadline: "May 12, 2026", skills: ["Java", "Spring Boot", "Microservices"], mode: "Online", seats: 35 },
+  { id: 1, company: "Amazon", role: "Software Development Engineer", location: "Seattle, WA", type: "Full Time", package: "$140K–$180K", deadline: "Apr 20, 2026", skills: ["Java", "DSA", "System Design"], mode: "Hybrid", seats: 50 },
+  { id: 2, company: "Salesforce", role: "Software Engineer", location: "San Francisco, CA", type: "Full Time", package: "$130K–$165K", deadline: "Apr 22, 2026", skills: ["Java", "SQL", "Agile"], mode: "Hybrid", seats: 80 },
+  { id: 3, company: "Microsoft", role: "Full Stack Developer", location: "Redmond, WA", type: "Full Time", package: "$135K–$170K", deadline: "Apr 25, 2026", skills: ["React", "Node.js", "Azure"], mode: "Hybrid", seats: 60 },
+  { id: 4, company: "Stripe", role: "Data Analyst", location: "New York, NY", type: "Full Time", package: "$110K–$145K", deadline: "Apr 28, 2026", skills: ["Python", "SQL", "Tableau"], mode: "Remote", seats: 25 },
+  { id: 5, company: "Netflix", role: "ML Engineer", location: "Los Angeles, CA", type: "Full Time", package: "$150K–$200K", deadline: "May 2, 2026", skills: ["Python", "TensorFlow", "Spark"], mode: "Hybrid", seats: 30 },
+  { id: 6, company: "Cloudflare", role: "React Developer", location: "Austin, TX", type: "Full Time", package: "$120K–$155K", deadline: "May 5, 2026", skills: ["React", "TypeScript", "GraphQL"], mode: "Remote", seats: 40 },
+  { id: 7, company: "Palantir", role: "Data Science Associate", location: "Denver, CO", type: "Full Time", package: "$130K–$160K", deadline: "May 8, 2026", skills: ["Python", "ML", "Statistics"], mode: "Hybrid", seats: 20 },
+  { id: 8, company: "Uber", role: "Backend Engineer", location: "Chicago, IL", type: "Full Time", package: "$140K–$175K", deadline: "May 12, 2026", skills: ["Java", "Spring Boot", "Microservices"], mode: "Hybrid", seats: 35 },
 ];
 
 const modeColors: Record<string, string> = {
-  Online: "badge-blue",
+  Remote: "badge-blue",
   Offline: "badge-orange",
   Hybrid: "badge-green",
 };
@@ -51,10 +51,10 @@ export default function JobsClient() {
               <Briefcase size={12} /> Hiring Drives
             </span>
             <h1 className="font-bold text-5xl sm:text-6xl text-gray-900 mb-5">
-              Get Hired at <span className="text-gradient">Top Companies</span><br />for Free
+              Get Hired at <span className="text-gradient">Top US Companies</span><br />for Free
             </h1>
             <p className="text-gray-500 text-xl max-w-2xl mx-auto mb-10">
-              Already skilled? Skip the job hunt. Attend our free verified hiring drives and get direct company interviews.
+              Already skilled? Skip the job hunt. Attend our free verified hiring drives and get direct company interviews at leading US tech firms.
             </p>
 
             {/* Search */}
@@ -69,8 +69,8 @@ export default function JobsClient() {
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               {[
                 { v: "60+", l: "Drives/month", c: "text-violet-600" },
-                { v: "200+", l: "Partner companies", c: "text-green-600" },
-                { v: "₹30 LPA", l: "Highest offer", c: "text-orange-600" },
+                { v: "200+", l: "US partner companies", c: "text-green-600" },
+                { v: "$200K+", l: "Highest offer", c: "text-orange-600" },
                 { v: "100% Free", l: "For all candidates", c: "text-blue-600" },
               ].map((s) => (
                 <span key={s.l} className="flex items-center gap-1">
@@ -88,7 +88,7 @@ export default function JobsClient() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6">
           <div className="flex items-center gap-3 mb-8 flex-wrap">
             <Filter size={14} className="text-gray-400" />
-            {["All", "Online", "Hybrid"].map((m) => (
+            {["All", "Remote", "Hybrid"].map((m) => (
               <button key={m} onClick={() => setModeFilter(m)}
                 className={`tab-pill ${modeFilter === m ? "active" : ""}`}>{m}</button>
             ))}
@@ -132,9 +132,6 @@ export default function JobsClient() {
                     <div className="text-green-600 font-semibold text-sm">{job.package}</div>
                     <div className="text-gray-400 text-xs">{job.type}</div>
                   </div>
-                  {/* <button className="glow-btn px-4 py-2 rounded-xl text-sm font-semibold text-white flex items-center gap-1.5">
-                    Apply Now <ArrowRight size={13} />
-                  </button> */}
                 </div>
               </motion.div>
             ))}

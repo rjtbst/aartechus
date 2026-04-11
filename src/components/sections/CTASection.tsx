@@ -7,9 +7,9 @@ import { Phone, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
 const FORMSPREE_ID = "mdapvpqr";
 
 export default function CTASection() {
-  const [form, setForm]       = useState({ name: "", phone: "", course: "", email: "" });
+  const [form, setForm] = useState({ name: "", phone: "", email: "", course: "", workAuth: "" });
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading]    = useState(false);
+  const [loading, setLoading] = useState(false);
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -72,7 +72,6 @@ export default function CTASection() {
                     Request a free callback from our expert counselors. Get personalized course recommendations and career roadmap — at zero cost.
                   </p>
 
-                  {/* ── UPDATED: Benefits checklist ── */}
                   <div className="space-y-3">
                     {[
                       "Free 1:1 career counseling session",
@@ -94,7 +93,7 @@ export default function CTASection() {
                     </div>
                     <div>
                       <div className="text-xs text-gray-400 mb-0.5">Call us directly</div>
-                      <a href="tel:+918595563221" className="font-semibold text-gray-900 hover:text-blue-600 transition-colors">+91 85955 63221</a>
+                      <a href="tel:+13079983803" className="font-semibold text-gray-900 hover:text-blue-600 transition-colors">+1 307 998 3803</a>
                     </div>
                   </div>
                 </motion.div>
@@ -121,7 +120,7 @@ export default function CTASection() {
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Phone Number *</label>
-                      <input type="tel" placeholder="+91 XXXXX XXXXX" value={form.phone}
+                      <input type="tel" placeholder="+1 (XXX) XXX-XXXX" value={form.phone}
                         onChange={(e) => setForm({ ...form, phone: e.target.value })} required className="w-full px-4 py-3 rounded-xl text-sm" />
                     </div>
                     <div>
@@ -130,29 +129,37 @@ export default function CTASection() {
                         onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm" />
                     </div>
 
-                    {/* ── UPDATED: Dropdown with all training domains ── */}
                     <div>
                       <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Interested In</label>
                       <select value={form.course} onChange={(e) => setForm({ ...form, course: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
                         <option value="">Select a course / service</option>
                         <optgroup label="Training Courses">
-                          <option>Java Full Stack Development</option>
-                          <option>MERN Full Stack Development</option>
+                          <option>Java Developer + AI Bootcamp</option>
+                          <option>Data Engineer + AI Bootcamp</option>
+                          <option>AI Developer Bootcamp</option>
+                          <option>Data Scientist + AI Bootcamp</option>
                           <option>Python Programming</option>
-                          <option>Data Science & AI</option>
-                          <option>Data Analytics</option>
-                          <option>Data Engineering</option>
-                          <option>Artificial Intelligence (AI)</option>
                           <option>Quality Assurance (QA)</option>
-                          <option>Cybersecurity</option>
                         </optgroup>
                         <optgroup label="IT Services">
                           <option>Web Development</option>
                           <option>Mobile App Development</option>
-                          <option>Cloud & DevOps</option>
                           <option>AI / ML Solutions</option>
                           <option>Staffing & Recruitment</option>
                         </optgroup>
+                        <option>Other</option>
+                      </select>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Work Authorization</label>
+                      <select value={form.workAuth} onChange={(e) => setForm({ ...form, workAuth: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
+                        <option value="">Select work authorization</option>
+                        <option>US Citizen</option>
+                        <option>Green Card</option>
+                        <option>H1B</option>
+                        <option>EAD</option>
+                        <option>TN</option>
                         <option>Other</option>
                       </select>
                     </div>

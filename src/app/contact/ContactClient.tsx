@@ -5,7 +5,7 @@ import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import {
-  Mail, Phone, MapPin, CheckCircle2, ArrowRight,
+  Mail, Phone, CheckCircle2, ArrowRight,
   MessageCircle, Briefcase, GraduationCap, Clock,
 } from "lucide-react";
 
@@ -17,13 +17,7 @@ const inquiryTypes = [
   { id: "general"  as InquiryType, label: "General Query",    icon: MessageCircle,  desc: "Ask us anything"           },
 ];
 
-const offices = [
-  { city: "Noida (HQ)",  address: "2nd Floor, D69, Block-D, Sector 2, Noida, UP 201301",      phone: "+91 85955 63221" },
-  { city: "Hyderabad",   address: "23-25, Lumbini Avenue, Gachibowli, Hyderabad, TS 500032",  phone: "+91 85955 63222" },
-  { city: "Pune",        address: "5th Floor, Aria Tower, Baner, Pune, MH 411045",            phone: "+91 85955 63223" },
-];
-
-const budgetOptions = ["₹50K – ₹2L", "₹2L – ₹10L", "₹10L – ₹50L", "₹50L+"];
+const budgetOptions = ["$10K – $50K", "$50K – $150K", "$150K – $500K", "$500K+"];
 
 const FORMSPREE_ID = "mdapvpqr";
 
@@ -33,7 +27,7 @@ export default function ContactClient() {
 
   const [type, setType]       = useState<InquiryType>(initialType);
   const [loading, setLoading] = useState(false);
-  const [form, setForm]       = useState({ name: "", phone: "", email: "", message: "", course: "", budget: "" });
+  const [form, setForm]       = useState({ name: "", phone: "", email: "", message: "", course: "", budget: "", workAuth: "" });
   const [submitted, setSubmitted] = useState(false);
 
   const submitLabel =
@@ -108,13 +102,13 @@ export default function ContactClient() {
                       <div className="text-black text-sm font-medium group-hover:text-primary transition-colors">hello@aartechus.com</div>
                     </div>
                   </a>
-                  <a href="tel:+918595563221" className="flex items-center gap-3 group">
+                  <a href="tel:+13079983803" className="flex items-center gap-3 group">
                     <div className="w-10 h-10 rounded-xl bg-green-500/15 flex items-center justify-center flex-shrink-0">
                       <Phone size={16} className="text-green-400" />
                     </div>
                     <div>
                       <div className="text-xs text-gray-500 mb-0.5">Phone</div>
-                      <div className="text-black text-sm font-medium">+91 85955 63221</div>
+                      <div className="text-black text-sm font-medium">+1 307 998 3803</div>
                     </div>
                   </a>
                   <div className="flex items-start gap-3">
@@ -123,29 +117,13 @@ export default function ContactClient() {
                     </div>
                     <div>
                       <div className="text-xs text-gray-500 mb-0.5">Working Hours</div>
-                      <div className="text-black text-sm font-medium">Mon–Sat, 9AM–8PM</div>
+                      <div className="text-black text-sm font-medium">Mon–Sat, 9AM–8PM EST</div>
                     </div>
                   </div>
                 </div>
               </div>
 
-              <div className="glass rounded-2xl p-6 border border-white/5">
-                <h3 className="font-syne font-semibold text-black mb-5">Our Offices</h3>
-                <div className="space-y-5">
-                  {offices.map((office) => (
-                    <div key={office.city} className="pb-5 border-b border-white/5 last:border-0 last:pb-0">
-                      <div className="flex items-center gap-2 mb-2">
-                        <MapPin size={14} className="text-primary" />
-                        <span className="font-semibold text-black text-sm">{office.city}</span>
-                      </div>
-                      <p className="text-gray-500 text-xs leading-relaxed mb-1">{office.address}</p>
-                      <a href={`tel:${office.phone}`} className="text-gray-400 text-xs hover:text-black transition-colors block">{office.phone}</a>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <a href="https://wa.me/918595563221"
+              <a href="https://wa.me/13079983803"
                 className="flex items-center gap-3 p-4 rounded-2xl border border-green-500/30 bg-green-500/10 hover:bg-green-500/15 transition-colors group">
                 <div className="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center text-xl">💬</div>
                 <div>
@@ -191,7 +169,7 @@ export default function ContactClient() {
                       </div>
                       <div>
                         <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5 block">Phone *</label>
-                        <input type="tel" placeholder="+91 XXXXX XXXXX" required value={form.phone}
+                        <input type="tel" placeholder="+1 (XXX) XXX-XXXX" required value={form.phone}
                           onChange={(e) => setForm({ ...form, phone: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm" />
                       </div>
                     </div>
@@ -202,33 +180,43 @@ export default function ContactClient() {
                         onChange={(e) => setForm({ ...form, email: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm" />
                     </div>
 
-                    {/* ── UPDATED: grouped dropdown matching CTASection ── */}
                     {type === "callback" && (
-                      <div>
-                        <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5 block">Interested In</label>
-                        <select value={form.course} onChange={(e) => setForm({ ...form, course: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
-                          <option value="">Select a course / service</option>
-                          <optgroup label="Training Courses">
-                            <option>Java Full Stack Development</option>
-                            <option>MERN Full Stack Development</option>
-                            <option>Python Programming</option>
-                            <option>Data Science & AI</option>
-                            <option>Data Analytics</option>
-                            <option>Data Engineering</option>
-                            <option>Artificial Intelligence (AI)</option>
-                            <option>Quality Assurance (QA)</option>
-                            <option>Cybersecurity</option>
-                          </optgroup>
-                          <optgroup label="IT Services">
-                            <option>Web Development</option>
-                            <option>Mobile App Development</option>
-                            <option>Cloud & DevOps</option>
-                            <option>AI / ML Solutions</option>
-                            <option>Staffing & Recruitment</option>
-                          </optgroup>
-                          <option>Other</option>
-                        </select>
-                      </div>
+                      <>
+                        <div>
+                          <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5 block">Interested In</label>
+                          <select value={form.course} onChange={(e) => setForm({ ...form, course: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
+                            <option value="">Select a course / service</option>
+                            <optgroup label="Training Courses">
+                              <option>Java Developer + AI Bootcamp</option>
+                              <option>Data Engineer + AI Bootcamp</option>
+                              <option>AI Developer Bootcamp</option>
+                              <option>Data Scientist + AI Bootcamp</option>
+                              <option>Python Programming</option>
+                              <option>Quality Assurance (QA)</option>
+                            </optgroup>
+                            <optgroup label="IT Services">
+                              <option>Web Development</option>
+                              <option>Mobile App Development</option>
+                              <option>AI / ML Solutions</option>
+                              <option>Staffing & Recruitment</option>
+                            </optgroup>
+                            <option>Other</option>
+                          </select>
+                        </div>
+
+                        <div>
+                          <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5 block">Work Authorization</label>
+                          <select value={form.workAuth} onChange={(e) => setForm({ ...form, workAuth: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
+                            <option value="">Select work authorization</option>
+                            <option>US Citizen</option>
+                            <option>Green Card</option>
+                            <option>H1B</option>
+                            <option>EAD</option>
+                            <option>TN</option>
+                            <option>Other</option>
+                          </select>
+                        </div>
+                      </>
                     )}
 
                     {type === "project" && (

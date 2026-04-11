@@ -32,13 +32,13 @@ export default function CoursesSection() {
         {/* Header */}
         <div className="text-center mb-10">
           <p className="text-xs font-semibold uppercase tracking-widest text-muted-foreground mb-2">
-            COURSES
+            BOOTCAMPS
           </p>
           <h2 className="text-3xl md:text-[42px] font-display font-bold text-foreground">
             Job-Focused Technical Training
           </h2>
           <p className="mt-3 text-muted-foreground max-w-2xl mx-auto">
-            Industry-ready training with placement support.
+            US-market-ready training with career support and competitive salary outcomes.
           </p>
         </div>
 
@@ -65,7 +65,7 @@ export default function CoursesSection() {
             key={activeCategory}
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
-            className="grid grid-cols-1 md:grid-cols-2  lg:grid-cols-4 gap-8"
+            className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"
           >
             {filtered.map((course, i) => (
               <motion.div
@@ -73,14 +73,13 @@ export default function CoursesSection() {
                 initial={{ opacity: 0, y: 25 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 transition={{ delay: i * 0.06 }}
-                // className="w-full max-w-md mx-auto"
               >
-                <Link href={course.href} className="block group h-full ">
+                <Link href={course.href} className="block group h-full">
                   <div
                     className={`${course.cardBg} card-shadow-xl border border-border rounded-2xl p-4 hover-card-lift h-full flex flex-col`}
                   >
                     {/* Header */}
-                    <div className="flex  items-start justify-between mb-4">
+                    <div className="flex items-start justify-between mb-4">
                       <div className="flex items-center gap-3">
                         <div className="w-14 h-14 rounded-xl flex items-center justify-center text-xl">
                           {course.icon}
@@ -95,7 +94,7 @@ export default function CoursesSection() {
                         </div>
                       </div>
                       {course.badge && (
-                        <span className="text-[9px]  px-2 py-1 rounded-full bg-primary/10 text-primary font-semibold">
+                        <span className="text-[9px] px-2 py-1 rounded-full bg-primary/10 text-primary font-semibold">
                           {course.badge}
                         </span>
                       )}
@@ -152,6 +151,13 @@ export default function CoursesSection() {
                       ))}
                     </div>
 
+                    {/* Salary indicator */}
+                    <div className="mb-4">
+                      <span className="text-xs text-green-600 font-semibold bg-green-50 px-2.5 py-1 rounded-full">
+                        Avg US Salary: {course.fee}
+                      </span>
+                    </div>
+
                     {/* CTA */}
                     <div className="mt-auto">
                       <span className="flex items-center justify-between text-sm font-semibold text-primary group-hover:translate-x-1 transition">
@@ -172,7 +178,7 @@ export default function CoursesSection() {
             href="/courses"
             className="inline-flex items-center gap-2 px-6 py-3 rounded-xl border border-border text-foreground font-semibold"
           >
-            View All Courses <ArrowRight size={16} />
+            View All Bootcamps <ArrowRight size={16} />
           </Link>
         </div>
       </div>

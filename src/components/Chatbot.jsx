@@ -1,4 +1,5 @@
 "use client";
+
 import React, { useState, useRef, useEffect, useMemo } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import {
@@ -11,7 +12,6 @@ import {
   Mail,
   ExternalLink,
   GraduationCap,
-  MapPin,
   Link2,
 } from "lucide-react";
 
@@ -25,7 +25,7 @@ const Chatbot = () => {
     {
       role: "assistant",
       content:
-        "👋 Hi! I'm Arty, your Aartechus assistant. Ask me about our courses, IT services, fees, placement, or payment options — I'm here to help!",
+        "👋 Hi! I'm Arty, your Aartechus assistant. Ask me about our bootcamps, IT services, fees, career outcomes, or payment options — I'm here to help!",
       timestamp: new Date(),
     },
   ]);
@@ -38,7 +38,7 @@ const Chatbot = () => {
     const coursesList = coursesConfig
       .map(
         (c, i) =>
-          `${i + 1}. ${c.title} (${c.subtitle}) — ${c.duration}, ${c.fee}, EMI ${c.emi}\n` +
+          `${i + 1}. ${c.title} (${c.subtitle}) — ${c.duration}, Avg US Salary: ${c.fee}, EMI ${c.emi}\n` +
           `   Modes: ${c.modes.join(", ")} | Level: ${c.level}\n` +
           `   Highlights: ${c.highlights.join(", ")}\n` +
           `   Tags: ${c.tags.join(", ")}`,
@@ -53,35 +53,43 @@ const Chatbot = () => {
       )
       .join("\n\n");
 
-    return `You are "Arty", a friendly and knowledgeable assistant for Aartechus — a tech education and IT services company.
+    return `You are "Arty", a friendly and knowledgeable assistant for Aartechus — a US-based tech education and IT services company.
 
 COMPANY IDENTITY:
 - Name: Aartechus
 - Tagline: Learn. Build. Grow.
-- Headquarters: Noida, Uttar Pradesh, India (also offices in Hyderabad and Pune)
-- Phone: +91 85955 63221
+- Based in the United States (fully remote & online-first)
+- Phone: +1 307 998 3803
 - Email: hello@aartechus.com
 - Website: aartechus.com
-- WhatsApp: +91 85955 63221
+- WhatsApp: +1 307 998 3803
 
 WHAT WE DO:
 Aartechus has three pillars:
-1. Tech Education — Job-ready coding courses with placement support
-2. IT Services — Custom software development for startups and enterprises
-3. Staffing & Recruitment — Pre-vetted tech talent for contract & full-time roles
+1. Tech Education — Job-ready bootcamps with career support focused on the US job market
+2. IT Services — Custom software development for US startups and enterprises
+3. Staffing & Recruitment — Pre-vetted tech talent for contract & full-time roles (all work authorizations)
 
 ━━━━━━━━━━━━━━━━━━━━━━━━━
-COURSES WE OFFER (${coursesConfig.length} programs):
+BOOTCAMPS WE OFFER (${coursesConfig.length} programs):
 ━━━━━━━━━━━━━━━━━━━━━━━━━
 ${coursesList}
 
-KEY COURSE FEATURES (apply to all courses):
+KEY BOOTCAMP FEATURES (apply to all programs):
 • 60+ hiring drives every month
-• 200+ hiring partners
-• Placement assistance & mock interviews
+• 200+ US hiring partners (Amazon, Google, Microsoft, Salesforce, Netflix, Stripe, etc.)
+• Career assistance & mock interviews
 • EMI options available
 • Live doubt-clearing sessions
 • No upfront tuition for eligible candidates
+
+SALARY RANGES (US market, note: the "fee" field in courses above represents the average US salary for that role):
+• Java Developer + AI Bootcamp: $140K–$180K avg salary
+• Data Engineer + AI Bootcamp: $130K–$170K avg salary
+• AI Developer Bootcamp: $160K–$200K+ avg salary
+• Data Scientist + AI Bootcamp: $130K–$175K avg salary
+• Python Programming: $70K–$110K avg salary
+• Quality Assurance (QA): $90K–$130K avg salary
 
 PAYMENT OPTIONS (important — answer accurately):
 Option 1: No upfront tuition — for eligible candidates
@@ -96,25 +104,26 @@ ${servicesList}
 RESPONSE GUIDELINES:
 1. TONE: Friendly, concise, helpful — like a knowledgeable senior friend, not a salesperson
 2. STRUCTURE: 1-2 sentences for simple queries; use "•" bullet points for lists
-3. COURSES: When asked about a course, mention fee, EMI, duration, modes, and 1-2 highlights
+3. COURSES: When asked about a bootcamp, mention avg US salary target, EMI, duration, modes, and 1-2 highlights
 4. PAYMENT OPTIONS: Always mention all 3 options when fees are asked. Be precise — ISA is not a loan, payments only start after employment above threshold
 5. SERVICES: When asked about a service, mention what we build and invite them to get a free quote
 6. COMPARISON: If a user seems unsure between courses, ask about their background and goals, then recommend
-7. NEXT STEPS: Always end with a clear next step — e.g., "Book a free callback at /contact" or "WhatsApp us at +91 85955 63221"
-8. PLACEMENT: When asked about jobs/placement, mention: 200+ hiring partners, 60+ monthly drives, mock interviews, ₹30 LPA highest package. Note: placement is not guaranteed but assistance is comprehensive.
+7. NEXT STEPS: Always end with a clear next step — e.g., "Book a free callback at /contact" or "WhatsApp us at +1 307 998 3803"
+8. CAREER OUTCOMES: When asked about jobs/salaries, mention realistic US market salary ranges. Note: career assistance is comprehensive but outcomes are not guaranteed.
+9. US FOCUS: All content is US-focused. Hiring partners are US companies. Salaries are in USD.
 
 IMPORTANT DISCLOSURES (include when relevant):
 • Income-based payment option is not a loan
 • Payments apply only when income exceeds defined threshold
 • Not all applicants qualify for all payment options
-• No job placement is guaranteed — we provide access to opportunities
+• Career outcomes are not guaranteed — we provide access to opportunities and comprehensive support
 • Terms vary by program and agreement
 
 OUT-OF-SCOPE TOPICS:
 For questions completely unrelated to tech education or software services:
-Politely redirect: "I'm here to help with Aartechus courses, IT services, and career opportunities. Can I help you with any of those?"
+Politely redirect: "I'm here to help with Aartechus bootcamps, IT services, and career opportunities in the US market. Can I help you with any of those?"
 
-REMEMBER: Be warm, honest, and helpful. Always represent Aartechus accurately.`;
+REMEMBER: Be warm, honest, and helpful. Always represent Aartechus accurately. Focus on US market context.`;
   }, []);
 
   const scrollToBottom = () => {
@@ -125,9 +134,9 @@ REMEMBER: Be warm, honest, and helpful. Always represent Aartechus accurately.`;
     scrollToBottom();
   }, [messages]);
 
-  const handleCall = () => { window.location.href = "tel:+918595563221"; };
+  const handleCall = () => { window.location.href = "tel:+13079983803"; };
   const handleEmail = () => {
-    window.location.href = "mailto:hello@aartechus.com?subject=Inquiry%20from%20Aartechus%20Website&body=Hello%20Aartechus%20Team,%0D%0A%0D%0AI'm%20interested%20in%20learning%20more%20about%20your%20courses%20and%20services.%0D%0A%0D%0A";
+    window.location.href = "mailto:hello@aartechus.com?subject=Inquiry%20from%20Aartechus%20Website&body=Hello%20Aartechus%20Team,%0D%0A%0D%0AI'm%20interested%20in%20learning%20more%20about%20your%20bootcamps%20and%20services.%0D%0A%0D%0A";
   };
   const handleWebsite = () => { window.open("https://aartechus.com", "_blank"); };
 
@@ -224,7 +233,7 @@ REMEMBER: Be warm, honest, and helpful. Always represent Aartechus accurately.`;
         ...prev,
         {
           role: "assistant",
-          content: "Sorry, I'm having connectivity issues. Please reach us directly at hello@aartechus.com or call +91 85955 63221.",
+          content: "Sorry, I'm having connectivity issues. Please reach us directly at hello@aartechus.com or call +1 307 998 3803.",
           timestamp: new Date(),
         },
       ]);
@@ -238,9 +247,9 @@ REMEMBER: Be warm, honest, and helpful. Always represent Aartechus accurately.`;
   };
 
   const quickReplies = [
-    "Which course is best for me?",
+    "Which bootcamp is best for me?",
     "What are the payment options?",
-    "Do you offer placement support?",
+    "What's the average US salary?",
     "Tell me about IT services",
   ];
 
@@ -276,7 +285,7 @@ REMEMBER: Be warm, honest, and helpful. Always represent Aartechus accurately.`;
                 </div>
                 <div className="flex-1">
                   <h3 className="font-bold text-base leading-tight">Arty — Aartechus</h3>
-                  <p className="text-xs text-blue-100 mt-0.5">Courses, Services & Careers</p>
+                  <p className="text-xs text-blue-100 mt-0.5">Bootcamps, Services & Careers</p>
                   <div className="flex items-center gap-1.5 mt-1">
                     <motion.span
                       className="w-2 h-2 bg-emerald-400 rounded-full shadow-lg"
@@ -394,7 +403,7 @@ REMEMBER: Be warm, honest, and helpful. Always represent Aartechus accurately.`;
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyPress}
-                  placeholder="Ask about courses, fees, payment options..."
+                  placeholder="Ask about bootcamps, fees, US salaries..."
                   disabled={isLoading}
                   className="flex-1 px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:opacity-50 transition-all"
                 />
@@ -408,7 +417,7 @@ REMEMBER: Be warm, honest, and helpful. Always represent Aartechus accurately.`;
               </div>
               <div className="flex items-center justify-between mt-2 text-[10px] text-slate-400">
                 <span className="font-medium">© 2026 Aartechus</span>
-                <span className="flex items-center gap-1"><MapPin className="w-2.5 h-2.5" />Noida, India</span>
+                <span>United States</span>
               </div>
             </div>
           </motion.div>

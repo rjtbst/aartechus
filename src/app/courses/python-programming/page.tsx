@@ -3,73 +3,107 @@ import CourseDetailPage from "@/components/ui/CourseDetailPage";
 import type { CourseDetail } from "@/components/ui/CourseDetailPage";
 
 export const metadata: Metadata = {
-  title: "Python Programming Course — Core to Advanced",
-  description: "Master Python from fundamentals to advanced topics including OOP, APIs, automation, and Flask. 4-month beginner-friendly program with placement support.",
+  title: "Python Programming — Core to Advanced",
+  description: "Master Python from fundamentals to advanced topics including OOP, APIs, automation, and Flask. Salary range $70K–$110K.",
 };
 
 const course: CourseDetail = {
   title: "Python Programming",
   subtitle: "Core to Advanced",
-  badge: "BEGINNER FRIENDLY",
-  badgeColor: "badge-blue",
-  color: "from-cyan-600 to-teal-500",
+  badge: "",
+  badgeColor: "",
+  color: "from-teal-500 to-cyan-600",
   emoji: "🐍",
   duration: "4 Months",
   students: "3,000+",
   rating: 4.8,
   reviews: 850,
-  fee: "₹39,999",
-  emi: "₹2,100/mo",
-  level: "Absolute Beginner",
+  fee: "$70,000",
+  emi: "$1,400/mo",
+  level: "Beginner to Intermediate",
   nextBatch: "May 5, 2026",
   overview:
-    "The most beginner-friendly Python course in India — no prior coding experience needed. Master Python from the ground up: core syntax, object-oriented programming, file handling, APIs, automation scripts, and Flask web development. Graduate ready for roles in backend development, automation engineering, data engineering, and scripting.",
+    "Python Programming is your entry point into the tech industry. This beginner-friendly program takes you from zero knowledge to building real-world Python applications — covering OOP, APIs, automation scripts, and Flask web development. Whether you're pivoting into tech or building a foundation for an AI/data science role, this is the perfect starting point.",
   whatYouLearn: [
-    "Python fundamentals: variables, loops, functions",
-    "Object-Oriented Programming (OOP)",
-    "File handling & exception management",
-    "Working with APIs (requests, JSON)",
+    "Python syntax, data types & control flow",
+    "Functions, modules & packages",
+    "Object-oriented programming (OOP)",
+    "File I/O & exception handling",
+    "Working with APIs & JSON",
     "Automation scripts & task scheduling",
-    "Flask web framework basics",
-    "NumPy & Pandas for data handling",
-    "Database interaction with SQLite / MySQL",
-    "Unit testing with pytest",
-    "Git & GitHub workflow",
+    "NumPy & Pandas fundamentals",
+    "Flask web framework & REST APIs",
+    "Database integration (SQLite, PostgreSQL)",
+    "Testing with pytest & debugging techniques",
   ],
   curriculum: [
-    { module: "Python Fundamentals", topics: ["Variables & data types", "Conditionals & loops", "Functions & scope", "Lists, tuples, dicts", "String manipulation", "Input/output basics"], weeks: "Weeks 1–3" },
-    { module: "Object-Oriented Programming", topics: ["Classes & objects", "Inheritance & polymorphism", "Encapsulation & abstraction", "Magic/dunder methods", "Decorators", "Modules & packages"], weeks: "Weeks 4–6" },
-    { module: "File Handling & Error Management", topics: ["Reading/writing files", "CSV & JSON processing", "Exception handling", "Context managers", "Logging", "Debugging techniques"], weeks: "Weeks 7–8" },
-    { module: "APIs & Automation", topics: ["HTTP & REST basics", "requests library", "Web scraping with BeautifulSoup", "Task automation scripts", "Scheduled jobs (cron)", "Email & Slack automation"], weeks: "Weeks 9–11" },
-    { module: "Flask Web Development", topics: ["Flask routing & templates", "Forms & validation", "SQLite with Flask", "REST API with Flask", "Authentication basics", "Deployment on Heroku / Railway"], weeks: "Weeks 12–14" },
-    { module: "Data & Testing", topics: ["NumPy arrays", "Pandas DataFrames", "Matplotlib basics", "pytest unit testing", "Virtual environments", "Git workflow"], weeks: "Weeks 15–16" },
+    {
+      module: "Python Fundamentals",
+      topics: ["Variables, data types, operators", "Control flow (if/else, loops)", "Functions & scope", "Lists, tuples, dicts, sets", "String manipulation", "Modules & packages"],
+      weeks: "Weeks 1–3",
+    },
+    {
+      module: "Object-Oriented Python",
+      topics: ["Classes & objects", "Inheritance & polymorphism", "Encapsulation & abstraction", "Dunder methods", "Decorators", "Generators & iterators"],
+      weeks: "Weeks 4–6",
+    },
+    {
+      module: "Python for Automation & APIs",
+      topics: ["File & directory automation", "Web scraping with BeautifulSoup", "Requests library & REST APIs", "JSON & XML parsing", "Task scheduling (cron)", "Email & notification automation"],
+      weeks: "Weeks 7–9",
+    },
+    {
+      module: "Data Fundamentals",
+      topics: ["NumPy arrays & operations", "Pandas DataFrames", "Data cleaning & manipulation", "Matplotlib for visualization", "CSV & Excel processing", "Database queries with SQLAlchemy"],
+      weeks: "Weeks 10–12",
+    },
+    {
+      module: "Flask & Web Development",
+      topics: ["Flask setup & routing", "Templates (Jinja2)", "Forms & user authentication", "REST API with Flask", "SQLite & PostgreSQL integration", "Deploying Flask to AWS"],
+      weeks: "Weeks 13–14",
+    },
+    {
+      module: "Projects & Career Prep",
+      topics: ["Automation toolkit project", "REST API project", "Resume & LinkedIn", "Python interview prep", "Coding challenge practice", "Portfolio on GitHub"],
+      weeks: "Weeks 15–16",
+    },
   ],
   projects: [
-    { title: "Task Automation Bot", desc: "Python bot that automates file organization, email notifications, and daily reports.", tech: ["Python", "Schedule", "smtplib", "pathlib"] },
-    { title: "REST API with Flask", desc: "Full CRUD API for a todo application with authentication and SQLite database.", tech: ["Flask", "SQLite", "JWT", "pytest"] },
-    { title: "Web Scraper & Dashboard", desc: "Scrapes job listings from multiple sites and visualizes trends in a dashboard.", tech: ["BeautifulSoup", "Pandas", "Matplotlib", "Flask"] },
-    { title: "CLI Data Analysis Tool", desc: "Command-line tool that reads CSV data, performs analysis, and generates reports.", tech: ["Python", "Pandas", "argparse", "Rich"] },
+    {
+      title: "Automation Toolkit",
+      desc: "A suite of Python scripts for file management, web scraping, email notifications, and report generation.",
+      tech: ["Python", "BeautifulSoup", "SMTP", "Pandas", "Schedule"],
+    },
+    {
+      title: "REST API with Flask",
+      desc: "Full CRUD REST API with user authentication, PostgreSQL backend, and comprehensive pytest test suite.",
+      tech: ["Flask", "PostgreSQL", "SQLAlchemy", "JWT", "pytest"],
+    },
+    {
+      title: "Data Dashboard",
+      desc: "Python data pipeline that fetches, cleans, and visualizes business data from multiple sources.",
+      tech: ["Pandas", "NumPy", "Matplotlib", "APIs", "CSV"],
+    },
   ],
   mentors: [
-    { name: "Arjun Mehta", company: "Flipkart", role: "Backend Engineer", exp: "6 years" },
-    { name: "Kavya Iyer", company: "Razorpay", role: "Python Developer", exp: "5 years" },
-    { name: "Suresh Nair", company: "Freshworks", role: "Senior SDE", exp: "7 years" },
-    { name: "Ritika Sharma", company: "Swiggy", role: "Automation Engineer", exp: "4 years" },
+    { name: "Kevin Brooks", company: "Twilio", role: "Python Developer", exp: "7 years" },
+    { name: "Amy Chen", company: "GitHub", role: "Software Engineer", exp: "6 years" },
+    { name: "Daniel Rivera", company: "Cloudflare", role: "Backend Developer", exp: "8 years" },
   ],
   placementStats: [
-    { label: "Placement Rate", value: "85%", color: "text-green-400" },
-    { label: "Average Package", value: "₹7 LPA", color: "text-purple-400" },
-    { label: "Highest Package", value: "₹14 LPA", color: "text-orange-400" },
-    { label: "Students Placed", value: "2.2K+", color: "text-blue-400" },
+    { label: "Avg Salary Range", value: "$70K–$110K", color: "text-green-400" },
+    { label: "Top Employers", value: "Twilio, Cloudflare", color: "text-purple-400" },
+    { label: "Highest Offer", value: "$110K", color: "text-orange-400" },
+    { label: "Students Placed", value: "2.1K+", color: "text-blue-400" },
   ],
   faqs: [
-    { q: "Do I need any prior coding experience?", a: "No! This course starts from absolute zero. If you can use a computer, you can join." },
-    { q: "How is this different from free Python tutorials online?", a: "You get live classes, 1:1 mentorship, doubt sessions, real project reviews, and active placement support — not just video lectures." },
-    { q: "What jobs can I get after this course?", a: "Python Developer, Backend Engineer, Automation Engineer, Junior Data Analyst, QA Automation Engineer, and more." },
-    { q: "Can I combine this with Data Science later?", a: "Absolutely. Python Programming is the perfect foundation to then move into our Data Science & AI or Data Analytics courses." },
+    { q: "Is this course truly for beginners?", a: "Yes — no prior coding experience needed. We start from absolute basics and progress to building real applications you can show in interviews." },
+    { q: "Can this course lead to a career in AI/Data Science?", a: "Absolutely. Python is the foundation of all our AI and Data Science programs. Completing this course makes you ready to enroll in our AI Developer Bootcamp or Data Scientist program." },
+    { q: "What can I build by the end of this course?", a: "You'll build automation scripts, REST APIs, data pipelines, and a Flask web application — all deployable and portfolio-ready." },
+    { q: "What jobs can I get with Python skills?", a: "Junior Python Developer, Backend Developer, Automation Engineer, and QA Automation Engineer — with a clear pathway to Data Science and AI roles." },
   ],
 };
 
-export default function PythonPage() {
+export default function PythonProgrammingPage() {
   return <CourseDetailPage course={course} />;
 }

@@ -4,8 +4,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import {
   Clock, Users, Star, ArrowRight, CheckCircle2, ChevronDown,
-  Play, BookOpen, Award, Briefcase, Download, Phone,
-  Code2, Zap, Target, TrendingUp, Calendar
+  BookOpen, Award, Briefcase, Phone,
+  Code2, Zap, Target, TrendingUp, Calendar, DollarSign
 } from "lucide-react";
 
 export interface CourseDetail {
@@ -55,7 +55,9 @@ export default function CourseDetailPage({ course }: Props) {
             <div className="lg:col-span-2">
               <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }}>
                 <div className="flex items-center gap-3 mb-5">
-                  <span className={`badge ${course.badgeColor}`}>{course.badge}</span>
+                  {course.badge && (
+                    <span className={`badge ${course.badgeColor}`}>{course.badge}</span>
+                  )}
                   <span className="text-black/60 text-sm">•</span>
                   <span className="text-black/60 text-sm">{course.level}</span>
                 </div>
@@ -117,20 +119,22 @@ export default function CourseDetailPage({ course }: Props) {
               <div className="glass rounded-3xl overflow-hidden border border-primary/20">
                 <div className={`h-1.5 bg-gradient-to-r ${course.color}`} />
                 <div className="p-6">
-                  {/* Preview video */}
-                  <div className="relative aspect-video rounded-2xl overflow-hidden glass mb-6 cursor-pointer group">
-                    <div className={`absolute inset-0 bg-gradient-to-br ${course.color} opacity-20`} />
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <div className="play-btn group-hover:scale-110 transition-transform">
-                        <Play size={22} fill="white" />
-                      </div>
+                  {/* Course image / hero banner */}
+                  <div className={`relative rounded-2xl overflow-hidden mb-6 bg-gradient-to-br ${course.color} p-6 flex items-center justify-center`} style={{ minHeight: 120 }}>
+                    <div className="text-center">
+                      <div className="text-5xl mb-2">{course.emoji}</div>
+                      <div className="text-white font-syne font-bold text-lg leading-tight">{course.title}</div>
+                      <div className="text-white/70 text-sm mt-1">{course.subtitle}</div>
                     </div>
-                    <div className="absolute bottom-3 left-3 text-xs text-black/70 font-medium">Preview Course</div>
                   </div>
 
                   <div className="mb-4">
-                    <div className="font-syne font-extrabold text-3xl text-black">{course.fee}</div>
-                    <div className="text-black/60 text-sm">or <span className="text-black font-medium">{course.emi}</span> with 0% EMI</div>
+                    <div className="flex items-center gap-2 mb-1">
+                      <DollarSign size={18} className="text-primary" />
+                      <span className="font-syne font-extrabold text-2xl text-black">{course.fee}</span>
+                      <span className="text-black/40 text-xs ml-1">avg. US salary</span>
+                    </div>
+                    <div className="text-black/60 text-sm">Course fee: <span className="text-black font-medium">{course.emi}</span> with 0% EMI</div>
                   </div>
 
                   <button className="glow-btn w-full py-3.5 rounded-xl font-semibold text-black mb-3 flex items-center justify-center gap-2">
@@ -158,10 +162,6 @@ export default function CourseDetailPage({ course }: Props) {
                       </div>
                     ))}
                   </div>
-
-                  {/* <button className="mt-5 outline-btn w-full py-2.5 rounded-xl text-sm font-medium text-black/50 flex items-center justify-center gap-2">
-                    <Download size={13} /> Download Brochure
-                  </button> */}
                 </div>
               </div>
             </motion.div>
@@ -278,7 +278,7 @@ export default function CourseDetailPage({ course }: Props) {
             {activeTab === "mentors" && (
               <div>
                 <h2 className="font-syne font-bold text-3xl text-black mb-3">Industry Expert Mentors</h2>
-                <p className="text-black/40 mb-8">Learn from engineers at top product & service companies.</p>
+                <p className="text-black/40 mb-8">Learn from engineers at top US tech companies.</p>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6">
                   {course.mentors.map((m, i) => (
                     <motion.div
@@ -304,8 +304,8 @@ export default function CourseDetailPage({ course }: Props) {
             {/* PLACEMENT */}
             {activeTab === "placement" && (
               <div>
-                <h2 className="font-syne font-bold text-3xl text-black mb-3">Placement Track Record</h2>
-                <p className="text-black/40 mb-10">Proven results from our alumni community.</p>
+                <h2 className="font-syne font-bold text-3xl text-black mb-3">Career Outcomes</h2>
+                <p className="text-black/40 mb-10">Real results from our alumni community across the US.</p>
                 <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 mb-12">
                   {course.placementStats.map((s, i) => (
                     <motion.div
@@ -325,7 +325,7 @@ export default function CourseDetailPage({ course }: Props) {
                     <TrendingUp size={18} className="text-primary" /> Our Hiring Partners
                   </h3>
                   <div className="flex flex-wrap gap-3">
-                    {["Amazon", "Salesforce", "Walmart", "Flipkart", "Paytm", "Infosys", "TCS", "Wipro", "HCL", "Capgemini", "Accenture", "IBM", "Cognizant", "Tech Mahindra", "Mphasis"].map((c) => (
+                    {["Amazon", "Google", "Microsoft", "Apple", "Meta", "Salesforce", "Netflix", "Uber", "Stripe", "Airbnb", "LinkedIn", "Palantir", "Twilio", "Cloudflare", "Databricks"].map((c) => (
                       <span key={c} className="px-3 py-1.5 rounded-lg bg-white/5 border border-white/10 text-sm text-black/50 hover:border-primary/30 transition-colors">{c}</span>
                     ))}
                   </div>
