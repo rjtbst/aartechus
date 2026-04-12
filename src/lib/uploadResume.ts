@@ -7,8 +7,8 @@ export async function uploadResume(file: File): Promise<string> {
     {
       method: "POST",
       headers: {
-        apikey:        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
-        Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!}`,
+        apikey:        process.env.NEXT_PUBLIC_SUPABASE_ANON!,
+        Authorization: `Bearer ${process.env.NEXT_PUBLIC_SUPABASE_ANON!}`,
         "Content-Type": file.type || "application/octet-stream",
         "x-upsert": "false",
       },
