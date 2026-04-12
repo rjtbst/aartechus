@@ -2,45 +2,66 @@
 import { useState } from "react";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
-import { Phone, ArrowRight, CheckCircle2, Sparkles } from "lucide-react";
+import { Phone, ArrowRight, CheckCircle2, Sparkles, Paperclip, X } from "lucide-react";
+import { courseSelectOptions } from "@/config/coursesConfig";
+import { servicesConfig } from "@/config/servicesConfig";
+import { uploadResume } from "@/lib/uploadResume";
 
-const FORMSPREE_ID = "mdapvpqr";
+const serviceOptions  = servicesConfig.map((s) => s.title);
+const workAuthOptions = ["US Citizen", "Green Card", "H1B", "EAD", "TN", "Other"];
 
 export default function CTASection() {
-  const [form, setForm] = useState({ name: "", phone: "", email: "", course: "", workAuth: "" });
+  const [form, setForm] = useState({
+    name: "", phone: "", email: "", course: "", workAuth: "", message: "",
+  });
+  const [resume,    setResume]    = useState<File | null>(null);
+  const [uploading, setUploading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
-  const [loading, setLoading] = useState(false);
+  const [loading,   setLoading]   = useState(false);
+
+  const handleResumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("File too large", { description: "Max size is 5 MB." });
+      e.target.value = "";
+      return;
+    }
+    setResume(file);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
-
     const toastId = toast.loading("Sending your request…");
-
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      let resumeUrl = "";
+      if (resume) {
+        setUploading(true);
+        toast.loading("Uploading resume…", { id: toastId });
+        resumeUrl = await uploadResume(resume);
+        setUploading(false);
+      }
+      toast.loading("Sending your request…", { id: toastId });
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify(form),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ inquiryType: "callback", ...form, resumeUrl }),
       });
-
       if (res.ok) {
         toast.success("Request received! Our counselor will call you in 30 mins.", {
-          id: toastId,
-          description: "Check your inbox for a confirmation.",
+          id: toastId, description: "Check your inbox for a confirmation.",
         });
         setSubmitted(true);
       } else {
         const data = await res.json();
-        toast.error("Submission failed. Please try again.", {
-          id: toastId,
-          description: data?.error ?? "Server error",
-        });
+        toast.error("Submission failed.", { id: toastId, description: data?.error });
       }
-    } catch {
-      toast.error("Network error. Check your connection.", { id: toastId });
+    } catch (err: any) {
+      toast.error(err?.message ?? "Something went wrong.", { id: toastId });
     } finally {
       setLoading(false);
+      setUploading(false);
     }
   };
 
@@ -48,11 +69,11 @@ export default function CTASection() {
     <section className="relative py-24 overflow-hidden bg-gray-50">
       <div className="absolute inset-0 grid-bg opacity-40" />
       <div className="absolute inset-0 pointer-events-none"
-        style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%, rgba(37,99,235,0.05) 0%, transparent 70%)" }} />
+        style={{ background: "radial-gradient(ellipse 80% 60% at 50% 50%,rgba(37,99,235,0.05) 0%,transparent 70%)" }} />
 
       <div className="relative max-w-5xl mx-auto px-4 sm:px-6">
         <div className="bg-white rounded-3xl overflow-hidden border border-gray-100"
-          style={{ boxShadow: "0 8px 48px rgba(37,99,235,0.08), 0 2px 16px rgba(0,0,0,0.04)" }}>
+          style={{ boxShadow: "0 8px 48px rgba(37,99,235,0.08),0 2px 16px rgba(0,0,0,0.04)" }}>
           <div className="h-1.5" style={{ background: "linear-gradient(to right,#2563eb,#7c3aed,#a855f7)" }} />
 
           <div className="p-8 md:p-14">
@@ -69,24 +90,21 @@ export default function CTASection() {
                     Start Your<br /><span className="text-gradient">Journey Today</span>
                   </h2>
                   <p className="text-gray-500 text-lg leading-relaxed mb-8">
-                    Request a free callback from our expert counselors. Get personalized course recommendations and career roadmap — at zero cost.
+                    Request a free callback from our expert counselors. Get a personalized course recommendation and career roadmap — at zero cost.
                   </p>
-
                   <div className="space-y-3">
                     {[
                       "Free 1:1 career counseling session",
                       "No upfront tuition for eligible candidates",
                       "Income-based payment option (ISA-style) — pay after you're hired",
-                      "Flexible financing — up to full program cost with structured repayment",
+                      "Flexible financing with structured repayment",
                       "No spam — we respect your privacy",
                     ].map((item) => (
                       <div key={item} className="flex items-start gap-3 text-sm text-gray-600">
-                        <CheckCircle2 size={16} className="text-green-500 flex-shrink-0 mt-0.5" />
-                        {item}
+                        <CheckCircle2 size={16} className="text-green-500 flex-shrink-0 mt-0.5" />{item}
                       </div>
                     ))}
                   </div>
-
                   <div className="mt-8 flex items-center gap-3 p-4 rounded-xl bg-blue-50 border border-blue-100">
                     <div className="w-10 h-10 rounded-xl bg-blue-100 flex items-center justify-center">
                       <Phone size={18} className="text-blue-600" />
@@ -99,7 +117,7 @@ export default function CTASection() {
                 </motion.div>
               </div>
 
-              {/* Right: Form */}
+              {/* Right form */}
               <motion.div initial={{ opacity: 0, x: 30 }} whileInView={{ opacity: 1, x: 0 }} viewport={{ once: true }} transition={{ delay: 0.2 }}>
                 {submitted ? (
                   <div className="text-center py-12">
@@ -115,13 +133,13 @@ export default function CTASection() {
                   <form onSubmit={handleSubmit} className="space-y-4">
                     <div>
                       <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Full Name *</label>
-                      <input type="text" placeholder="Enter your full name" value={form.name}
-                        onChange={(e) => setForm({ ...form, name: e.target.value })} required className="w-full px-4 py-3 rounded-xl text-sm" />
+                      <input type="text" placeholder="Enter your full name" required value={form.name}
+                        onChange={(e) => setForm({ ...form, name: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm" />
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Phone Number *</label>
-                      <input type="tel" placeholder="+1 (XXX) XXX-XXXX" value={form.phone}
-                        onChange={(e) => setForm({ ...form, phone: e.target.value })} required className="w-full px-4 py-3 rounded-xl text-sm" />
+                      <input type="tel" placeholder="+1 (XXX) XXX-XXXX" required value={form.phone}
+                        onChange={(e) => setForm({ ...form, phone: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm" />
                     </div>
                     <div>
                       <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Email Address</label>
@@ -134,18 +152,10 @@ export default function CTASection() {
                       <select value={form.course} onChange={(e) => setForm({ ...form, course: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
                         <option value="">Select a course / service</option>
                         <optgroup label="Training Courses">
-                          <option>Java Developer + AI Bootcamp</option>
-                          <option>Data Engineer + AI Bootcamp</option>
-                          <option>AI Developer Bootcamp</option>
-                          <option>Data Scientist + AI Bootcamp</option>
-                          <option>Python Programming</option>
-                          <option>Quality Assurance (QA)</option>
+                          {courseSelectOptions.map((c) => <option key={c}>{c}</option>)}
                         </optgroup>
                         <optgroup label="IT Services">
-                          <option>Web Development</option>
-                          <option>Mobile App Development</option>
-                          <option>AI / ML Solutions</option>
-                          <option>Staffing & Recruitment</option>
+                          {serviceOptions.map((s) => <option key={s}>{s}</option>)}
                         </optgroup>
                         <option>Other</option>
                       </select>
@@ -155,29 +165,51 @@ export default function CTASection() {
                       <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Work Authorization</label>
                       <select value={form.workAuth} onChange={(e) => setForm({ ...form, workAuth: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
                         <option value="">Select work authorization</option>
-                        <option>US Citizen</option>
-                        <option>Green Card</option>
-                        <option>H1B</option>
-                        <option>EAD</option>
-                        <option>TN</option>
-                        <option>Other</option>
+                        {workAuthOptions.map((o) => <option key={o}>{o}</option>)}
                       </select>
                     </div>
 
-                    <button type="submit" disabled={loading}
+                    {/* Resume Upload */}
+                    <div>
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">
+                        Resume <span className="normal-case font-normal text-gray-400">(optional · PDF/DOC, max 5 MB)</span>
+                      </label>
+                      <label className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl border cursor-pointer transition-all
+                        ${resume ? "bg-green-50 border-green-200" : "bg-gray-50 border-gray-200 hover:border-blue-300 hover:bg-blue-50"}`}>
+                        <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 ${resume ? "bg-green-100" : "bg-gray-200"}`}>
+                          {resume ? <CheckCircle2 size={14} className="text-green-600" /> : <Paperclip size={14} className="text-gray-500" />}
+                        </div>
+                        <span className={`text-sm truncate flex-1 ${resume ? "text-green-700" : "text-gray-400"}`}>
+                          {uploading ? "Uploading…" : resume ? resume.name : "Click to attach your resume"}
+                        </span>
+                        {resume && !uploading && (
+                          <button type="button" onClick={(e) => { e.preventDefault(); setResume(null); }}
+                            className="flex-shrink-0 w-5 h-5 rounded-full bg-gray-200 hover:bg-red-100 flex items-center justify-center transition-colors">
+                            <X size={11} className="text-gray-500 hover:text-red-500" />
+                          </button>
+                        )}
+                        <input type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={handleResumeChange} />
+                      </label>
+                    </div>
+
+                    <div>
+                      <label className="text-xs font-semibold text-gray-500 uppercase tracking-wider mb-1.5 block">Any Questions?</label>
+                      <textarea rows={3} placeholder="Any specific questions or concerns?" value={form.message}
+                        onChange={(e) => setForm({ ...form, message: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl text-sm resize-none" />
+                    </div>
+
+                    <button type="submit" disabled={loading || uploading}
                       className="glow-btn w-full flex items-center justify-center gap-2 py-4 rounded-xl font-semibold text-white text-base mt-2 disabled:opacity-60 disabled:cursor-not-allowed">
-                      {loading ? (
-                        <>
-                          <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                      {loading
+                        ? <><svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
-                          </svg>
-                          Sending…
-                        </>
-                      ) : (
-                        <>Request Free Callback<ArrowRight size={18} /></>
-                      )}
+                          </svg>{uploading ? "Uploading resume…" : "Sending…"}</>
+                        : <>Request Free Callback <ArrowRight size={18} /></>
+                      }
                     </button>
+
                     <p className="text-center text-xs text-gray-400">
                       By submitting, you agree to our{" "}
                       <a href="/privacy" className="text-blue-600 hover:underline">Privacy Policy</a>

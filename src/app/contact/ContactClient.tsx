@@ -1,13 +1,15 @@
 "use client";
-
 import { useState } from "react";
 import { useSearchParams } from "next/navigation";
 import { motion } from "framer-motion";
 import { toast } from "sonner";
 import {
   Mail, Phone, CheckCircle2, ArrowRight,
-  MessageCircle, Briefcase, GraduationCap, Clock,
+  MessageCircle, Briefcase, GraduationCap, Clock, Paperclip, X,
 } from "lucide-react";
+import { courseSelectOptions } from "@/config/coursesConfig";
+import { servicesConfig } from "@/config/servicesConfig";
+import { uploadResume } from "@/lib/uploadResume";
 
 type InquiryType = "callback" | "project" | "general";
 
@@ -17,57 +19,80 @@ const inquiryTypes = [
   { id: "general"  as InquiryType, label: "General Query",    icon: MessageCircle,  desc: "Ask us anything"           },
 ];
 
-const budgetOptions = ["$10K – $50K", "$50K – $150K", "$150K – $500K", "$500K+"];
-
-const FORMSPREE_ID = "mdapvpqr";
+const serviceOptions  = servicesConfig.map((s) => s.title);
+const budgetOptions   = ["< $5K", "$5K – $20K", "$20K – $50K", "$50K – $150K", "$150K+"];
+const workAuthOptions = ["US Citizen", "Green Card", "H1B", "EAD", "TN", "Other"];
 
 export default function ContactClient() {
   const searchParams = useSearchParams();
   const initialType  = (searchParams.get("type") as InquiryType) || "callback";
 
-  const [type, setType]       = useState<InquiryType>(initialType);
-  const [loading, setLoading] = useState(false);
-  const [form, setForm]       = useState({ name: "", phone: "", email: "", message: "", course: "", budget: "", workAuth: "" });
+  const [type,      setType]      = useState<InquiryType>(initialType);
+  const [loading,   setLoading]   = useState(false);
+  const [uploading, setUploading] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const [resume,    setResume]    = useState<File | null>(null);
+  const [form,      setForm]      = useState({
+    name: "", phone: "", email: "",
+    message: "", course: "", budget: "", workAuth: "",
+  });
 
   const submitLabel =
     type === "callback" ? "Request Free Callback" :
     type === "project"  ? "Get Project Quote"      : "Send Message";
 
   const messagePlaceholder =
-    type === "project"  ? "Describe your project requirements..."  :
-    type === "callback" ? "Any specific questions or concerns?"    : "How can we help you?";
+    type === "project"  ? "Describe your project requirements…" :
+    type === "callback" ? "Any specific questions or concerns?" : "How can we help you?";
+
+  const handleResumeChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (file.size > 5 * 1024 * 1024) {
+      toast.error("File too large", { description: "Max size is 5 MB." });
+      e.target.value = "";
+      return;
+    }
+    setResume(file);
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setLoading(true);
     const toastId = toast.loading("Sending your message…");
     try {
-      const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
+      let resumeUrl = "";
+      if (resume) {
+        setUploading(true);
+        toast.loading("Uploading resume…", { id: toastId });
+        resumeUrl = await uploadResume(resume);
+        setUploading(false);
+      }
+      toast.loading("Sending your message…", { id: toastId });
+      const res = await fetch("/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json", Accept: "application/json" },
-        body: JSON.stringify({ inquiry_type: type, ...form }),
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ inquiryType: type, ...form, resumeUrl }),
       });
       if (res.ok) {
         toast.success("Message sent! We'll get back to you in 2–4 hours.", {
-          id: toastId,
-          description: "Check your inbox for a confirmation email.",
+          id: toastId, description: "Check your inbox for a confirmation.",
         });
         setSubmitted(true);
       } else {
         const data = await res.json();
-        toast.error("Something went wrong. Please try again.", { id: toastId, description: data?.error ?? "Server error" });
+        toast.error("Something went wrong.", { id: toastId, description: data?.error });
       }
-    } catch {
-      toast.error("Network error. Check your connection and retry.", { id: toastId });
+    } catch (err: any) {
+      toast.error(err?.message ?? "Network error. Try again.", { id: toastId });
     } finally {
       setLoading(false);
+      setUploading(false);
     }
   };
 
   return (
     <div className="min-h-screen bg-bg-primary pt-16">
-      {/* Hero */}
       <section className="relative py-20 mesh-bg overflow-hidden">
         <div className="absolute inset-0 grid-bg opacity-30" />
         <div className="relative max-w-7xl mx-auto px-4 sm:px-6 text-center">
@@ -83,12 +108,11 @@ export default function ContactClient() {
         </div>
       </section>
 
-      {/* Main */}
       <section className="py-16">
         <div className="max-w-6xl mx-auto px-4 sm:px-6">
           <div className="grid lg:grid-cols-3 gap-12">
 
-            {/* Left: Info */}
+            {/* Left info panel */}
             <div className="space-y-6">
               <div className="glass rounded-2xl p-6 border border-white/5">
                 <h3 className="font-syne font-semibold text-black mb-5">Get in Touch</h3>
@@ -122,7 +146,6 @@ export default function ContactClient() {
                   </div>
                 </div>
               </div>
-
               <a href="https://wa.me/13079983803"
                 className="flex items-center gap-3 p-4 rounded-2xl border border-green-500/30 bg-green-500/10 hover:bg-green-500/15 transition-colors group">
                 <div className="w-10 h-10 rounded-xl bg-green-500/20 flex items-center justify-center text-xl">💬</div>
@@ -134,16 +157,15 @@ export default function ContactClient() {
               </a>
             </div>
 
-            {/* Right: Form */}
+            {/* Right form */}
             <div className="lg:col-span-2">
               <div className="glass rounded-3xl p-8 border border-primary/20">
-                {/* Inquiry type selector */}
+                {/* Type selector */}
                 <div className="grid sm:grid-cols-3 gap-3 mb-8">
                   {inquiryTypes.map((t) => (
                     <button key={t.id} onClick={() => setType(t.id)}
                       className={`p-4 rounded-2xl text-left transition-all border ${
-                        type === t.id ? "border-primary/40 bg-primary/10" : "border-white/5 hover:border-white/15 glass"
-                      }`}>
+                        type === t.id ? "border-primary/40 bg-primary/10" : "border-white/5 hover:border-white/15 glass"}`}>
                       <t.icon size={20} className={`mb-2 ${type === t.id ? "text-primary" : "text-gray-400"}`} />
                       <div className={`font-semibold text-sm mb-0.5 ${type === t.id ? "text-black" : "text-gray-300"}`}>{t.label}</div>
                       <div className="text-xs text-gray-500">{t.desc}</div>
@@ -187,67 +209,85 @@ export default function ContactClient() {
                           <select value={form.course} onChange={(e) => setForm({ ...form, course: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
                             <option value="">Select a course / service</option>
                             <optgroup label="Training Courses">
-                              <option>Java Developer + AI Bootcamp</option>
-                              <option>Data Engineer + AI Bootcamp</option>
-                              <option>AI Developer Bootcamp</option>
-                              <option>Data Scientist + AI Bootcamp</option>
-                              <option>Python Programming</option>
-                              <option>Quality Assurance (QA)</option>
+                              {courseSelectOptions.map((c) => <option key={c}>{c}</option>)}
                             </optgroup>
                             <optgroup label="IT Services">
-                              <option>Web Development</option>
-                              <option>Mobile App Development</option>
-                              <option>AI / ML Solutions</option>
-                              <option>Staffing & Recruitment</option>
+                              {serviceOptions.map((s) => <option key={s}>{s}</option>)}
                             </optgroup>
                             <option>Other</option>
                           </select>
                         </div>
-
                         <div>
                           <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5 block">Work Authorization</label>
                           <select value={form.workAuth} onChange={(e) => setForm({ ...form, workAuth: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
                             <option value="">Select work authorization</option>
-                            <option>US Citizen</option>
-                            <option>Green Card</option>
-                            <option>H1B</option>
-                            <option>EAD</option>
-                            <option>TN</option>
-                            <option>Other</option>
+                            {workAuthOptions.map((o) => <option key={o}>{o}</option>)}
                           </select>
                         </div>
                       </>
                     )}
 
                     {type === "project" && (
+                      <>
+                        <div>
+                          <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5 block">Service Needed</label>
+                          <select value={form.course} onChange={(e) => setForm({ ...form, course: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
+                            <option value="">Select a service</option>
+                            {serviceOptions.map((s) => <option key={s}>{s}</option>)}
+                            <option>Other</option>
+                          </select>
+                        </div>
+                        <div>
+                          <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5 block">Estimated Budget</label>
+                          <select value={form.budget} onChange={(e) => setForm({ ...form, budget: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
+                            <option value="">Select budget range</option>
+                            {budgetOptions.map((b) => <option key={b}>{b}</option>)}
+                          </select>
+                        </div>
+                      </>
+                    )}
+
+                    {/* Resume — callback & general only */}
+                    {type !== "project" && (
                       <div>
-                        <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5 block">Estimated Budget</label>
-                        <select value={form.budget} onChange={(e) => setForm({ ...form, budget: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm">
-                          <option value="">Select budget range</option>
-                          {budgetOptions.map((b) => <option key={b}>{b}</option>)}
-                        </select>
+                        <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5 block">
+                          Resume <span className="normal-case font-normal text-gray-500">(optional · PDF/DOC, max 5 MB)</span>
+                        </label>
+                        <label className={`flex items-center gap-3 w-full px-4 py-3 rounded-xl border cursor-pointer transition-all
+                          ${resume ? "bg-green-500/10 border-green-500/30" : "bg-white/5 border-white/10 hover:border-primary/30 hover:bg-primary/5"}`}>
+                          <div className={`w-7 h-7 rounded-lg flex items-center justify-center flex-shrink-0 ${resume ? "bg-green-500/20" : "bg-white/10"}`}>
+                            {resume ? <CheckCircle2 size={14} className="text-green-400" /> : <Paperclip size={14} className="text-gray-400" />}
+                          </div>
+                          <span className={`text-sm truncate flex-1 ${resume ? "text-green-400" : "text-gray-500"}`}>
+                            {uploading ? "Uploading…" : resume ? resume.name : "Click to attach your resume"}
+                          </span>
+                          {resume && !uploading && (
+                            <button type="button" onClick={(e) => { e.preventDefault(); setResume(null); }}
+                              className="flex-shrink-0 w-5 h-5 rounded-full bg-white/10 hover:bg-red-500/20 flex items-center justify-center transition-colors">
+                              <X size={11} className="text-gray-400 hover:text-red-400" />
+                            </button>
+                          )}
+                          <input type="file" accept=".pdf,.doc,.docx" className="hidden" onChange={handleResumeChange} />
+                        </label>
                       </div>
                     )}
 
                     <div>
                       <label className="text-xs font-semibold text-gray-400 uppercase tracking-wider mb-1.5 block">Message</label>
                       <textarea rows={4} placeholder={messagePlaceholder} value={form.message}
-                        onChange={(e) => setForm({ ...form, message: e.target.value })} className="w-full px-4 py-3 rounded-xl text-sm resize-none" />
+                        onChange={(e) => setForm({ ...form, message: e.target.value })}
+                        className="w-full px-4 py-3 rounded-xl text-sm resize-none" />
                     </div>
 
-                    <button type="submit" disabled={loading}
+                    <button type="submit" disabled={loading || uploading}
                       className="glow-btn w-full py-4 rounded-xl font-semibold text-black flex items-center justify-center gap-2 text-base disabled:opacity-60 disabled:cursor-not-allowed">
-                      {loading ? (
-                        <>
-                          <svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
+                      {loading
+                        ? <><svg className="animate-spin h-4 w-4" viewBox="0 0 24 24" fill="none">
                             <circle className="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" strokeWidth="4"/>
                             <path className="opacity-75" fill="currentColor" d="M4 12a8 8 0 018-8v8z"/>
-                          </svg>
-                          Sending…
-                        </>
-                      ) : (
-                        <>{submitLabel}<ArrowRight size={18} /></>
-                      )}
+                          </svg>{uploading ? "Uploading resume…" : "Sending…"}</>
+                        : <>{submitLabel} <ArrowRight size={18} /></>
+                      }
                     </button>
 
                     <p className="text-center text-xs text-gray-500">
@@ -258,7 +298,6 @@ export default function ContactClient() {
                 )}
               </div>
             </div>
-
           </div>
         </div>
       </section>
