@@ -194,7 +194,7 @@ const Navbar = () => {
                                   )}
                                 </div>
                                 <p className="text-xs text-muted-foreground">
-                                  {course.duration} · {course.fee} · {course.modes.map((m) => m === "live" ? "Live" : "Self-paced").join(", ")}
+                                  {course.duration}  · {course.modes.map((m) => m === "live" ? "Live" : "Self-paced").join(", ")}
                                 </p>
                               </div>
                             </button>

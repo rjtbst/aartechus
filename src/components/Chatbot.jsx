@@ -25,7 +25,7 @@ const Chatbot = () => {
     {
       role: "assistant",
       content:
-        "👋 Hi! I'm Arty, your Aartechus assistant. Ask me about our bootcamps, IT services, fees, career outcomes, or payment options — I'm here to help!",
+        "👋 Hi! I'm Arty, your Aartechus assistant. Ask me about our bootcamps, IT services,  career outcomes, or payment options — I'm here to help!",
       timestamp: new Date(),
     },
   ]);
@@ -38,7 +38,7 @@ const Chatbot = () => {
     const coursesList = coursesConfig
       .map(
         (c, i) =>
-          `${i + 1}. ${c.title} (${c.subtitle}) — ${c.duration}, Avg US Salary: ${c.fee}, EMI ${c.emi}\n` +
+          `${i + 1}. ${c.title} (${c.subtitle}) — ${c.duration}, ` +
           `   Modes: ${c.modes.join(", ")} | Level: ${c.level}\n` +
           `   Highlights: ${c.highlights.join(", ")}\n` +
           `   Tags: ${c.tags.join(", ")}`,
@@ -403,7 +403,7 @@ REMEMBER: Be warm, honest, and helpful. Always represent Aartechus accurately. F
                   value={input}
                   onChange={(e) => setInput(e.target.value)}
                   onKeyDown={handleKeyPress}
-                  placeholder="Ask about bootcamps, fees, US salaries..."
+                  placeholder="Ask about bootcamps..."
                   disabled={isLoading}
                   className="flex-1 px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 placeholder:text-slate-400 text-sm focus:outline-none focus:ring-2 focus:ring-primary focus:border-transparent disabled:opacity-50 transition-all"
                 />
