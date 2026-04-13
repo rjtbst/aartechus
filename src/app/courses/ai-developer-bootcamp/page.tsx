@@ -18,8 +18,8 @@ const course: CourseDetail = {
   students: "3,200+",
   rating: 4.9,
   reviews: 870,
-  fee: "$180,000",
-  emi: "$3,600/mo",
+  // fee: "$180,000",
+  // emi: "$3,600/mo",
   level: "Intermediate to Advanced",
   nextBatch: "May 12, 2026",
   overview:

@@ -18,7 +18,7 @@ const workAuthOptions = ["US Citizen", "Green Card", "H1B", "EAD", "TN", "Other"
 export interface CourseDetail {
   title: string; subtitle: string; badge: string; badgeColor: string;
   color: string; emoji: string; duration: string; students: string;
-  rating: number; reviews: number; fee: string; emi: string;
+  rating: number; reviews: number;
   level: string; nextBatch: string; overview: string;
   whatYouLearn: string[];
   curriculum: { module: string; topics: string[]; weeks: string }[];

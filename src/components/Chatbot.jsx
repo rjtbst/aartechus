@@ -84,12 +84,8 @@ KEY BOOTCAMP FEATURES (apply to all programs):
 • No upfront tuition for eligible candidates
 
 SALARY RANGES (US market, note: the "fee" field in courses above represents the average US salary for that role):
-• Java Developer + AI Bootcamp: $140K–$180K avg salary
-• Data Engineer + AI Bootcamp: $130K–$170K avg salary
-• AI Developer Bootcamp: $160K–$200K+ avg salary
-• Data Scientist + AI Bootcamp: $130K–$175K avg salary
-• Python Programming: $70K–$110K avg salary
-• Quality Assurance (QA): $90K–$130K avg salary
+• $70K–$180K avg salary
+
 
 PAYMENT OPTIONS (important — answer accurately):
 Option 1: No upfront tuition — for eligible candidates

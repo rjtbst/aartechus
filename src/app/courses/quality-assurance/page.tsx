@@ -18,8 +18,8 @@ const course: CourseDetail = {
   students: "2,200+",
   rating: 4.7,
   reviews: 610,
-  fee: "₹44,999",
-  emi: "₹2,400/mo",
+  // fee: "₹44,999",
+  // emi: "₹2,400/mo",
   level: "Beginner to Advanced",
   nextBatch: "May 10, 2026",
   overview:

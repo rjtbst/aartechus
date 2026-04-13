@@ -21,8 +21,7 @@ export interface Course {
   cardBg: string;
   href: string;
   tags: string[];
-  fee: string;
-  emi: string;
+
   highlights: string[];
   modes: CourseMode[];
   category: string;
@@ -49,8 +48,7 @@ export const coursesConfig: Course[] = [
     cardBg: "bg-violet-50",
     href: "/courses/java-developer-ai",
     tags: ["Java", "Spring Boot", "Microservices", "AI APIs", "OpenAI", "REST"],
-    fee: "$140,000",
-    emi: "$2,800/mo",
+  
     highlights: [
       "AI API integration",
       "Live doubt sessions",
@@ -82,8 +80,8 @@ export const coursesConfig: Course[] = [
     cardBg: "bg-amber-50",
     href: "/courses/data-engineer-ai",
     tags: ["Spark", "Airflow", "SQL", "AWS", "MLOps", "ML Pipelines"],
-    fee: "$130,000",
-    emi: "$2,600/mo",
+    // fee: "$130,000",
+    // emi: "$2,600/mo",
     highlights: [
       "ML pipeline integration",
       "Real-time AI pipelines",
@@ -116,8 +114,8 @@ export const coursesConfig: Course[] = [
     cardBg: "bg-blue-50",
     href: "/courses/ai-developer-bootcamp",
     tags: ["LLMs", "RAG", "Prompt Engineering", "Vector DBs", "AI Agents", "GenAI"],
-    fee: "$180,000",
-    emi: "$3,600/mo",
+    // fee: "$180,000",
+    // emi: "$3,600/mo",
     highlights: [
       "LLM fine-tuning & RAG",
       "AI Agents & automation",
@@ -150,8 +148,7 @@ export const coursesConfig: Course[] = [
     cardBg: "bg-blue-50",
     href: "/courses/data-scientist-ai",
     tags: ["Python", "ML", "NLP", "Statistics", "GenAI", "Forecasting"],
-    fee: "$150,000",
-    emi: "$3,000/mo",
+  
     highlights: [
       "Advanced ML models",
       "NLP & text analytics",
@@ -184,8 +181,8 @@ export const coursesConfig: Course[] = [
     cardBg: "bg-violet-50",
     href: "/courses/python-programming",
     tags: ["Python", "OOP", "APIs", "Automation", "Flask", "NumPy"],
-    fee: "$70,000",
-    emi: "$1,400/mo",
+    // fee: "$70,000",
+    // emi: "$1,400/mo",
     highlights: [
       "Beginner friendly",
       "Real-world projects",
@@ -217,8 +214,8 @@ export const coursesConfig: Course[] = [
     cardBg: "bg-pink-50",
     href: "/courses/quality-assurance",
     tags: ["Selenium", "Cypress", "JIRA", "Postman", "TestNG", "API Testing"],
-    fee: "$90,000",
-    emi: "$1,800/mo",
+    // fee: "$90,000",
+    // emi: "$1,800/mo",
     highlights: [
       "Manual + automation",
       "Industry tools",
