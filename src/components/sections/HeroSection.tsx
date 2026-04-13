@@ -6,7 +6,7 @@ import { ArrowRight, Play, Star, Users, Briefcase, TrendingUp, Sparkles } from "
 
 const slides = [
   { badge:"35K+ Happy Students", title:"Launch Your", highlight:"Tech Career", sub:"with Expert Training",
-    desc:"Get job-ready with India's most comprehensive coding bootcamps. Live classes, real projects & guaranteed placement support.",
+    desc:"Get job-ready with US's most comprehensive coding bootcamps. Live classes, real projects & guaranteed placement support.",
     cta:"Explore Courses", href:"/courses", blob:"rgba(108,58,255,.2)" },
   { badge:"₹30 LPA Highest Package", title:"Master", highlight:"Data Science", sub:"& Artificial Intelligence",
     desc:"From Python basics to LLMs — build AI-powered products and land data science roles at top companies.",
@@ -96,7 +96,7 @@ export default function HeroSection() {
 
             {/* Trust badges */}
             <motion.div initial={{opacity:0}} animate={{opacity:1}} transition={{delay:.5}} className="flex flex-wrap items-center gap-3 mb-8">
-              {[{l:"IIT Alumni Mentors",c:"badge-purple"},{l:"Y Combinator",c:"badge-orange"},{l:"ISO Certified",c:"badge-green"}].map(b=>(
+              {[{l:"Y Combinator",c:"badge-orange"},{l:"ISO Certified",c:"badge-green"}].map(b=>(
                 <span key={b.l} className={`badge ${b.c}`}><span className="w-1.5 h-1.5 rounded-full bg-current"/>{b.l}</span>
               ))}
             </motion.div>

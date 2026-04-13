@@ -241,7 +241,7 @@ export default function CoursesPageClient() {
                     </div>
 
                     {/* Pricing + CTA */}
-                    <div className="flex items-center justify-between pt-5 border-t border-gray-100">
+                    {/* <div className="flex items-center justify-between pt-5 border-t border-gray-100">
                       <div>
                         <div className="font-extrabold text-2xl text-gray-900">
                           {course.fee}
@@ -257,7 +257,7 @@ export default function CoursesPageClient() {
                       >
                         View Program <ArrowRight size={15} />
                       </Link>
-                    </div>
+                    </div> */}
                   </div>
                 </motion.div>
               ))}

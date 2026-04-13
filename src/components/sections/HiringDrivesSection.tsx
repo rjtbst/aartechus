@@ -130,7 +130,7 @@ export default function HiringDrivesSection() {
                 "Direct company interviews",
                 "Pre-interview prep support",
                 "Remote & hybrid opportunities",
-                "Roles from $70K to $200K+",
+                
               ].map((item) => (
                 <div key={item} className="flex items-center gap-2 text-sm text-gray-600 mb-2">
                   <CheckCircle2 size={14} className="text-green-500 flex-shrink-0" />

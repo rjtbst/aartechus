@@ -5,20 +5,17 @@ import { ArrowRight, Target, Eye, Heart, Users, Award, Globe, Zap, TrendingUp, L
 import HowItWorks from "@/components/sections/HowItWorks";
 
 const team = [
-  { name: "Aarav Sharma", role: "Co-Founder & CEO", bg: "IIT Delhi, Ex-Google", color: "linear-gradient(135deg,#7c3aed,#4f46e5)" },
-  { name: "Priya Verma", role: "Co-Founder & CTO", bg: "IIT Bombay, Ex-Amazon", color: "linear-gradient(135deg,#2563eb,#0891b2)" },
-  { name: "Rohit Kapoor", role: "VP — Education", bg: "NIT Trichy, Ex-Byju's", color: "linear-gradient(135deg,#16a34a,#10b981)" },
-  { name: "Sneha Gupta", role: "VP — Engineering", bg: "IIT Kanpur, Ex-Microsoft", color: "linear-gradient(135deg,#ea580c,#ef4444)" },
-  { name: "Varun Singh", role: "Head — Placements", bg: "MDI Gurgaon, Ex-Naukri", color: "linear-gradient(135deg,#db2777,#f43f5e)" },
-  { name: "Divya Nair", role: "Head — IT Services", bg: "BITS Pilani, Ex-Infosys", color: "linear-gradient(135deg,#ca8a04,#f59e0b)" },
-];
+  { name: "Aarav Sharma", role: "Co-Founder & CEO", bg:", Ex-Google", color: "linear-gradient(135deg,#7c3aed,#4f46e5)" },
+  { name: "Priya Verma", role: "Co-Founder & CTO", bg: " Ex-Amazon", color: "linear-gradient(135deg,#2563eb,#0891b2)" },
+  { name: "Rohit Kapoor", role: "VP — Education", bg: " Ex-Byju's", color: "linear-gradient(135deg,#16a34a,#10b981)" },
+ ];
 
 const values = [
   { icon: Target, title: "Outcome-Focused", desc: "We measure success by your career transformation, not just course completion rates." },
   { icon: Heart, title: "Student-First", desc: "Every decision we make is filtered through one question: does this help our students more?" },
   { icon: Lightbulb, title: "Always Innovating", desc: "We continuously update our curriculum and products to stay ahead of industry trends." },
   { icon: Users, title: "Community-Driven", desc: "35,000+ alumni helping each other grow. Our community is our biggest asset." },
-  { icon: Globe, title: "Global Mindset", desc: "We build for India but think globally. 15+ countries, world-class quality." },
+  { icon: Globe, title: "Global Mindset", desc: "We build for US but think globally. 15+ countries, world-class quality." },
   { icon: Zap, title: "Move Fast", desc: "Startups can't afford slow decision-making. We ship, iterate, and improve constantly." },
 ];
 
@@ -28,8 +25,8 @@ const milestones = [
   { year: "2017", title: "IT Services Launched", desc: "Expanded into premium IT services, delivering software solutions for US startups and enterprises." },
   { year: "2019", title: "Y Combinator Backed", desc: "Backed by Y Combinator. Scaled operations nationally with remote-first delivery across the US." },
   { year: "2021", title: "Gen AI Curriculum", desc: "Launched the first Gen AI integrated Full Stack and Data Science bootcamps in the US market." },
-  { year: "2023", title: "10,000+ Alumni", desc: "Crossed 10,000 alumni placed at companies like Amazon, Google, Microsoft, Salesforce, and Netflix." },
-  { year: "2025", title: "35,000+ Alumni", desc: "500+ IT projects delivered. 200+ US hiring partners. 15+ countries served." },
+  { year: "2023", title: "1,000+ Alumni", desc: "Crossed 1,000 alumni placed at companies like Amazon, Google, Microsoft, Salesforce, and Netflix." },
+  { year: "2025", title: "3,500+ Alumni", desc: "300+ IT projects delivered. 100+ US hiring partners. 15+ countries served." },
 ];
 
 export default function AboutClient() {
@@ -47,7 +44,7 @@ export default function AboutClient() {
                 <span className="text-gradient">Democratize Tech</span>
               </h1>
               <p className="text-gray-700 text-xl leading-relaxed mb-6">
-                AArtechus is India&apos;s next-gen tech education and IT services company, founded by IIT alumni with a singular mission: make world-class tech education accessible to everyone and deliver exceptional IT solutions globally.
+                AArtechus is US&apos;s next-gen tech education and IT services company, focused with a singular mission: make world-class tech education accessible to everyone and deliver exceptional IT solutions globally.
               </p>
               <p className="text-gray-500 leading-relaxed mb-8">
                 We believe talent is equally distributed, but opportunity is not. AArtechus bridges this gap by providing structured training, mentorship, and placement support — turning ambition into careers.
@@ -109,7 +106,7 @@ export default function AboutClient() {
                 color: "text-orange-600",
                 bg: "bg-orange-50",
                 border: "border-orange-100",
-                text: "To become India's most trusted tech education and IT services company — where students transform careers and businesses transform with technology.",
+                text: "To become US's most trusted tech education and IT services company — where students transform careers and businesses transform with technology.",
               },
             ].map((item) => (
               <motion.div key={item.title}
@@ -192,7 +189,7 @@ export default function AboutClient() {
             <h2 className="font-bold text-4xl text-gray-900 mb-3">
               The <span className="text-gradient">Team</span>
             </h2>
-            <p className="text-gray-500 max-w-lg mx-auto">IIT alumni, ex-FAANG engineers, and passionate educators — united by the mission to democratize tech.</p>
+            <p className="text-gray-500 max-w-lg mx-auto">We&apos;re a diverse group of ex-FAANG engineers, and passionate educators — united by the mission to democratize tech.</p>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {team.map((member, i) => (
@@ -218,7 +215,7 @@ export default function AboutClient() {
         <div className="max-w-4xl mx-auto px-4 sm:px-6 text-center">
           <p className="text-gray-400 text-sm uppercase tracking-widest mb-8">Backed By & Recognised As</p>
           <div className="flex flex-wrap justify-center gap-4">
-            {["Y Combinator W21", "LinkedIn Top 20 Startups", "IIT Delhi Alumni Network", "NASSCOM Emerging Company", "India's Top EdTech 2024"].map((badge) => (
+            {["Y Combinator W21", "LinkedIn Top 20 Startups",, "NASSCOM Emerging Company", "US's Top EdTech 2024"].map((badge) => (
               <span key={badge} className="badge badge-blue">{badge}</span>
             ))}
           </div>

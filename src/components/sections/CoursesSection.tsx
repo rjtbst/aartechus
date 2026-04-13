@@ -151,12 +151,7 @@ export default function CoursesSection() {
                       ))}
                     </div>
 
-                    {/* Salary indicator */}
-                    <div className="mb-4">
-                      <span className="text-xs text-green-600 font-semibold bg-green-50 px-2.5 py-1 rounded-full">
-                        Avg US Salary: {course.fee}
-                      </span>
-                    </div>
+                  
 
                     {/* CTA */}
                     <div className="mt-auto">

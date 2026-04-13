@@ -154,9 +154,9 @@ export default function CourseDetailPage({ course }: { course: CourseDetail }) {
                       <div className="text-white/70 text-xs mt-1">{course.subtitle}</div>
                     </div>
                   </div>
-                  <button className="glow-btn w-full py-3.5 rounded-xl font-semibold text-black mb-3 flex items-center justify-center gap-2">
+                  {/* <button className="glow-btn w-full py-3.5 rounded-xl font-semibold text-black mb-3 flex items-center justify-center gap-2">
                     Enroll Now <ArrowRight size={16} />
-                  </button>
+                  </button> */}
                   <Link href="/contact?type=callback" className="outline-btn w-full py-3 rounded-xl font-medium text-black text-sm flex items-center justify-center gap-2">
                     <Phone size={14} /> Request Callback
                   </Link>

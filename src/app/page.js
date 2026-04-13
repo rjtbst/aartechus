@@ -29,10 +29,10 @@ import HowItWorks from "@/components/sections/HowItWorks";
 
 
 const floatingBadges = [
-  { icon: "☕", label: "Java + AI", color: "bg-violet-50 border-violet-200 text-violet-700", delay: 0 },
-  { icon: "🤖", label: "GenAI Dev", color: "bg-rose-50 border-rose-200 text-rose-700", delay: 0.15 },
-  { icon: "📊", label: "Data Science", color: "bg-blue-50 border-blue-200 text-blue-700", delay: 0.3 },
-  { icon: "⚙️", label: "Data Engineer", color: "bg-amber-50 border-amber-200 text-amber-700", delay: 0.45 },
+  { icon: "☕", label: "Java + AI", href: "/courses/java-developer-ai", color: "bg-violet-50 border-violet-200 text-violet-700", delay: 0 },
+  { icon: "🤖", label: "AI Developer", href: "/courses/ai-developer-bootcamp", color: "bg-rose-50 border-rose-200 text-rose-700", delay: 0.15 },
+  { icon: "📊", label: "Data Science", href: "/courses/data-scientist-ai", color: "bg-blue-50 border-blue-200 text-blue-700", delay: 0.3 },
+  { icon: "⚙️", label: "Data Engineer + AI", href: "/courses/data-engineer-ai", color: "bg-amber-50 border-amber-200 text-amber-700", delay: 0.45 },
 ];
 
 const Hero = () => (
@@ -148,8 +148,10 @@ const Hero = () => (
                 whileHover={{ y: -2, scale: 1.04 }}
                 className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-full text-xs font-semibold border ${b.color} cursor-default`}
               >
+                <Link href={b.href} className="flex items-center gap-1.5">  
                 <span className="text-sm">{b.icon}</span>
                 {b.label}
+                </Link>
               </motion.span>
             ))}
             <motion.span
@@ -172,7 +174,7 @@ const Hero = () => (
             {[
               { icon: "🏆", text: "LinkedIn Top 20 Startup" },
               { icon: "🚀", text: "Y Combinator Backed" },
-              { icon: "🇺🇸", text: "US-Based Since 2013" },
+              { icon: "", text: "US-Based Since 2013" },
             ].map((b) => (
               <div key={b.text} className="flex items-center gap-2 text-muted-foreground/60">
                 <span className="text-lg">{b.icon}</span>
@@ -181,17 +183,7 @@ const Hero = () => (
             ))}
           </motion.div>
 
-          {/* Disclaimer */}
-          {/* <motion.p
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ delay: 0.7 }}
-            className="mt-4 text-xs text-muted-foreground/50 max-w-md leading-relaxed"
-          >
-            No upfront tuition for eligible candidates. Flexible financing options
-            including income-based payment plans available for qualified applicants.
-            Terms apply.
-          </motion.p> */}
+        
         </div>
 
         {/* ── Right side — Cards ── */}
@@ -335,10 +327,10 @@ const ImpactStats = () => (
       </motion.p>
       <div className="w-8 h-[2px] bg-primary-foreground/40 mx-auto mb-8" />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-primary-foreground/20">
-        <RollingCounter end={2000} suffix=" +" label="Students Placed" />
-        <RollingCounter end={41} suffix=" LPA" label="Highest Salary" />
-        <RollingCounter end={500} suffix=" +" label="Partner Companies" />
-        <RollingCounter end={7} suffix=".4 LPA" label="Average Salary" />
+       <RollingCounter end={2000} suffix=" +" label="Students Placed" />
+<RollingCounter end={180} prefix="$" suffix="K+" label="Highest Salary" />
+<RollingCounter end={500} suffix=" +" label="Partner Companies" />
+<RollingCounter end={70} prefix="$" suffix="K+" label="Average Salary" />
       </div>
     </div>
   </section>
