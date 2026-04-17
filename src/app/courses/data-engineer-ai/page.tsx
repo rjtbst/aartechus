@@ -15,7 +15,7 @@ const course: CourseDetail = {
   color: "from-amber-500 to-orange-500",
   emoji: "⚙️",
   duration: "6 Months",
-  students: "4,800+",
+  students: "1,000+",
   rating: 4.8,
   reviews: 980,
   level: "Intermediate",

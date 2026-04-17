@@ -15,7 +15,7 @@ const course: CourseDetail = {
   color: "from-teal-500 to-cyan-600",
   emoji: "🐍",
   duration: "4 Months",
-  students: "3,000+",
+  students: "1,000+",
   rating: 4.8,
   reviews: 850,
   // fee: "$70,000",
