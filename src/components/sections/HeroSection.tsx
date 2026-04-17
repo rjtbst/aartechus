@@ -17,7 +17,7 @@ const slides = [
 ];
 
 const floaters = [
-  { icon:<Users size={16}/>, text:"1K+ Placed",        side:"left" },
+  { icon:<Users size={16}/>, text:"1K+ Trained",        side:"left" },
   // { icon:<TrendingUp size={16}/>, text:"₹12L Avg CTC",  side:"right" },
   { icon:<Briefcase size={16}/>, text:"200+ Companies",  side:"left" },
 ];

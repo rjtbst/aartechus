@@ -98,7 +98,7 @@ const milestones = [
   {
     year: "2023",
     title: "500+ Alumni",
-    desc: "Crossed 1,000 alumni placed at companies like Amazon, Google, Microsoft, Salesforce, and Netflix.",
+    desc: "Crossed 1,000 alumni trained for US companies like Amazon, Google, Microsoft, Salesforce, and Netflix.",
   },
   {
     year: "2025",

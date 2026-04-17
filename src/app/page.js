@@ -327,7 +327,7 @@ const ImpactStats = () => (
       </motion.p>
       <div className="w-8 h-[2px] bg-primary-foreground/40 mx-auto mb-8" />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-primary-foreground/20">
-       <RollingCounter end={1000} suffix=" +" label="Students Placed" />
+       <RollingCounter end={1000} suffix=" +" label="Students trained" />
 <RollingCounter end={180} prefix="$" suffix="K+" label="Highest Salary" />
 <RollingCounter end={200} suffix=" +" label="Partner Companies" />
 <RollingCounter end={70} prefix="$" suffix="K+" label="Average Salary" />

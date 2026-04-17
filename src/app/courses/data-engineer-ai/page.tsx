@@ -98,7 +98,7 @@ const course: CourseDetail = {
     { label: "Avg Salary Range", value: "$130K–$170K", color: "text-green-400" },
     { label: "Top Employers", value: "Netflix, Uber", color: "text-purple-400" },
     { label: "Highest Offer", value: "$170K", color: "text-orange-400" },
-    { label: "Students Placed", value: "1K+", color: "text-blue-400" },
+    { label: "Students Trained", value: "1K+", color: "text-blue-400" },
   ],
   faqs: [
     { q: "What background do I need for this bootcamp?", a: "Basic SQL and Python familiarity is helpful but not required. We cover all foundational concepts before moving to advanced topics." },

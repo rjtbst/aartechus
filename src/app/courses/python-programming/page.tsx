@@ -94,7 +94,7 @@ const course: CourseDetail = {
     { label: "Avg Salary Range", value: "$70K–$110K", color: "text-green-400" },
     { label: "Top Employers", value: "Twilio, Cloudflare", color: "text-purple-400" },
     { label: "Highest Offer", value: "$110K", color: "text-orange-400" },
-    { label: "Students Placed", value: "1K+", color: "text-blue-400" },
+    { label: "Students Trained", value: "1K+", color: "text-blue-400" },
   ],
   faqs: [
     { q: "Is this course truly for beginners?", a: "Yes — no prior coding experience needed. We start from absolute basics and progress to building real applications you can show in interviews." },

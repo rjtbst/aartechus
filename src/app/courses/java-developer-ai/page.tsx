@@ -100,7 +100,7 @@ const course: CourseDetail = {
     { label: "Avg Salary Range", value: "$140K–$180K", color: "text-green-400" },
     { label: "Top Employers", value: "Google, Amazon", color: "text-purple-400" },
     { label: "Highest Offer", value: "$180K", color: "text-orange-400" },
-    { label: "Students Placed", value: "1K+", color: "text-blue-400" },
+    { label: "Students Trained", value: "1K+", color: "text-blue-400" },
   ],
   faqs: [
     { q: "Do I need prior Java experience?", a: "No — we start from the very basics of Java and build up to advanced enterprise and AI topics. Beginners are welcome." },
