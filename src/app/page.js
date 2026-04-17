@@ -342,7 +342,7 @@ const ImpactStats = () => (
 const testimonials = [
   { name: "Raoul Kamela", before: "Chemical Engineer", after: "Software Engineer", quote: "NexaLearn trained me and helped me improve my technical skills perfectly and land the job I had dreamed of!", avatar: "SS" },
   { name: "Sigfried Batoula", before: "M.sc in CS", after: "Application Developer", quote: "Low CGPA was a constant worry. NexaLearn made me realise the importance of real-time projects. In just 5 months, I landed a great job!", avatar: "KM" },
-  { name: "AKevin Sebstian", before: "Gap Year", after: "Software Developer", quote: "It's never too late to change your path. I was an Automobile Engineering student who wanted to switch to IT and NexaLearn made it possible.", avatar: "AI" },
+  { name: "Kevin Sebstian", before: "Gap Year", after: "Software Developer", quote: "It's never too late to change your path. I was an Automobile Engineering student who wanted to switch to IT and NexaLearn made it possible.", avatar: "AI" },
   // { name: "Pradyot Verma", before: "Mechanical Engineer", after: "Software Developer", quote: "As a mechanical engineer, I used to think it was impossible to land a tech role. But then NexaLearn happened!", avatar: "PV" },
   // { name: "Namrata Rathore", before: "Biotech Engineering", after: "Software Developer", quote: "Coming from a Biotech background, NexaLearn helped me learn Data Structures and got me placed with a reputed company.", avatar: "NR" },
   // { name: "Meenakshi G", before: "Btech CSE", after: "Software Engineer", quote: "The live classes, daily assignments & doubt sessions made sure everything was crystal clear. The mock interviews are excellent preparation.", avatar: "MG" },
