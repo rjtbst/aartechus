@@ -106,13 +106,12 @@ const Navbar = () => {
       <div className="container-main flex items-center justify-between h-[68px]">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8">
-            <svg viewBox="0 0 32 32" fill="none">
-              <path d="M8 6L16 2L24 6L24 18L16 22L8 18Z" fill="hsl(221, 83%, 53%)" />
-              <path d="M8 14L16 10L24 14L24 26L16 30L8 26Z" fill="hsl(221, 83%, 43%)" opacity="0.7" />
-            </svg>
-          </div>
-          <span className="text-[22px] font-bold">Aartechus</span>
+           <img
+  src="/logo.png"
+  alt="Aartechus Logo"
+  className="h-16 w-auto object-contain"
+/>
+          {/* <span className="text-[22px] font-bold">Aartechus</span> */}
         </Link>
 
         {/* Desktop nav */}

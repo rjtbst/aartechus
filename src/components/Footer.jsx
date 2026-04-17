@@ -12,12 +12,11 @@ const Footer = () => (
         {/* Brand */}
         <div>
           <div className="flex items-center gap-2.5 mb-4">
-            <div className="w-7 h-7">
-              <svg viewBox="0 0 32 32" fill="none" className="w-full h-full">
-                <path d="M8 6L16 2L24 6L24 18L16 22L8 18Z" fill="hsl(221, 83%, 53%)" />
-                <path d="M8 14L16 10L24 14L24 26L16 30L8 26Z" fill="hsl(221, 83%, 70%)" opacity="0.7" />
-              </svg>
-            </div>
+               <img
+  src="/logo.png"
+  alt="Aartechus Logo"
+  className="h-16 w-auto object-contain"
+/>
             <span className="text-lg font-display font-bold text-background">
               Aartechus
             </span>
