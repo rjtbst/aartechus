@@ -4,7 +4,7 @@ import type { CourseDetail } from "@/components/ui/CourseDetailPage";
 
 export const metadata: Metadata = {
   title: "AI Developer Bootcamp — Advanced GenAI & LLM Specialization",
-  description: "Become a specialist in LLMs, RAG, AI Agents, and Generative AI. Build production-grade AI applications. Salary range $160K–$200K+.",
+  description: "Become a specialist in LLMs, RAG, AI Agents, and Generative AI. Build production-grade AI applications. Salary range $100K–$180K+.",
 };
 
 const course: CourseDetail = {
@@ -97,9 +97,9 @@ const course: CourseDetail = {
     { name: "Aisha Patel", company: "Google DeepMind", role: "ML Research Engineer", exp: "9 years" },
   ],
   placementStats: [
-    { label: "Avg Salary Range", value: "$160K–$200K+", color: "text-green-400" },
+    { label: "Avg Salary Range", value: "$120K–$180K+", color: "text-green-400" },
     { label: "Top Employers", value: "OpenAI, Google", color: "text-purple-400" },
-    { label: "Highest Offer", value: "$200K+", color: "text-orange-400" },
+    { label: "Highest Offer", value: "$180K+", color: "text-orange-400" },
     { label: "Students Placed", value: "2.1K+", color: "text-blue-400" },
   ],
   faqs: [

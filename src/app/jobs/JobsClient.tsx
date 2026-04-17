@@ -9,7 +9,7 @@ const jobs = [
   { id: 2, company: "Salesforce", role: "Software Engineer", location: "San Francisco, CA", type: "Full Time", package: "$130K–$165K", deadline: "Apr 22, 2026", skills: ["Java", "SQL", "Agile"], mode: "Hybrid", seats: 80 },
   { id: 3, company: "Microsoft", role: "Full Stack Developer", location: "Redmond, WA", type: "Full Time", package: "$135K–$170K", deadline: "Apr 25, 2026", skills: ["React", "Node.js", "Azure"], mode: "Hybrid", seats: 60 },
   { id: 4, company: "Stripe", role: "Data Analyst", location: "New York, NY", type: "Full Time", package: "$110K–$145K", deadline: "Apr 28, 2026", skills: ["Python", "SQL", "Tableau"], mode: "Remote", seats: 25 },
-  { id: 5, company: "Netflix", role: "ML Engineer", location: "Los Angeles, CA", type: "Full Time", package: "$150K–$200K", deadline: "May 2, 2026", skills: ["Python", "TensorFlow", "Spark"], mode: "Hybrid", seats: 30 },
+  { id: 5, company: "Netflix", role: "ML Engineer", location: "Los Angeles, CA", type: "Full Time", package: "$130K–$180K", deadline: "May 2, 2026", skills: ["Python", "TensorFlow", "Spark"], mode: "Hybrid", seats: 30 },
   { id: 6, company: "Cloudflare", role: "React Developer", location: "Austin, TX", type: "Full Time", package: "$120K–$155K", deadline: "May 5, 2026", skills: ["React", "TypeScript", "GraphQL"], mode: "Remote", seats: 40 },
   { id: 7, company: "Palantir", role: "Data Science Associate", location: "Denver, CO", type: "Full Time", package: "$130K–$160K", deadline: "May 8, 2026", skills: ["Python", "ML", "Statistics"], mode: "Hybrid", seats: 20 },
   { id: 8, company: "Uber", role: "Backend Engineer", location: "Chicago, IL", type: "Full Time", package: "$140K–$175K", deadline: "May 12, 2026", skills: ["Java", "Spring Boot", "Microservices"], mode: "Hybrid", seats: 35 },
@@ -70,7 +70,7 @@ export default function JobsClient() {
               {[
                 { v: "60+", l: "Drives/month", c: "text-violet-600" },
                 { v: "200+", l: "US partner companies", c: "text-green-600" },
-                { v: "$200K+", l: "Highest offer", c: "text-orange-600" },
+                { v: "$180K+", l: "Highest offer", c: "text-orange-600" },
                 { v: "100% Free", l: "For all candidates", c: "text-blue-600" },
               ].map((s) => (
                 <span key={s.l} className="flex items-center gap-1">

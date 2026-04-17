@@ -55,7 +55,7 @@ const Hero = () => (
                 <div key={i} className="w-7 h-7 rounded-full bg-primary text-primary-foreground flex items-center justify-center text-[10px] font-bold border-2 border-background">{l}</div>
               ))}
             </div>
-            <span className="text-sm font-medium text-foreground">35k+ Happy Alumni</span>
+            <span className="text-sm font-medium text-foreground">1k+ Happy Alumni</span>
           </motion.div>
 
           {/* ── AI banner ── */}
@@ -197,8 +197,8 @@ const Hero = () => (
             className="grid grid-cols-3 gap-3"
           >
             {[
-              { value: "35K+", label: "Alumni" },
-              { value: "$200K", label: "Top Salary" },
+              { value: "1K+", label: "Alumni" },
+              { value: "$180K", label: "Top Salary" },
               { value: "200+", label: "US Partners" },
             ].map((s, i) => (
               <motion.div
@@ -327,9 +327,9 @@ const ImpactStats = () => (
       </motion.p>
       <div className="w-8 h-[2px] bg-primary-foreground/40 mx-auto mb-8" />
       <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-0 md:divide-x md:divide-primary-foreground/20">
-       <RollingCounter end={2000} suffix=" +" label="Students Placed" />
+       <RollingCounter end={1000} suffix=" +" label="Students Placed" />
 <RollingCounter end={180} prefix="$" suffix="K+" label="Highest Salary" />
-<RollingCounter end={500} suffix=" +" label="Partner Companies" />
+<RollingCounter end={200} suffix=" +" label="Partner Companies" />
 <RollingCounter end={70} prefix="$" suffix="K+" label="Average Salary" />
       </div>
     </div>
@@ -340,12 +340,12 @@ const ImpactStats = () => (
 
 /* ═══════════════════════ TESTIMONIALS (Before/After) ═══════════════════════ */
 const testimonials = [
-  { name: "Sandeep Singh", before: "Chemical Engineer", after: "Software Engineer", quote: "NexaLearn trained me and helped me improve my technical skills perfectly and land the job I had dreamed of!", avatar: "SS" },
-  { name: "Kabita Mondal", before: "M.sc in CS", after: "Application Developer", quote: "Low CGPA was a constant worry. NexaLearn made me realise the importance of real-time projects. In just 5 months, I landed a great job!", avatar: "KM" },
-  { name: "Akash Ingoley", before: "Gap Year", after: "Software Developer", quote: "It's never too late to change your path. I was an Automobile Engineering student who wanted to switch to IT and NexaLearn made it possible.", avatar: "AI" },
-  { name: "Pradyot Verma", before: "Mechanical Engineer", after: "Software Developer", quote: "As a mechanical engineer, I used to think it was impossible to land a tech role. But then NexaLearn happened!", avatar: "PV" },
-  { name: "Namrata Rathore", before: "Biotech Engineering", after: "Software Developer", quote: "Coming from a Biotech background, NexaLearn helped me learn Data Structures and got me placed with a reputed company.", avatar: "NR" },
-  { name: "Meenakshi G", before: "Btech CSE", after: "Software Engineer", quote: "The live classes, daily assignments & doubt sessions made sure everything was crystal clear. The mock interviews are excellent preparation.", avatar: "MG" },
+  { name: "Raoul Kamela", before: "Chemical Engineer", after: "Software Engineer", quote: "NexaLearn trained me and helped me improve my technical skills perfectly and land the job I had dreamed of!", avatar: "SS" },
+  { name: "Sigfried Batoula", before: "M.sc in CS", after: "Application Developer", quote: "Low CGPA was a constant worry. NexaLearn made me realise the importance of real-time projects. In just 5 months, I landed a great job!", avatar: "KM" },
+  { name: "AKevin Sebstian", before: "Gap Year", after: "Software Developer", quote: "It's never too late to change your path. I was an Automobile Engineering student who wanted to switch to IT and NexaLearn made it possible.", avatar: "AI" },
+  // { name: "Pradyot Verma", before: "Mechanical Engineer", after: "Software Developer", quote: "As a mechanical engineer, I used to think it was impossible to land a tech role. But then NexaLearn happened!", avatar: "PV" },
+  // { name: "Namrata Rathore", before: "Biotech Engineering", after: "Software Developer", quote: "Coming from a Biotech background, NexaLearn helped me learn Data Structures and got me placed with a reputed company.", avatar: "NR" },
+  // { name: "Meenakshi G", before: "Btech CSE", after: "Software Engineer", quote: "The live classes, daily assignments & doubt sessions made sure everything was crystal clear. The mock interviews are excellent preparation.", avatar: "MG" },
 ];
 
 const TestimonialSection = () => {

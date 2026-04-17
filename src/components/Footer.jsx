@@ -117,7 +117,7 @@ const Footer = () => (
             </li>
             <li className="flex items-center gap-3 text-sm text-background/70">
               <Phone className="w-4 h-4 text-primary flex-shrink-0" />
-              +1 307 998 3803
+               307-384-7833
             </li>
             <li className="flex items-center gap-3 text-sm text-background/70">
               <span className="text-lg leading-none">💬</span>

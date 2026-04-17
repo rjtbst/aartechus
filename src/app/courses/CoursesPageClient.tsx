@@ -74,8 +74,8 @@ export default function CoursesPageClient() {
             {/* Stats */}
             <div className="flex flex-wrap justify-center gap-6 text-sm">
               {[
-                { label: "35,000+ Students", color: "text-violet-600" },
-                { label: "$200K Highest Package", color: "text-orange-600" },
+                { label: "1,000+ Students", color: "text-violet-600" },
+                { label: "$180K Highest Package", color: "text-orange-600" },
                 { label: "200+ Hiring Partners", color: "text-green-600" },
                 { label: "4.9★ Average Rating", color: "text-amber-500" },
               ].map((s) => (

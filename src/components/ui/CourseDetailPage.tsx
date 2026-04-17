@@ -455,7 +455,7 @@ export default function CourseDetailPage({ course }: { course: CourseDetail }) {
                               </div>
                               <div>
                                 <div className="text-[10px] text-gray-400 mb-0.5">Or call us directly</div>
-                                <a href="tel:+13079983803" className="text-sm font-semibold text-gray-900 hover:text-blue-600 transition-colors">+1 307 998 3803</a>
+                                <a href="tel:+ 307-384-7833" className="text-sm font-semibold text-gray-900 hover:text-blue-600 transition-colors"> 307-384-7833</a>
                               </div>
                             </div>
 

@@ -5,7 +5,7 @@ import Link from "next/link";
 import { ArrowRight, Play, Star, Users, Briefcase, TrendingUp, Sparkles } from "lucide-react";
 
 const slides = [
-  { badge:"35K+ Happy Students", title:"Launch Your", highlight:"Tech Career", sub:"with Expert Training",
+  { badge:"1K+ Happy Students", title:"Launch Your", highlight:"Tech Career", sub:"with Expert Training",
     desc:"Get job-ready with US's most comprehensive coding bootcamps. Live classes, real projects & guaranteed placement support.",
     cta:"Explore Courses", href:"/courses", blob:"rgba(108,58,255,.2)" },
   { badge:"₹30 LPA Highest Package", title:"Master", highlight:"Data Science", sub:"& Artificial Intelligence",
@@ -17,8 +17,8 @@ const slides = [
 ];
 
 const floaters = [
-  { icon:<Users size={16}/>, text:"35K+ Placed",        side:"left" },
-  { icon:<TrendingUp size={16}/>, text:"₹12L Avg CTC",  side:"right" },
+  { icon:<Users size={16}/>, text:"1K+ Placed",        side:"left" },
+  // { icon:<TrendingUp size={16}/>, text:"₹12L Avg CTC",  side:"right" },
   { icon:<Briefcase size={16}/>, text:"200+ Companies",  side:"left" },
 ];
 

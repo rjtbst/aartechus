@@ -4,7 +4,7 @@ import { motion, useInView } from "framer-motion";
 import { TrendingUp, Users, Building2, Award, Code2, Globe } from "lucide-react";
 
 const stats = [
-  { value:35000, suffix:"+",    label:"Students Placed",       icon:Users,     gradient:"linear-gradient(135deg,#9333ea,#6c3aff)", desc:"Career transformations" },
+  { value:1000, suffix:"+",    label:"Students Placed",       icon:Users,     gradient:"linear-gradient(135deg,#9333ea,#6c3aff)", desc:"Career transformations" },
   { value:30,    suffix:" LPA", label:"Highest Salary",        icon:TrendingUp, gradient:"linear-gradient(135deg,#ea580c,#ef4444)", desc:"Peak package secured" },
   { value:200,   suffix:"+",    label:"Partner Companies",     icon:Building2,  gradient:"linear-gradient(135deg,#16a34a,#10b981)", desc:"Active hiring partners" },
   { value:12,    suffix:" LPA", label:"Average Salary",        icon:Award,      gradient:"linear-gradient(135deg,#ca8a04,#f59e0b)", desc:"Mean post-completion CTC" },

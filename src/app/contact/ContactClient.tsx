@@ -132,7 +132,7 @@ export default function ContactClient() {
                     </div>
                     <div>
                       <div className="text-xs text-gray-500 mb-0.5">Phone</div>
-                      <div className="text-black text-sm font-medium">+1 307 998 3803</div>
+                      <div className="text-black text-sm font-medium"> 307-384-7833</div>
                     </div>
                   </a>
                   <div className="flex items-start gap-3">
