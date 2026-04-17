@@ -100,7 +100,7 @@ const course: CourseDetail = {
     { label: "Avg Salary Range", value: "$130K–$175K", color: "text-green-400" },
     { label: "Top Employers", value: "Spotify, LinkedIn", color: "text-purple-400" },
     { label: "Highest Offer", value: "$175K", color: "text-orange-400" },
-    { label: "Students Placed", value: "3.8K+", color: "text-blue-400" },
+    { label: "Students Placed", value: "1K+", color: "text-blue-400" },
   ],
   faqs: [
     { q: "Do I need a math background?", a: "Basic algebra and comfort with numbers is enough. We teach all required statistics and probability from the ground up within the bootcamp." },

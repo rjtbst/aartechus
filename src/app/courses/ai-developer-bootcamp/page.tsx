@@ -100,7 +100,7 @@ const course: CourseDetail = {
     { label: "Avg Salary Range", value: "$120K–$180K+", color: "text-green-400" },
     { label: "Top Employers", value: "OpenAI, Google", color: "text-purple-400" },
     { label: "Highest Offer", value: "$180K+", color: "text-orange-400" },
-    { label: "Students Placed", value: "2.1K+", color: "text-blue-400" },
+    { label: "Students Placed", value: "1K+", color: "text-blue-400" },
   ],
   faqs: [
     { q: "What prerequisites do I need?", a: "Python proficiency and basic ML knowledge are recommended. We provide a pre-course Python refresher for students who need it." },

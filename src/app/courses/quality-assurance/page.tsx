@@ -60,7 +60,7 @@ const course: CourseDetail = {
     { label: "Placement Rate", value: "87%", color: "text-green-400" },
     { label: "Average Package", value: "₹8 LPA", color: "text-purple-400" },
     { label: "Highest Package", value: "₹16 LPA", color: "text-orange-400" },
-    { label: "Students Placed", value: "1.8K+", color: "text-blue-400" },
+    { label: "Students Placed", value: "1K+", color: "text-blue-400" },
   ],
   faqs: [
     { q: "Do I need a coding background for QA?", a: "No, but basic computer literacy helps. We teach all the programming concepts you need for automation testing from scratch." },
