@@ -222,11 +222,11 @@ export default function CoursesPageClient() {
                     </div>
 
                     {/* Modes */}
-                    <div className="flex flex-wrap gap-2 mb-6">
+                    <div className="flex flex-wrap justify-between gap-2 ">
                       {course.modes.map((m) => (
                         <span
                           key={m}
-                          className="flex items-center gap-1 px-3 py-1 rounded-full bg-gray-100 border border-gray-200 text-xs text-gray-600"
+                          className="flex items-center justify-between gap-1 px-3 py-1 rounded-full bg-gray-100 border border-gray-200 text-xs text-gray-600"
                         >
                           {m === "live" ? (
                             <Wifi size={11} />
@@ -238,26 +238,17 @@ export default function CoursesPageClient() {
                           {courseModeLabels[m]}
                         </span>
                       ))}
-                    </div>
-
-                    {/* Pricing + CTA */}
-                    {/* <div className="flex items-center justify-between pt-5 border-t border-gray-100">
-                      <div>
-                        <div className="font-extrabold text-2xl text-gray-900">
-                          {course.fee}
-                        </div>
-                        <div className="text-xs text-gray-400">
-                          or {course.emi} EMI
-                        </div>
-                      </div>
+                      
                       <Link
                         href={course.href}
-                        className="text-white px-6 py-3 rounded-xl font-semibold text-sm flex items-center gap-2 hover:opacity-90 transition-all hover:shadow-lg"
+                        className="text-primary border border-primary px-6 py-3 rounded-xl font-semibold text-sm flex items-center gap-2 hover:opacity-90 transition-all hover:shadow-lg"
                         style={{ background: course.color }}
                       >
                         View Program <ArrowRight size={15} />
                       </Link>
-                    </div> */}
+                    </div>
+
+                   
                   </div>
                 </motion.div>
               ))}
