@@ -162,7 +162,7 @@ export default function AboutClient() {
             >
               {[
                 {
-                  value: "30K+",
+                  value: "1K+",
                   label: "Students Trained",
                   icon: Users,
                   color: "linear-gradient(135deg,#7c3aed,#4f46e5)",
